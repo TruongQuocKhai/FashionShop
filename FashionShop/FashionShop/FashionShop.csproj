@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -46,6 +47,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -143,163 +150,167 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductCategoryController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\css\custom-fonticons.css" />
-    <Content Include="Content\css\custom.css" />
-    <Content Include="Content\css\FormSearch.css" />
-    <Content Include="Content\css\main.css" />
-    <Content Include="Content\css\main.min.css" />
-    <Content Include="Content\css\PagedList.css" />
-    <Content Include="Content\css\style.default.css" />
-    <Content Include="Content\css\util.css" />
-    <Content Include="Content\css\util.min.css" />
-    <Content Include="Content\Images\banner-1.jpg" />
-    <Content Include="Content\Images\banner-2.jpg" />
-    <Content Include="Content\Images\blog-1.jpg" />
-    <Content Include="Content\Images\blog-2.jpg" />
-    <Content Include="Content\Images\blog-avatar.jpg" />
-    <Content Include="Content\Images\blog-avatar2.jpg" />
-    <Content Include="Content\Images\blog1.jpg" />
-    <Content Include="Content\Images\blog2.jpg" />
-    <Content Include="Content\Images\cartEmpty.png" />
-    <Content Include="Content\Images\divider-bg.jpg" />
-    <Content Include="Content\Images\dots-pattern.png" />
-    <Content Include="Content\Images\hero-bg-2.jpg" />
-    <Content Include="Content\Images\hero-bg-3.jpg" />
-    <Content Include="Content\Images\hero-bg.jpg" />
-    <Content Include="Content\Images\hoodie-man-1.png" />
-    <Content Include="Content\Images\hoodie-man-2.png" />
-    <Content Include="Content\Images\hoodie-man-3.png" />
-    <Content Include="Content\Images\hoodie-man-4.png" />
-    <Content Include="Content\Images\hoodie-woman-1.png" />
-    <Content Include="Content\Images\hoodie-woman-2.png" />
-    <Content Include="Content\Images\hoodie-woman-3.png" />
-    <Content Include="Content\Images\hoodie-woman-4.png" />
-    <Content Include="Content\Images\logo-white.png" />
-    <Content Include="Content\Images\logo.png" />
-    <Content Include="Content\Images\Logo_HUTECH.jpg" />
-    <Content Include="Content\Images\parallax-1.jpg" />
-    <Content Include="Content\Images\person-1.jpg" />
-    <Content Include="Content\Images\person-2.jpg" />
-    <Content Include="Content\Images\person-3.jpg" />
-    <Content Include="Content\Images\person-4.jpg" />
-    <Content Include="Content\Images\shirt-black-small.png" />
-    <Content Include="Content\Images\shirt-black.png" />
-    <Content Include="Content\Images\shirt-green-small.png" />
-    <Content Include="Content\Images\shirt-green.png" />
-    <Content Include="Content\Images\shirt-red-small.png" />
-    <Content Include="Content\Images\shirt-red.png" />
-    <Content Include="Content\Images\shirt-small.png" />
-    <Content Include="Content\Images\shirt.png" />
-    <Content Include="Content\Images\template-mac.png" />
-    <Content Include="Content\Images\tk-icon-web.png" />
-    <Content Include="Content\Images\TK.png" />
-    <Content Include="Content\Images\van1.jpg" />
-    <Content Include="Content\Images\van2.jpg" />
-    <Content Include="Content\Images\video\Bed-Phone.jpg" />
-    <Content Include="Content\Images\video\Bed-Phone.mp4" />
-    <Content Include="Content\Images\video\Bed-Phone.webm" />
-    <Content Include="Content\Images\wolf.png" />
-    <Content Include="Content\js\front.js" />
-    <Content Include="Content\js\main.js" />
-    <Content Include="Content\js\main.min.js" />
-    <Content Include="Content\js\map-custom.js" />
-    <Content Include="Content\js\map-custom.min.js" />
-    <Content Include="Content\js\modernizr.custom.79639.js" />
-    <Content Include="Content\js\show-hide-password.js" />
-    <Content Include="Content\js\slick-custom.js" />
-    <Content Include="Content\js\slick-custom.min.js" />
-    <Content Include="Content\js\user-cart-controller.js" />
-    <Content Include="Content\template\neworder.html" />
-    <Content Include="Content\vendor\animate\animate.css" />
-    <Content Include="Content\vendor\animsition\css\animsition.css" />
-    <Content Include="Content\vendor\animsition\css\animsition.min.css" />
-    <Content Include="Content\vendor\animsition\js\animsition.js" />
-    <Content Include="Content\vendor\animsition\js\animsition.min.js" />
-    <Content Include="Content\vendor\bootstrap-select\css\bootstrap-select.min.css" />
-    <Content Include="Content\vendor\bootstrap-select\js\bootstrap-select.min.js" />
-    <Content Include="Content\vendor\bootstrap\css\bootstrap-grid.css" />
-    <Content Include="Content\vendor\bootstrap\css\bootstrap-grid.min.css" />
-    <Content Include="Content\vendor\bootstrap\css\bootstrap-reboot.css" />
-    <Content Include="Content\vendor\bootstrap\css\bootstrap-reboot.min.css" />
-    <Content Include="Content\vendor\bootstrap\css\bootstrap.css" />
-    <Content Include="Content\vendor\bootstrap\css\bootstrap.min.css" />
-    <Content Include="Content\vendor\bootstrap\js\bootstrap.js" />
-    <Content Include="Content\vendor\bootstrap\js\bootstrap.min.js" />
-    <Content Include="Content\vendor\bootstrap\js\popper.js" />
-    <Content Include="Content\vendor\bootstrap\js\popper.min.js" />
-    <Content Include="Content\vendor\bootstrap\js\tooltip.js" />
-    <Content Include="Content\vendor\countdowntime\countdowntime.js" />
-    <Content Include="Content\vendor\css-hamburgers\hamburgers.css" />
-    <Content Include="Content\vendor\css-hamburgers\hamburgers.min.css" />
-    <Content Include="Content\vendor\daterangepicker\daterangepicker.css" />
-    <Content Include="Content\vendor\daterangepicker\daterangepicker.js" />
-    <Content Include="Content\vendor\daterangepicker\moment.js" />
-    <Content Include="Content\vendor\daterangepicker\moment.min.js" />
-    <Content Include="Content\vendor\font-awesome\css\font-awesome.min.css" />
-    <Content Include="Content\vendor\isotope\isotope.pkgd.min.js" />
-    <Content Include="Content\vendor\jquery-countdown\jquery.countdown.min.js" />
-    <Content Include="Content\vendor\jquery-parallax.js\parallax.min.js" />
-    <Content Include="Content\vendor\jquery.cookie\jquery.cookie.js" />
-    <Content Include="Content\vendor\jqueryui\external\jquery\jquery.js" />
-    <Content Include="Content\vendor\jqueryui\images\ui-icons_444444_256x240.png" />
-    <Content Include="Content\vendor\jqueryui\images\ui-icons_555555_256x240.png" />
-    <Content Include="Content\vendor\jqueryui\images\ui-icons_777620_256x240.png" />
-    <Content Include="Content\vendor\jqueryui\images\ui-icons_777777_256x240.png" />
-    <Content Include="Content\vendor\jqueryui\images\ui-icons_cc0000_256x240.png" />
-    <Content Include="Content\vendor\jqueryui\images\ui-icons_ffffff_256x240.png" />
-    <Content Include="Content\vendor\jqueryui\index.html" />
-    <Content Include="Content\vendor\jqueryui\jquery-ui.css" />
-    <Content Include="Content\vendor\jqueryui\jquery-ui.js" />
-    <Content Include="Content\vendor\jqueryui\jquery-ui.min.css" />
-    <Content Include="Content\vendor\jqueryui\jquery-ui.min.js" />
-    <Content Include="Content\vendor\jqueryui\jquery-ui.structure.css" />
-    <Content Include="Content\vendor\jqueryui\jquery-ui.structure.min.css" />
-    <Content Include="Content\vendor\jqueryui\jquery-ui.theme.css" />
-    <Content Include="Content\vendor\jqueryui\jquery-ui.theme.min.css" />
-    <Content Include="Content\vendor\jquery\jquery-3.2.1.min.js" />
-    <Content Include="Content\vendor\jquery\jquery.min.js" />
-    <Content Include="Content\vendor\lightbox2\css\lightbox.css" />
-    <Content Include="Content\vendor\lightbox2\css\lightbox.min.css" />
-    <Content Include="Content\vendor\lightbox2\images\close.png" />
-    <Content Include="Content\vendor\lightbox2\images\loading.gif" />
-    <Content Include="Content\vendor\lightbox2\images\next.png" />
-    <Content Include="Content\vendor\lightbox2\images\prev.png" />
-    <Content Include="Content\vendor\lightbox2\js\lightbox-plus-jquery.js" />
-    <Content Include="Content\vendor\lightbox2\js\lightbox-plus-jquery.min.js" />
-    <Content Include="Content\vendor\lightbox2\js\lightbox.js" />
-    <Content Include="Content\vendor\lightbox2\js\lightbox.min.js" />
-    <Content Include="Content\vendor\nouislider\nouislider.css" />
-    <Content Include="Content\vendor\nouislider\nouislider.min.js" />
-    <Content Include="Content\vendor\noui\nouislider.css" />
-    <Content Include="Content\vendor\noui\nouislider.js" />
-    <Content Include="Content\vendor\noui\nouislider.min.css" />
-    <Content Include="Content\vendor\noui\nouislider.min.js" />
-    <Content Include="Content\vendor\owl.carousel2.thumbs\owl.carousel2.thumbs.min.js" />
-    <Content Include="Content\vendor\owl.carousel\assets\owl.carousel.css" />
-    <Content Include="Content\vendor\owl.carousel\assets\owl.theme.default.css" />
-    <Content Include="Content\vendor\owl.carousel\assets\owl.video.play.png" />
-    <Content Include="Content\vendor\owl.carousel\owl.carousel.min.js" />
-    <Content Include="Content\vendor\parallax100\parallax100.js" />
-    <Content Include="Content\vendor\perfect-scrollbar\perfect-scrollbar.css" />
-    <Content Include="Content\vendor\perfect-scrollbar\perfect-scrollbar.min.js" />
-    <Content Include="Content\vendor\popper.js\umd\popper.min.js" />
-    <Content Include="Content\vendor\select2\select2.css" />
-    <Content Include="Content\vendor\select2\select2.js" />
-    <Content Include="Content\vendor\select2\select2.min.css" />
-    <Content Include="Content\vendor\select2\select2.min.js" />
-    <Content Include="Content\vendor\slick\ajax-loader.gif" />
-    <Content Include="Content\vendor\slick\fonts\slick.svg" />
-    <Content Include="Content\vendor\slick\slick-theme.css" />
-    <Content Include="Content\vendor\slick\slick.css" />
-    <Content Include="Content\vendor\slick\slick.js" />
-    <Content Include="Content\vendor\slick\slick.min.js" />
-    <Content Include="Content\vendor\sweetalert\sweetalert.min.js" />
+    <Content Include="Contents\css\custom-fonticons.css" />
+    <Content Include="Contents\css\custom.css" />
+    <Content Include="Contents\css\FormSearch.css" />
+    <Content Include="Contents\css\main.css" />
+    <Content Include="Contents\css\main.min.css" />
+    <Content Include="Contents\css\PagedList.css" />
+    <Content Include="Contents\css\style.default.css" />
+    <Content Include="Contents\css\util.css" />
+    <Content Include="Contents\css\util.min.css" />
+    <Content Include="Contents\Images\banner-1.jpg" />
+    <Content Include="Contents\Images\banner-2.jpg" />
+    <Content Include="Contents\Images\blog-1.jpg" />
+    <Content Include="Contents\Images\blog-2.jpg" />
+    <Content Include="Contents\Images\blog-avatar.jpg" />
+    <Content Include="Contents\Images\blog-avatar2.jpg" />
+    <Content Include="Contents\Images\blog1.jpg" />
+    <Content Include="Contents\Images\blog2.jpg" />
+    <Content Include="Contents\Images\cartEmpty.png" />
+    <Content Include="Contents\Images\divider-bg.jpg" />
+    <Content Include="Contents\Images\dots-pattern.png" />
+    <Content Include="Contents\Images\hero-bg-2.jpg" />
+    <Content Include="Contents\Images\hero-bg-3.jpg" />
+    <Content Include="Contents\Images\hero-bg.jpg" />
+    <Content Include="Contents\Images\hoodie-man-1.png" />
+    <Content Include="Contents\Images\hoodie-man-2.png" />
+    <Content Include="Contents\Images\hoodie-man-3.png" />
+    <Content Include="Contents\Images\hoodie-man-4.png" />
+    <Content Include="Contents\Images\hoodie-woman-1.png" />
+    <Content Include="Contents\Images\hoodie-woman-2.png" />
+    <Content Include="Contents\Images\hoodie-woman-3.png" />
+    <Content Include="Contents\Images\hoodie-woman-4.png" />
+    <Content Include="Contents\Images\j1.jpg" />
+    <Content Include="Contents\Images\logo-white.png" />
+    <Content Include="Contents\Images\logoFashionShop.jpg" />
+    <Content Include="Contents\Images\Logo_HUTECH.jpg" />
+    <Content Include="Contents\Images\parallax-1.jpg" />
+    <Content Include="Contents\Images\person-1.jpg" />
+    <Content Include="Contents\Images\person-2.jpg" />
+    <Content Include="Contents\Images\person-3.jpg" />
+    <Content Include="Contents\Images\person-4.jpg" />
+    <Content Include="Contents\Images\s1.png" />
+    <Content Include="Contents\Images\shirt-black-small.png" />
+    <Content Include="Contents\Images\shirt-black.png" />
+    <Content Include="Contents\Images\shirt-green-small.png" />
+    <Content Include="Contents\Images\shirt-green.png" />
+    <Content Include="Contents\Images\shirt-red-small.png" />
+    <Content Include="Contents\Images\shirt-red.png" />
+    <Content Include="Contents\Images\shirt-small.png" />
+    <Content Include="Contents\Images\shirt.png" />
+    <Content Include="Contents\Images\template-mac.png" />
+    <Content Include="Contents\Images\tk-icon-web.png" />
+    <Content Include="Contents\Images\TK.png" />
+    <Content Include="Contents\Images\van1.jpg" />
+    <Content Include="Contents\Images\van2.jpg" />
+    <Content Include="Contents\Images\video\Bed-Phone.jpg" />
+    <Content Include="Contents\Images\video\Bed-Phone.mp4" />
+    <Content Include="Contents\Images\video\Bed-Phone.webm" />
+    <Content Include="Contents\Images\wolf.png" />
+    <Content Include="Contents\js\front.js" />
+    <Content Include="Contents\js\main.js" />
+    <Content Include="Contents\js\main.min.js" />
+    <Content Include="Contents\js\map-custom.js" />
+    <Content Include="Contents\js\map-custom.min.js" />
+    <Content Include="Contents\js\modernizr.custom.79639.js" />
+    <Content Include="Contents\js\show-hide-password.js" />
+    <Content Include="Contents\js\slick-custom.js" />
+    <Content Include="Contents\js\slick-custom.min.js" />
+    <Content Include="Contents\js\user-cart-controller.js" />
+    <Content Include="Contents\template\neworder.html" />
+    <Content Include="Contents\vendor\animate\animate.css" />
+    <Content Include="Contents\vendor\animsition\css\animsition.css" />
+    <Content Include="Contents\vendor\animsition\css\animsition.min.css" />
+    <Content Include="Contents\vendor\animsition\js\animsition.js" />
+    <Content Include="Contents\vendor\animsition\js\animsition.min.js" />
+    <Content Include="Contents\vendor\bootstrap-select\css\bootstrap-select.min.css" />
+    <Content Include="Contents\vendor\bootstrap-select\js\bootstrap-select.min.js" />
+    <Content Include="Contents\vendor\bootstrap\css\bootstrap-grid.css" />
+    <Content Include="Contents\vendor\bootstrap\css\bootstrap-grid.min.css" />
+    <Content Include="Contents\vendor\bootstrap\css\bootstrap-reboot.css" />
+    <Content Include="Contents\vendor\bootstrap\css\bootstrap-reboot.min.css" />
+    <Content Include="Contents\vendor\bootstrap\css\bootstrap.css" />
+    <Content Include="Contents\vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Contents\vendor\bootstrap\js\bootstrap.js" />
+    <Content Include="Contents\vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Contents\vendor\bootstrap\js\popper.js" />
+    <Content Include="Contents\vendor\bootstrap\js\popper.min.js" />
+    <Content Include="Contents\vendor\bootstrap\js\tooltip.js" />
+    <Content Include="Contents\vendor\countdowntime\countdowntime.js" />
+    <Content Include="Contents\vendor\css-hamburgers\hamburgers.css" />
+    <Content Include="Contents\vendor\css-hamburgers\hamburgers.min.css" />
+    <Content Include="Contents\vendor\daterangepicker\daterangepicker.css" />
+    <Content Include="Contents\vendor\daterangepicker\daterangepicker.js" />
+    <Content Include="Contents\vendor\daterangepicker\moment.js" />
+    <Content Include="Contents\vendor\daterangepicker\moment.min.js" />
+    <Content Include="Contents\vendor\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Contents\vendor\isotope\isotope.pkgd.min.js" />
+    <Content Include="Contents\vendor\jquery-countdown\jquery.countdown.min.js" />
+    <Content Include="Contents\vendor\jquery-parallax.js\parallax.min.js" />
+    <Content Include="Contents\vendor\jquery.cookie\jquery.cookie.js" />
+    <Content Include="Contents\vendor\jqueryui\external\jquery\jquery.js" />
+    <Content Include="Contents\vendor\jqueryui\images\ui-icons_444444_256x240.png" />
+    <Content Include="Contents\vendor\jqueryui\images\ui-icons_555555_256x240.png" />
+    <Content Include="Contents\vendor\jqueryui\images\ui-icons_777620_256x240.png" />
+    <Content Include="Contents\vendor\jqueryui\images\ui-icons_777777_256x240.png" />
+    <Content Include="Contents\vendor\jqueryui\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Contents\vendor\jqueryui\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Contents\vendor\jqueryui\index.html" />
+    <Content Include="Contents\vendor\jqueryui\jquery-ui.css" />
+    <Content Include="Contents\vendor\jqueryui\jquery-ui.js" />
+    <Content Include="Contents\vendor\jqueryui\jquery-ui.min.css" />
+    <Content Include="Contents\vendor\jqueryui\jquery-ui.min.js" />
+    <Content Include="Contents\vendor\jqueryui\jquery-ui.structure.css" />
+    <Content Include="Contents\vendor\jqueryui\jquery-ui.structure.min.css" />
+    <Content Include="Contents\vendor\jqueryui\jquery-ui.theme.css" />
+    <Content Include="Contents\vendor\jqueryui\jquery-ui.theme.min.css" />
+    <Content Include="Contents\vendor\jquery\jquery-3.2.1.min.js" />
+    <Content Include="Contents\vendor\jquery\jquery.min.js" />
+    <Content Include="Contents\vendor\lightbox2\css\lightbox.css" />
+    <Content Include="Contents\vendor\lightbox2\css\lightbox.min.css" />
+    <Content Include="Contents\vendor\lightbox2\images\close.png" />
+    <Content Include="Contents\vendor\lightbox2\images\loading.gif" />
+    <Content Include="Contents\vendor\lightbox2\images\next.png" />
+    <Content Include="Contents\vendor\lightbox2\images\prev.png" />
+    <Content Include="Contents\vendor\lightbox2\js\lightbox-plus-jquery.js" />
+    <Content Include="Contents\vendor\lightbox2\js\lightbox-plus-jquery.min.js" />
+    <Content Include="Contents\vendor\lightbox2\js\lightbox.js" />
+    <Content Include="Contents\vendor\lightbox2\js\lightbox.min.js" />
+    <Content Include="Contents\vendor\nouislider\nouislider.css" />
+    <Content Include="Contents\vendor\nouislider\nouislider.min.js" />
+    <Content Include="Contents\vendor\noui\nouislider.css" />
+    <Content Include="Contents\vendor\noui\nouislider.js" />
+    <Content Include="Contents\vendor\noui\nouislider.min.css" />
+    <Content Include="Contents\vendor\noui\nouislider.min.js" />
+    <Content Include="Contents\vendor\owl.carousel2.thumbs\owl.carousel2.thumbs.min.js" />
+    <Content Include="Contents\vendor\owl.carousel\assets\owl.carousel.css" />
+    <Content Include="Contents\vendor\owl.carousel\assets\owl.theme.default.css" />
+    <Content Include="Contents\vendor\owl.carousel\assets\owl.video.play.png" />
+    <Content Include="Contents\vendor\owl.carousel\owl.carousel.min.js" />
+    <Content Include="Contents\vendor\parallax100\parallax100.js" />
+    <Content Include="Contents\vendor\perfect-scrollbar\perfect-scrollbar.css" />
+    <Content Include="Contents\vendor\perfect-scrollbar\perfect-scrollbar.min.js" />
+    <Content Include="Contents\vendor\popper.js\umd\popper.min.js" />
+    <Content Include="Contents\vendor\select2\select2.css" />
+    <Content Include="Contents\vendor\select2\select2.js" />
+    <Content Include="Contents\vendor\select2\select2.min.css" />
+    <Content Include="Contents\vendor\select2\select2.min.js" />
+    <Content Include="Contents\vendor\slick\ajax-loader.gif" />
+    <Content Include="Contents\vendor\slick\fonts\slick.svg" />
+    <Content Include="Contents\vendor\slick\slick-theme.css" />
+    <Content Include="Contents\vendor\slick\slick.css" />
+    <Content Include="Contents\vendor\slick\slick.js" />
+    <Content Include="Contents\vendor\slick\slick.min.js" />
+    <Content Include="Contents\vendor\sweetalert\sweetalert.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -308,22 +319,22 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\vendor\bootstrap\css\bootstrap-grid.css.map" />
-    <Content Include="Content\vendor\bootstrap\css\bootstrap-grid.min.css.map" />
-    <Content Include="Content\vendor\bootstrap\css\bootstrap-reboot.css.map" />
-    <Content Include="Content\vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
-    <Content Include="Content\vendor\bootstrap\css\bootstrap.css.map" />
-    <Content Include="Content\vendor\bootstrap\css\bootstrap.min.css.map" />
-    <Content Include="Content\vendor\lightbox2\js\lightbox-plus-jquery.min.map" />
-    <Content Include="Content\vendor\lightbox2\js\lightbox.min.map" />
-    <Content Include="Content\vendor\slick\config.rb" />
-    <Content Include="Content\vendor\slick\fonts\slick.eot" />
-    <Content Include="Content\vendor\slick\fonts\slick.ttf" />
-    <Content Include="Content\vendor\slick\fonts\slick.woff" />
-    <Content Include="Content\vendor\slick\slick-theme.less" />
-    <Content Include="Content\vendor\slick\slick-theme.scss" />
-    <Content Include="Content\vendor\slick\slick.less" />
-    <Content Include="Content\vendor\slick\slick.scss" />
+    <Content Include="Contents\vendor\bootstrap\css\bootstrap-grid.css.map" />
+    <Content Include="Contents\vendor\bootstrap\css\bootstrap-grid.min.css.map" />
+    <Content Include="Contents\vendor\bootstrap\css\bootstrap-reboot.css.map" />
+    <Content Include="Contents\vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
+    <Content Include="Contents\vendor\bootstrap\css\bootstrap.css.map" />
+    <Content Include="Contents\vendor\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="Contents\vendor\lightbox2\js\lightbox-plus-jquery.min.map" />
+    <Content Include="Contents\vendor\lightbox2\js\lightbox.min.map" />
+    <Content Include="Contents\vendor\slick\config.rb" />
+    <Content Include="Contents\vendor\slick\fonts\slick.eot" />
+    <Content Include="Contents\vendor\slick\fonts\slick.ttf" />
+    <Content Include="Contents\vendor\slick\fonts\slick.woff" />
+    <Content Include="Contents\vendor\slick\slick-theme.less" />
+    <Content Include="Contents\vendor\slick\slick-theme.scss" />
+    <Content Include="Contents\vendor\slick\slick.less" />
+    <Content Include="Contents\vendor\slick\slick.scss" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -347,10 +358,17 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_LayoutUser.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Product\_ListNewProductsPartial.cshtml" />
+    <Content Include="Views\Shared\_MainMenuPartial.cshtml" />
+    <Content Include="Views\Shared\_FooterPartial.cshtml" />
+    <Content Include="Views\Shared\_ProductCategoryPartial.cshtml" />
+    <Content Include="Views\Shared\_BrandsPartial.cshtml" />
+    <Content Include="Views\Product\_ListDiscountProductsPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\ProductCategory\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -364,6 +382,12 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{bf3a904a-1bf0-4b7c-986a-085ff51fe511}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -399,7 +423,10 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
   </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -148,13 +148,13 @@ create table slide(
 go
 
 create table menu_type(
-	menu_type_id int primary key,
+	menu_type_id int identity primary key,
 	name nvarchar(50)
 );
 go
 
 create table menu(
-	menu_id int primary key,
+	menu_id int identity primary key,
 	text nvarchar(50),
 	link varchar(250),
 	display_order int,

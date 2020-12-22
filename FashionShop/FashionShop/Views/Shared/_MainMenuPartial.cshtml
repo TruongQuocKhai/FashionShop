@@ -1,0 +1,26 @@
+﻿@model List<Model.EF.menu>
+
+
+<ul class="navbar-nav mx-auto">
+    <li class="nav-item">
+        <a href="/" class="nav-link ">Trang Chủ</a>
+    </li>
+    <li class="nav-item dropdown">
+        <a id="navbarDropdownMenuLink" href="http://example.com/" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link ">
+            Sản Phẩm<i class="fa fa-angle-down"></i>
+        </a>
+        <ul aria-labelledby="navbarDropdownMenuLink" class="dropdown-menu">
+            <!--Dropdown Product Category-->
+            @{ Html.RenderAction("_ProductCategoryPartial", "ProductCategory"); }
+        </ul>
+    </li>
+    <li class="nav-item">
+        <a href="/tin-tuc" class="nav-link">Tin Tức</a>
+    </li>
+    <li class="nav-item">
+        <a href="/gioi-thieu" class="nav-link">Giới Thiệu </a>
+    </li>
+    <li class="nav-item">
+        <a href="/lien-he" class="nav-link">Liên Hệ</a>
+    </li>
+</ul>

@@ -1,0 +1,8 @@
+﻿@model List<Model.EF.product_category>
+<li>
+    <a href="/tat-ca-san-pham" class="dropdown-item">Tất cả Sản Phẩm</a>
+</li>
+@foreach (var item in Model)
+{
+    <li><a href="/san-pham/@item.alias-@item.prd_category_id" class="dropdown-item">@item.prd_category_name</a></li>
+}
