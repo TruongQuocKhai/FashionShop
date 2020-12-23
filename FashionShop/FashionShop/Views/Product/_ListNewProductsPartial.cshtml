@@ -1,6 +1,4 @@
-﻿@{
-    var listNewProduct = (List<Model.EF.product>)ViewBag.ListNewProducts;
-}
+﻿@model List<Model.EF.product>
 <section class="men-collection gray-bg">
     <div class="container">
         <header class="text-center">
@@ -9,19 +7,18 @@
         <!-- List New Products Slider-->
         <div class="owl-carousel owl-theme products-slider">
             <!-- item-->
-            @foreach (var item in listNewProduct)
+            @foreach (var item in Model)
             {
                 <div class="item">
                     <div class="product is-gray">
                         <div class="image d-flex align-items-center justify-content-center">
+                            <div class="ribbon-info text-uppercase">Fresh</div> <!-- Fresh labels-->
                             <img src="/Contents/Images/@item.image" alt="product" class="img-fluid">
                             <div class="hover-overlay d-flex align-items-center justify-content-center">
                                 <div class="CTA d-flex align-items-center justify-content-center">
                                     <a href="#" class="add-to-cart" title="Thêm vào giỏ"><i class="fa fa-shopping-cart"></i></a>
-                                    <a href="#" class="visit-product active"><i class="icon-search"></i>Xem chi tiết</a>
-                                    <a href="#@item.product_id" data-toggle="modal" data-target="#@item.product_id" class="quick-view" title="Xem nhanh">
-                                        <i class="fa fa-arrows-alt"></i>
-                                    </a>
+                                    <a href="/chi-tiet/@item.alias-@item.product_id" class="visit-product active"><i class="icon-search"></i>Xem chi tiết</a>
+                                    <a href="#" data-toggle="modal" data-target="#@item.product_id" class="quick-view" title="Xem nhanh"><i class="fa fa-arrows-alt"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -37,21 +34,24 @@
     </div>
 </section>
 <!-- Modal dialog-->
-@foreach (var item in listNewProduct)
+@foreach (var item in Model)
 {
     <div id="@item.product_id" tabindex="-1" role="dialog" aria-hidden="true" class="modal fade overview">
         <div role="document" class="modal-dialog">
             <div class="modal-content">
-                <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true"><i class="icon-close"></i></span></button>
+                <button type="button" data-dismiss="modal" aria-label="Close" class="close">
+                    <span aria-hidden="true"><i class="icon-close"></i></span>
+                </button>
                 <div class="modal-body">
-                    <div class="ribbon-primary text-uppercase">Sale @item.discount%</div>
+                    @*<div class="ribbon-primary text-uppercase">Sale @item.discount%</div>*@   <!-- discount labels-->
+                    <div class="ribbon-info text-uppercase">Fresh</div>
                     <div class="row d-flex align-items-center">
                         <div class="image col-lg-5"><img src="/Contents/Images/@item.image" alt="..." class="img-fluid d-block"></div>
                         <div class="details col-lg-7">
                             <h2>@item.product_name</h2>
                             <ul class="price list-inline">
                                 <li class="list-inline-item current">
-                                    @item.price<sub>đ</sub>
+                                    @item.price<sup>đ</sup>
                                 </li>
                             </ul>
                             <p>@item.description</p>
@@ -62,10 +62,10 @@
                                     </a>
                                 </li>
                                 @*<li class="list-inline-item">
-                                    <a href="#" class="visit-product active btn btn-template-outlined wide">
-                                        <i class="icon-heart"></i>Yêu thích
-                                    </a>
-                                </li>*@
+                                        <a href="#" class="visit-product active btn btn-template-outlined wide">
+                                            <i class="icon-heart"></i>Yêu thích
+                                        </a>
+                                    </li>*@
                             </ul>
                         </div>
                     </div>

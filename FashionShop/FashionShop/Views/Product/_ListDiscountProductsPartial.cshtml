@@ -13,12 +13,13 @@
                 <div class="item">
                     <div class="product is-gray">
                         <div class="image d-flex align-items-center justify-content-center">
+                            <div class="ribbon-primary text-uppercase">Sale @item.discount%</div> <!-- discount labels -->
                             <img src="/Contents/Images/@item.image" alt="product" class="img-fluid">
                             <div class="hover-overlay d-flex align-items-center justify-content-center">
                                 <div class="CTA d-flex align-items-center justify-content-center">
-                                    <a href="/them-vao-gio-hang?productId=@item.product_id&quantity=1" class="add-to-cart"><i class="fa fa-shopping-cart"></i></a>
+                                    <a href="/them-vao-gio-hang?productId=@item.product_id&quantity=1" class="add-to-cart" title="Thêm vào giỏ"><i class="fa fa-shopping-cart"></i></a>
                                     <a href="/chi-tiet/@item.alias-@item.product_id" class="visit-product active"><i class="icon-search"></i>Chi tiết</a>
-                                    <a href="#" data-toggle="modal" data-target="#@item.product_id" class="quick-view"><i class="fa fa-arrows-alt"></i></a>
+                                    <a href="#" data-toggle="modal" data-target="#@item.product_id" class="quick-view" title="Xem nhanh"><i class="fa fa-arrows-alt"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -33,3 +34,41 @@
         </div>
     </div>
 </section>
+<!-- Modal dialog-->
+@foreach (var item in Model)
+{
+    <div id="@item.product_id" tabindex="-1" role="dialog" aria-hidden="true" class="modal fade overview">
+        <div role="document" class="modal-dialog">
+            <div class="modal-content">
+                <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true"><i class="icon-close"></i></span></button>
+                <div class="modal-body">
+                    <div class="ribbon-primary text-uppercase">Sale @item.discount%</div>
+                    <div class="row d-flex align-items-center">
+                        <div class="image col-lg-5"><img src="/Contents/Images/@item.image" alt="..." class="img-fluid d-block"></div>
+                        <div class="details col-lg-7">
+                            <h2>@item.product_name</h2>
+                            <ul class="price list-inline">
+                                <li class="list-inline-item current">
+                                    @item.price<sup>đ</sup>
+                                </li>
+                            </ul>
+                            <p>@item.description</p>
+                            <ul class="CTAs list-inline">
+                                <li class="list-inline-item">
+                                    <a href="#" class="btn btn-template wide">
+                                        <i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng
+                                    </a>
+                                </li>
+                                @*<li class="list-inline-item">
+                                        <a href="#" class="visit-product active btn btn-template-outlined wide">
+                                            <i class="icon-heart"></i>Yêu thích
+                                        </a>
+                                    </li>*@
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

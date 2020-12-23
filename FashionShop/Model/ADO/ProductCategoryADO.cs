@@ -19,5 +19,7 @@ namespace Model.ADO
         {
             return db.product_category.Where(x => x.status == true).OrderBy(x => x.display_order).ToList();
         }
+
+        
     }
 }

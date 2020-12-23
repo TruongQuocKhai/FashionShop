@@ -149,9 +149,11 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductCategoryController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -361,14 +363,19 @@
     <Content Include="Views\Product\_ListNewProductsPartial.cshtml" />
     <Content Include="Views\Shared\_MainMenuPartial.cshtml" />
     <Content Include="Views\Shared\_FooterPartial.cshtml" />
-    <Content Include="Views\Shared\_ProductCategoryPartial.cshtml" />
+    <Content Include="Views\ProductCategory\_ProductCategoryPartial.cshtml" />
     <Content Include="Views\Shared\_BrandsPartial.cshtml" />
     <Content Include="Views\Product\_ListDiscountProductsPartial.cshtml" />
+    <Content Include="Views\Product\ListAllProducts.cshtml" />
+    <Content Include="Views\Product\ListProductsByCategory.cshtml" />
+    <Content Include="Views\Product\ViewProductDetails.cshtml" />
+    <Content Include="Views\Product\_ListRelatedProductsPartial.cshtml" />
+    <Content Include="Views\User\_HeaderUserLoginPartial.cshtml" />
+    <Content Include="Views\Cart\_HeaderCartPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\ProductCategory\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
