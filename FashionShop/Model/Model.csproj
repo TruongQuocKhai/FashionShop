@@ -64,6 +64,8 @@
     <Compile Include="EF\menu.cs" />
     <Compile Include="EF\menu_type.cs" />
     <Compile Include="EF\news_category.cs" />
+    <Compile Include="EF\order.cs" />
+    <Compile Include="EF\order_detail.cs" />
     <Compile Include="EF\product.cs" />
     <Compile Include="EF\product_category.cs" />
     <Compile Include="EF\slide.cs" />

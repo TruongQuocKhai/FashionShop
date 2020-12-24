@@ -87,51 +87,56 @@
                 <!-- Pagination  -->
                 @if (ViewBag.TotalPage >= 1)
                 {
-                    var pageDisplay = (int)ViewBag.MaxPage;
-                    int totalPage = (int)ViewBag.TotalPage;
-                    int currentPage = ((int)ViewBag.Page);
+                    int displayMaxPages = (int)ViewBag.DisplayMaxPages;  // chỉ cho hiển thị chỉ mục 1-6 ptu;
+                    int totalPage = (int)ViewBag.TotalPage;  // Total page is display
+                    int currentPage = (int)ViewBag.StartIndex;
 
-                    // Create numeric links
-                    var startPageIndex = Math.Max(1, currentPage - pageDisplay / 2);
-                    var endPageIndex = Math.Min(totalPage, currentPage + pageDisplay / 2);
+
+
+                    //  Create number links
+                    var startPage = Math.Max(1, (currentPage - displayMaxPages) / 2);
+                    var endPage = Math.Min(totalPage, (currentPage + displayMaxPages) / 2);
 
                     var link = "/tat-ca-san-pham";
                     <nav aria-label="page navigation example" class="d-flex justify-content-center">
                         <ul class="pagination pagination-custom">
                             <li class="page-item">
-                                <a href="@link?page=@ViewBag.First" aria-label="Previous" class="page-link">
+                                <a href="@link?page=@ViewBag.Prev" aria-label="Previous" class="page-link">
                                     <span aria-hidden="true">Prev</span>
                                     <span class="sr-only">Previous</span>
                                 </a>
                             </li>
-                            @for (int i = startPageIndex; i <= endPageIndex; i++)
+
+                            @for (int i = startPage; i <= endPage; i++)
                             {
                                 if (currentPage == i)
                                 {
                                     <li class="page-item">
-                                        <a href="@link?page=@i" class="page-link active" title="Trang @i">@i</a>
+                                        <a href="@link?page=@i" class="page-link active">@i</a>
                                     </li>
                                 }
                                 else
                                 {
                                     <li class="page-item">
-                                        <a href="@link?page=@i" title="Trang @i" class="page-link">@i</a>
+                                        <a href="@link?page=@i" class="page-link">@i</a>
                                     </li>
                                 }
                             }
                             <li class="page-item">
-                                <a href="@link?page=@ViewBag.Last" class="page-link">
+                                <a href="@link?page=@ViewBag.Next" class="page-link">
                                     <span aria-hidden="true">Next</span>
                                     <span class="sr-only">Next</span>
                                 </a>
                             </li>
                         </ul>
                     </nav>
+
                 }
                 else
                 {
                     <span>Không có bản ghi nào</span>
                 }
+
             </div>
             <!-- / Grid End-->
         </div>

@@ -8,3 +8,4 @@ D:\Web\FashionShop\Model\bin\Debug\EntityFramework.SqlServer.xml
 D:\Web\FashionShop\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
 D:\Web\FashionShop\Model\obj\Debug\Model.dll
 D:\Web\FashionShop\Model\obj\Debug\Model.pdb
+D:\Web\FashionShop\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache

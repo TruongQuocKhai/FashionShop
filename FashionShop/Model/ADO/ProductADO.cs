@@ -25,10 +25,11 @@ namespace Model.ADO
             return db.product.Where(x => x.discount != null).OrderByDescending(x => x.created_date).Take(quantity).ToList();
         }
 
-        public List<product> GetAllProducts(ref int totalRecord, int startIndex, int pageSize)
+        // Pagination
+        public List<product> GetAllProducts(ref int totalRecord, int page, int pageSize)
         {
-            totalRecord = db.product.Count(); // Dem so dong (record)
-            return db.product.OrderByDescending(x => x.created_date).Skip(startIndex).Take(pageSize).ToList();
+            totalRecord = db.product.Count(); // get total record of products
+            return db.product.OrderByDescending(x => x.created_date).Skip((page - 1) * pageSize).Take(pageSize).ToList();
         }
 
         public List<product> GetListProductsByCategoryId(int id)

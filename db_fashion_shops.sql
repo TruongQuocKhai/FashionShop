@@ -169,6 +169,25 @@ create table footer(
 	status bit default 1
 );
 
+create table [order](
+	order_id int identity primary key,
+	user_id int,
+	order_name nvarchar(50),
+	order_phone varchar(11),
+	order_address nvarchar(250),
+	order_email varchar(50),
+	order_date datetime,
+	status bit default 1
+);
+
+create table order_detail(
+	product_id int, 
+	order_id int,
+	quanity int default 1,
+	price decimal(18,0),
+	constraint pk_order_detail primary key(product_id, order_id)
+);
+
 
 
 

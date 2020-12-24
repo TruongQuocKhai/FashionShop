@@ -149,6 +149,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Common\CommonConstSession.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductCategoryController.cs" />
@@ -157,6 +158,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CartModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -192,7 +194,6 @@
     <Content Include="Contents\Images\hoodie-woman-3.png" />
     <Content Include="Contents\Images\hoodie-woman-4.png" />
     <Content Include="Contents\Images\j1.jpg" />
-    <Content Include="Contents\Images\logo-white.png" />
     <Content Include="Contents\Images\logoFashionShop.jpg" />
     <Content Include="Contents\Images\Logo_HUTECH.jpg" />
     <Content Include="Contents\Images\parallax-1.jpg" />
@@ -375,7 +376,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

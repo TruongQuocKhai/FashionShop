@@ -26,6 +26,8 @@ namespace Model.EF
         public virtual DbSet<slide> slide { get; set; }
         public virtual DbSet<tag> tag { get; set; }
         public virtual DbSet<user> user { get; set; }
+        public virtual DbSet<order> order { get; set; }
+        public virtual DbSet<order_detail> order_detail { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
