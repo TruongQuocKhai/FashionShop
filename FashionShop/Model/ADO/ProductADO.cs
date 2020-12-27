@@ -17,7 +17,7 @@ namespace Model.ADO
 
         public List<product> GetListNewProducts(int quantity)
         {
-            return db.product.OrderByDescending(x => x.created_date).Take(quantity).ToList();
+            return db.product.Where(x => x.discount == null).OrderByDescending(x => x.created_date).Take(quantity).ToList();
         }
 
         public List<product> GetListDiscountProducts(int quantity)

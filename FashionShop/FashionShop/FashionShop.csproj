@@ -210,15 +210,15 @@
     <Content Include="Contents\Images\shirt-red.png" />
     <Content Include="Contents\Images\shirt-small.png" />
     <Content Include="Contents\Images\shirt.png" />
-    <Content Include="Contents\Images\template-mac.png" />
-    <Content Include="Contents\Images\tk-icon-web.png" />
+    <Content Include="Contents\Images\slideshow_1.jpg" />
+    <Content Include="Contents\Images\slideshow_2.jpg" />
+    <Content Include="Contents\Images\slideshow_3.jpg" />
     <Content Include="Contents\Images\TK.png" />
     <Content Include="Contents\Images\van1.jpg" />
     <Content Include="Contents\Images\van2.jpg" />
     <Content Include="Contents\Images\video\Bed-Phone.jpg" />
     <Content Include="Contents\Images\video\Bed-Phone.mp4" />
     <Content Include="Contents\Images\video\Bed-Phone.webm" />
-    <Content Include="Contents\Images\wolf.png" />
     <Content Include="Contents\js\front.js" />
     <Content Include="Contents\js\main.js" />
     <Content Include="Contents\js\main.min.js" />
@@ -373,6 +373,7 @@
     <Content Include="Views\Product\_ListRelatedProductsPartial.cshtml" />
     <Content Include="Views\User\_HeaderUserLoginPartial.cshtml" />
     <Content Include="Views\Cart\_HeaderCartPartial.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

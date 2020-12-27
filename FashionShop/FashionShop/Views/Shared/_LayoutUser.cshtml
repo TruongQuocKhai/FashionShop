@@ -73,8 +73,6 @@
                             <a id="userdetails" href="#" class="user-link"><i class="icon-profile"></i></a>
                         </div>
 
-                        
-
                         @*@Html.Action("_HeaderUserLoginPartial", "User")*@
 
                         @Html.Action("_HeaderCartPartial", "Cart")
@@ -92,7 +90,7 @@
     <!-- Footer-->
     @Html.Action("_FooterPartial", "Home")
 
-    <div id="style-switch" class="collapse">
+    @*<div id="style-switch" class="collapse">
         <h4 class="text-uppercase">Select theme colour</h4>
         <form class="mb-3">
             <select name="colour" id="colour" class="form-control style-switch-select">
@@ -107,7 +105,7 @@
         </form>
         <p><img src="/Contents/Images/template-mac.png" alt="" class="img-fluid"></p>
         <p class="text-muted text-small">Stylesheet switching is done via JavaScript and can cause a blink while page loads. This will not happen in your production code.</p>
-    </div>
+    </div>*@
     <!-- JavaScript files-->
     <script src="/Contents/vendor/jquery/jquery.min.js"></script>
     <script src="/Contents/vendor/popper.js/umd/popper.min.js"></script>

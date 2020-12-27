@@ -118,14 +118,14 @@ create table introduce(
 go
 
 create table contact(
-	contact_id int primary key,
+	contact_id int identity primary key,
 	content ntext,
 	status bit default 1
 );
 go
 
 create table feedback(
-	feedback_id int primary key,
+	feedback_id int identity primary key,
 	feedback_name nvarchar(50),
 	email varchar(50),
 	subject varchar(250),
@@ -134,7 +134,7 @@ create table feedback(
 go
 
 create table slide( 
-	slide_id int primary key,
+	slide_id int identity primary key,
 	image varchar(250),
 	display_order int,
 	link varchar(250),
@@ -168,6 +168,7 @@ create table footer(
 	content ntext,
 	status bit default 1
 );
+go
 
 create table [order](
 	order_id int identity primary key,
@@ -179,6 +180,7 @@ create table [order](
 	order_date datetime,
 	status bit default 1
 );
+go
 
 create table order_detail(
 	product_id int, 
