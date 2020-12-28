@@ -8,7 +8,7 @@ namespace FashionShop.Models
 {
     public class CartModel
     {
-        // có thể nối tiếp
+      //  [Serializable]// có thể nối tiếp
         public product Product { get; set; }
         public int Quantity { get; set; }
     }

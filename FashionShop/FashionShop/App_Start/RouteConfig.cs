@@ -13,29 +13,33 @@ namespace FashionShop
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-
+            routes.MapRoute(
+           name: "Order",
+           url: "dat-hang",
+           defaults: new { controller = "Cart", action = "_OrderPartial", id = UrlParameter.Optional }
+       );
 
             routes.MapRoute(
-               name: "Add the item to cart",
-               url: "{them-vao-gio-hang}",
-               defaults: new { controller = "Cart", action = "AddItems", id = UrlParameter.Optional }
-           );
+           name: "Add the item to cart",
+           url: "them-vao-gio-hang",
+           defaults: new { controller = "Cart", action = "AddItems", id = UrlParameter.Optional }
+            );
 
             routes.MapRoute(
               name: "Cart",
-              url: "{gio-hang}",
+              url: "gio-hang",
               defaults: new { controller = "Cart", action = "Index", id = UrlParameter.Optional }
           );
 
             routes.MapRoute(
                name: "Product Detail",
-               url: "{chi-tiet}/{alias}-{id}",
+               url: "chi-tiet/{alias}-{id}",
                defaults: new { controller = "Product", action = "ViewProductDetails", id = UrlParameter.Optional }
            );
 
             routes.MapRoute(
                name: "Product Category",
-               url: "{san-pham}/{alias}-{id}",
+               url: "san-pham/{alias}-{id}",
                defaults: new { controller = "Product", action = "ListProductsByCategory", id = UrlParameter.Optional }
            );
 

@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="ADO\FooterADO.cs" />
     <Compile Include="ADO\MainMenuADO.cs" />
+    <Compile Include="ADO\OrderADO.cs" />
     <Compile Include="ADO\ProductADO.cs" />
     <Compile Include="ADO\ProductCategoryADO.cs" />
     <Compile Include="ADO\SlideADO.cs" />

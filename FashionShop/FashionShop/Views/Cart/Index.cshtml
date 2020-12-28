@@ -3,29 +3,10 @@
     ViewBag.Title = "Giỏ hàng";
     Layout = "~/Views/Shared/_LayoutUser.cshtml";
 }
+<!-- Su dung Ajax JQuery Them, xoa, sua-->
 @section jsFooter{
-    <script src="~/Contents/js/user-cart-controller.js"></script>
+    <script src="/Contents/js/user-cart-controller.js"></script>
 }
-<style>
-    .btn.btn-outline.red:hover {
-        border-color: #e7505a;
-        color: #fff;
-        background: #e7505a;
-    }
-
-    .btn.btn-outline.red {
-        border-color: #e7505a;
-        color: #e7505a;
-        background: 0 0;
-        border-radius: 20px;
-        width: 27%;
-    }
-
-        .btn.btn-outline.red:active {
-            position: relative;
-            top: 2px;
-        }
-</style>
 <section class="hero hero-page gray-bg padding-small">
     <div class="container">
         <div class="row d-flex">
@@ -65,7 +46,7 @@
                                 <div class="row d-flex align-items-center">
                                     <div class="col-4">
                                         <div class="d-flex align-items-center">
-                                            <img src="@item.Product.image" alt="..." class="img-fluid">
+                                            <img src="/Contents/Images/@item.Product.image" alt="..." class="img-fluid">
                                             <div class="title">
                                                 <a href="/chi-tiet/@item.Product.alias-@item.Product.product_id">
                                                     <h5>@item.Product.product_name</h5><span class="text-muted">Size: Large</span>
@@ -73,7 +54,6 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="col-2"><span>@item.Product.price.GetValueOrDefault(0).ToString("N0")<sup>đ</sup></span></div>
                                     <div class="col-2">
                                         <div class="d-flex align-items-center">
@@ -85,25 +65,26 @@
                                         </div>
                                     </div>
                                     <div class="col-2"><span>@((item.Product.price.GetValueOrDefault(0) * item.Quantity).ToString("N0"))<sup>đ</sup></span></div>
-                                    <div class="col-2 text-center"><i class="fa fa-trash btn btn-icon-only btn-circle btn-outline red btn-delete" data-id="@item.Product.product_id"></i></div>
+                                    <div class="col-2 text-center"><i class="fa fa-trash btn btn-delete" data-id="@item.Product.product_id" title="Xóa"></i></div>
                                 </div>
                             </div>
                         }
                         <div class="cart-total" style="float:right;">
-                            <strong class="cart-total-title">Total</strong>
+                            <strong class="cart-total-title">Tổng tiền: @Model.Sum(x =>x.Product.price.GetValueOrDefault(0) * x.Quantity).ToString("N0")</strong>
                             <span class="cart-total-price">đ</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
         <div class="container">
             <div class="CTAs d-flex align-items-center justify-content-center justify-content-md-end flex-column flex-md-row">
-                <a href="#" id="btnContinue" class="btn btn-template-outlined wide">Tiếp tục mua hàng</a>
                 <a href="#" id="btnUpdate" class="btn btn-template wide">Cập nhật</a>
-                <a href="#" id="btnDeleteAll" class="btn btn-template">Xóa toàn bộ</a>
                 <a href="#" id="btnOrder" class="btn btn-template">Đặt hàng</a>
-                <a href="/Cart/PaymentWithPayPal" class="btn btn-template">Thanh toán bằng PayPal</a>
+                @*<a href="#" id="btnContinue" class="btn btn-template-outlined wide">Tiếp tục mua hàng</a>*@
+                @*<a href="#" id="btnDeleteAll" class="btn btn-template">Xóa toàn bộ</a>*@
+                @*<a href="/Cart/PaymentWithPayPal" class="btn btn-template">Thanh toán bằng PayPal</a>*@
             </div>
         </div>
     </section>
@@ -116,6 +97,4 @@ else
         <a href="/" class="btn btn-warning">Tiếp tục mua hàng</a>
     </div>
     @*@Html.Action("Partial_ListSuggestionsProducts", "Product");*@
-
 }
-
