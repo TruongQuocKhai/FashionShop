@@ -16,6 +16,6 @@
         [Column(Order = 1)]
         public int product_id { get; set; }
         public int quantity { get; set; }
-        public decimal price { get; set; }
+        public decimal? price { get; set; }
     }
 }

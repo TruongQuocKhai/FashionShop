@@ -169,6 +169,7 @@
     <Content Include="Contents\css\main.min.css" />
     <Content Include="Contents\css\PagedList.css" />
     <Content Include="Contents\css\style.default.css" />
+    <Content Include="Contents\css\StyleOrder.css" />
     <Content Include="Contents\css\util.css" />
     <Content Include="Contents\css\util.min.css" />
     <Content Include="Contents\Images\banner-1.jpg" />
@@ -375,6 +376,8 @@
     <Content Include="Views\Cart\_HeaderCartPartial.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Cart\_OrderPartial.cshtml" />
+    <Content Include="Views\Cart\SuccessNotification.cshtml" />
+    <Content Include="Views\Cart\Order.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

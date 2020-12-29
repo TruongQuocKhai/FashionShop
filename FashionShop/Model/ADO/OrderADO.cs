@@ -15,15 +15,12 @@ namespace Model.ADO
             db = new DbFashionShop();
         }
 
-        //public order GetOrderInfo(string name, string email, string phone, string address)
-        //{
-        //    var order = new order();
-        //    order.order_name = name;
-        //    order.order_email = email;
-        //    order.order_phone = phone;
-        //    order.order_address = address;
-        //    return order;
-        //}
+        public int Insert(order order)
+        {
+            db.order.Add(order);
+            db.SaveChanges();
+            return order.order_id;
+        }
 
     }
 }

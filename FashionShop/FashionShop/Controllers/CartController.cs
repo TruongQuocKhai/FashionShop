@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using FashionShop.Models;
 using Model.ADO;
 using System.Web.Script.Serialization;
+using Model.EF;
 
 namespace FashionShop.Controllers
 {
@@ -26,7 +27,7 @@ namespace FashionShop.Controllers
         }
 
         [HttpGet]
-        public ActionResult _OrderPartial ()
+        public ActionResult Order ()
         {
             var cart = Session[CART_SESSION];
             var listItems = new List<CartModel>();
@@ -37,18 +38,44 @@ namespace FashionShop.Controllers
             return PartialView(listItems);
         }
          [HttpPost]
-        public ActionResult _OrderPartial(string name, string email, string phone, string address)
+        public ActionResult Order(string name, string email, string phone, string address)
         {
-            var order = new Model.EF.order();
+            var order = new order();
             order.order_name = name;
             order.order_email = email;
             order.order_phone = phone;
             order.order_address = address;
+            order.order_date = DateTime.Now;
 
+            // Get user infor
+            try
+            {
+                var orderId = new OrderADO().Insert(order);
+                var cart = (List<CartModel>)Session[CART_SESSION];
+                var orderDetailADO = new OrderDetailADO();
 
-            return PartialView();
+                foreach (var item in cart)
+                {
+                    var orderDetail = new order_detail();
+                    orderDetail.product_id = item.Product.product_id;
+                    orderDetail.order_id = orderId;
+                    orderDetail.price = item.Product.price;
+                    orderDetail.quantity = item.Quantity;
+                    orderDetailADO.Insert(orderDetail);
+                }
+            }
+            catch (Exception)
+            {
+                return Redirect("/dat-hang-khong-thanh-cong");
+            }
+            return Redirect("/dat-hang-thanh-cong");
         }
 
+        public ActionResult SuccessNotification()
+        {
+            Session[CART_SESSION] = null;
+            return View();
+        }
 
         // Using Ajax Jquery update, delete Cart
         public JsonResult Update(string cartModel)

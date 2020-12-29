@@ -1,7 +1,8 @@
-﻿ @model List<FashionShop.Models.CartModel>
+﻿@model List<FashionShop.Models.CartModel>
 
 @if (Model.Count > 0)
 {
+<section class="men-collection gray-bg">
     <section class="shopping-cart">
         <div class="container">
             <div class="basket">
@@ -22,17 +23,17 @@
                                 <div class="row d-flex align-items-center">
                                     <div class="col-5">
                                         <div class="d-flex align-items-center">
-                                            <img src="/Contents/Images/@item.Product.Image" alt="..." class="img-fluid">
+                                            <img src="/Contents/Images/@item.Product.image" alt="..." class="img-fluid">
                                             <div class="title">
-                                                <h5>@item.Product.Name</h5><span class="text-muted">Size: Large</span>
+                                                <h5>@item.Product.product_name</h5><span class="text-muted">Size: Large</span>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-2 text-center"><span>@item.Product.Price.GetValueOrDefault(0).ToString("N0")<sup>đ</sup></span></div>
+                                    <div class="col-2 text-center"><span>@item.Product.price.GetValueOrDefault(0).ToString("N0")<sup>đ</sup></span></div>
                                     <div class="col-2 text-center">
-                                        <input type="text" data-id="@item.Product.ID" value="@item.Quantity" size="1" readonly style="text-align:center;">
+                                        <input type="text" data-id="@item.Product.product_id" value="@item.Quantity" size="1" readonly style="text-align:center;">
                                     </div>
-                                    <div class="col-2 text-center"><span>@((item.Product.Price.GetValueOrDefault(0) * item.Quantity).ToString("N0"))<sup>đ</sup></span></div>
+                                    <div class="col-2 text-center"><span>@((item.Product.price.GetValueOrDefault(0) * item.Quantity).ToString("N0"))<sup>đ</sup></span></div>
                                 </div>
                             </div>
                         }
@@ -50,7 +51,7 @@
             </header>
             <div class="row">
                 <div class="col-md-7">
-                    @using (Html.BeginForm("Order", "Cart", FormMethod.Post))
+                    @using (Html.BeginForm("_OrderPartial", "Cart", FormMethod.Post))
                     {
                         if (Session["User"] == null)
                         {
@@ -60,7 +61,7 @@
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label for="name" class="form-label">Họ và Tên</label>
-                                                <input type="text" name="Name" id="Name" placeholder="Nhập Tên" required="required" class="form-control">
+                                                <input type="text" name="name" id="Name" placeholder="Nhập Tên" required="required" class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
@@ -120,5 +121,6 @@
             </div>
         </div>
     </section>
-}
-else { }
+</section>
+    }
+    else { }
