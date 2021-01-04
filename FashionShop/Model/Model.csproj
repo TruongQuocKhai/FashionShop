@@ -56,6 +56,7 @@
     <Compile Include="ADO\ProductADO.cs" />
     <Compile Include="ADO\ProductCategoryADO.cs" />
     <Compile Include="ADO\SlideADO.cs" />
+    <Compile Include="ADO\UserADO.cs" />
     <Compile Include="EF\contact.cs" />
     <Compile Include="EF\content.cs" />
     <Compile Include="EF\content_tag.cs" />

@@ -49,8 +49,8 @@ namespace FashionShop.Controllers
                 if (ModelState.IsValid)
                 {
                     // Initialization.  
-                    string emailMsg = "Dear " + model.ToEmail + ", <br /><br /> Thist is test <b style='color: red'> Notification </b> <br /><br /> Thanks & Regards, <br />Asma Khalid";
-                    string emailSubject = EmailInfo.EMAIL_SUBJECT_DEFAULT + " Test";
+                    string emailMsg = "Dear " + model.ToEmail + ", <br /><br /> Thist is test <b style='color: red'> Notification </b> <br /><br /> Thanks & Regards, <br />FashionShop";
+                    string emailSubject = EmailInfo.EMAIL_SUBJECT_DEFAULT;
 
                     // Sending Email.  
                     await this.SendEmailAsync(model.ToEmail, emailMsg, emailSubject);
@@ -130,5 +130,6 @@ namespace FashionShop.Controllers
             // info.  
             return isSend;
         }
+
     }
 }

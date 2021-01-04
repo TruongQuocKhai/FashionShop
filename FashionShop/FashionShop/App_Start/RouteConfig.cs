@@ -61,6 +61,19 @@ namespace FashionShop
          defaults: new { controller = "Cart", action = "FailedNotification", id = UrlParameter.Optional }
      );
 
+
+            routes.MapRoute(
+         name: "Registration",
+         url: "dang-ky",
+         defaults: new { controller = "User", action = "Registration", id = UrlParameter.Optional }
+     );
+
+            routes.MapRoute(
+     name: "Login",
+     url: "dang-nhap",
+     defaults: new { controller = "User", action = "Login", id = UrlParameter.Optional }
+ );
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

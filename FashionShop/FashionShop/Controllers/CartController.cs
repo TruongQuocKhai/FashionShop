@@ -178,7 +178,5 @@ namespace FashionShop.Controllers
             }
             return Redirect(Request.UrlReferrer.ToString());
         }
-
-
     }
 }

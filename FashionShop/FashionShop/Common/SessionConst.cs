@@ -5,7 +5,7 @@ using System.Web;
 
 namespace FashionShop.Common
 {
-    public class CommonConstSession
+    public static class SessionConst
     {
         // const = static
         public const string CART_SESSION = "CART_SESSION";

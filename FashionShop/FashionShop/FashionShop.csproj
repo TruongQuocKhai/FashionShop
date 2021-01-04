@@ -149,8 +149,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Common\CommonConstSession.cs" />
+    <Compile Include="Common\SessionConst.cs" />
+    <Compile Include="Common\LoginUser.cs" />
     <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\EmailNotifyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductCategoryController.cs" />
@@ -166,6 +168,8 @@
     </Compile>
     <Compile Include="Models\CartModel.cs" />
     <Compile Include="Models\EmailNotifyViewModel.cs" />
+    <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\RegistrationModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -382,11 +386,13 @@
     <Content Include="Views\User\_HeaderUserLoginPartial.cshtml" />
     <Content Include="Views\Cart\_HeaderCartPartial.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
-    <Content Include="Views\Cart\_OrderPartial.cshtml" />
     <Content Include="Views\Cart\SuccessNotification.cshtml" />
     <Content Include="Views\Cart\Order.cshtml" />
     <Content Include="Views\Cart\FailedNotification.cshtml" />
     <Content Include="Views\EmailNotify\Index.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\User\Registration.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

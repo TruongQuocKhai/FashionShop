@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="EMAIL_SUBJECT_DEFAULT" xml:space="preserve">
-    <value>[Email Notification]</value>
+    <value>FashionShop - Xác nhận tài khoản khách hàng</value>
   </data>
   <data name="FROM_EMAIL_ACCOUNT" xml:space="preserve">
-    <value>truongquockhaidev@gmail.com</value>
+    <value>lienhe.fashionshop@gmail.com</value>
   </data>
   <data name="FROM_EMAIL_PASSWORD" xml:space="preserve">
     <value>381796613</value>

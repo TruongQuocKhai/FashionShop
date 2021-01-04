@@ -61,7 +61,7 @@ namespace FashionShop {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [Email Notification].
+        ///   Looks up a localized string similar to FashionShop - Xác nhận tài khoản khách hàng.
         /// </summary>
         public static string EMAIL_SUBJECT_DEFAULT {
             get {
@@ -70,7 +70,7 @@ namespace FashionShop {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to truongquockhaidev@gmail.com.
+        ///   Looks up a localized string similar to lienhe.fashionshop@gmail.com.
         /// </summary>
         public static string FROM_EMAIL_ACCOUNT {
             get {
