@@ -97,3 +97,7 @@ D:\Learn Programming\Web\FashionShop\FashionShop\FashionShop\bin\Microsoft.AI.Se
 D:\Learn Programming\Web\FashionShop\FashionShop\FashionShop\bin\Microsoft.AI.WindowsServer.xml
 D:\Learn Programming\Web\FashionShop\FashionShop\FashionShop\bin\Microsoft.AI.Web.xml
 D:\Learn Programming\Web\FashionShop\FashionShop\FashionShop\obj\Debug\FashionShop.csproj.CopyComplete
+D:\Web\FashionShop\FashionShop\bin\Common.dll
+D:\Web\FashionShop\FashionShop\bin\Common.pdb
+D:\Web\FashionShop\FashionShop\obj\Debug\FashionShop.EmailInfo.resources
+D:\Web\FashionShop\FashionShop\obj\Debug\FashionShop.csproj.GenerateResource.Cache

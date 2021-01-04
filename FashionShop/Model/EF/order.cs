@@ -12,6 +12,8 @@
         [Key]
         public int order_id { get; set; }
         public int user_id { get; set; }
+
+        [Required(ErrorMessage = "Nhập tên của bạn")]
         public string order_name { get; set; }
         public string order_phone { get; set; }
         public string order_address { get; set; }

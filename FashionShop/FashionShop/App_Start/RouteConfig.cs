@@ -13,8 +13,6 @@ namespace FashionShop
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-
-
             routes.MapRoute(
                name: "Product Detail",
                url: "chi-tiet/{alias}-{id}",
@@ -56,6 +54,12 @@ namespace FashionShop
            url: "dat-hang-thanh-cong",
            defaults: new { controller = "Cart", action = "SuccessNotification", id = UrlParameter.Optional }
        );
+
+            routes.MapRoute(
+         name: "Failed notificaiton",
+         url: "dat-hang-khong-thanh-cong",
+         defaults: new { controller = "Cart", action = "FailedNotification", id = UrlParameter.Optional }
+     );
 
             routes.MapRoute(
                 name: "Default",

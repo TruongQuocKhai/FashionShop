@@ -70,8 +70,7 @@
                             </div>
                         }
                         <div class="cart-total" style="float:right;">
-                            <strong class="cart-total-title">Tổng tiền: @Model.Sum(x =>x.Product.price.GetValueOrDefault(0) * x.Quantity).ToString("N0")</strong>
-                            <span class="cart-total-price">đ</span>
+                            <strong class="cart-total-title">Tổng tiền: @Model.Sum(x =>x.Product.price.GetValueOrDefault(0) * x.Quantity).ToString("N0") <sup>đ</sup></strong>
                         </div>
                     </div>
                 </div>

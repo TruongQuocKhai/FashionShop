@@ -151,14 +151,21 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Common\CommonConstSession.cs" />
     <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\EmailNotifyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductCategoryController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="EmailInfo.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EmailInfo.resx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CartModel.cs" />
+    <Compile Include="Models\EmailNotifyViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -230,7 +237,7 @@
     <Content Include="Contents\js\slick-custom.js" />
     <Content Include="Contents\js\slick-custom.min.js" />
     <Content Include="Contents\js\user-cart-controller.js" />
-    <Content Include="Contents\template\neworder.html" />
+    <Content Include="Contents\EmailTemplate\neworder.html" />
     <Content Include="Contents\vendor\animate\animate.css" />
     <Content Include="Contents\vendor\animsition\css\animsition.css" />
     <Content Include="Contents\vendor\animsition\css\animsition.min.css" />
@@ -378,6 +385,8 @@
     <Content Include="Views\Cart\_OrderPartial.cshtml" />
     <Content Include="Views\Cart\SuccessNotification.cshtml" />
     <Content Include="Views\Cart\Order.cshtml" />
+    <Content Include="Views\Cart\FailedNotification.cshtml" />
+    <Content Include="Views\EmailNotify\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -396,10 +405,20 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{6FAEF5CC-2674-4B7E-BBB7-9B651CF6215E}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{bf3a904a-1bf0-4b7c-986a-085ff51fe511}</Project>
       <Name>Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="EmailInfo.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>EmailInfo.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

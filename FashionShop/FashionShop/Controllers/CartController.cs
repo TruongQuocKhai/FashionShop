@@ -7,6 +7,8 @@ using FashionShop.Models;
 using Model.ADO;
 using System.Web.Script.Serialization;
 using Model.EF;
+using System.Configuration;
+using Common;
 
 namespace FashionShop.Controllers
 {
@@ -27,7 +29,7 @@ namespace FashionShop.Controllers
         }
 
         [HttpGet]
-        public ActionResult Order ()
+        public ActionResult Order()
         {
             var cart = Session[CART_SESSION];
             var listItems = new List<CartModel>();
@@ -37,7 +39,7 @@ namespace FashionShop.Controllers
             }
             return PartialView(listItems);
         }
-         [HttpPost]
+        [HttpPost]
         public ActionResult Order(string name, string email, string phone, string address)
         {
             var order = new order();
@@ -53,7 +55,7 @@ namespace FashionShop.Controllers
                 var orderId = new OrderADO().Insert(order);
                 var cart = (List<CartModel>)Session[CART_SESSION];
                 var orderDetailADO = new OrderDetailADO();
-
+                decimal total = 0;
                 foreach (var item in cart)
                 {
                     var orderDetail = new order_detail();
@@ -62,7 +64,19 @@ namespace FashionShop.Controllers
                     orderDetail.price = item.Product.price;
                     orderDetail.quantity = item.Quantity;
                     orderDetailADO.Insert(orderDetail);
+                    total += (item.Product.price.GetValueOrDefault(0) * item.Quantity);
                 }
+                string content = System.IO.File.ReadAllText(Server.MapPath("~/Contents/EmailTemplate/neworder.html"));
+                content = content.Replace("{{CustomerName}}", name);
+                content = content.Replace("{{CustomerPhone}}", phone);
+                content = content.Replace("{{CustomerEmail}}", email);
+                content = content.Replace("{{CustomerAddress}}", address);
+                content = content.Replace("{{CustomerTotal}}", total.ToString("N0"));
+
+                var toEmailAddress = ConfigurationManager.AppSettings["ToEmailAddress"].ToString();
+                new MailHelper().SendMail(email, "FashionShop - Xác nhận đơn hàng", content); // Send Email to Customer
+                new MailHelper().SendMail(toEmailAddress, "FashionShop - Xác nhận đơn hàng", content); // Send Email to Admin
+
             }
             catch (Exception)
             {
@@ -71,9 +85,15 @@ namespace FashionShop.Controllers
             return Redirect("/dat-hang-thanh-cong");
         }
 
+
         public ActionResult SuccessNotification()
         {
             Session[CART_SESSION] = null;
+            return View();
+        }
+
+        public ActionResult FailedNotification()
+        {
             return View();
         }
 
