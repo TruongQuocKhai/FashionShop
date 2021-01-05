@@ -1,0 +1,27 @@
+﻿<!-- User Sign In-->
+@using FashionShop.Common
+@{
+    var session = (LoginUser)Session[SessionConst.USER_SESSION];
+}
+<style>
+    .btn, .btn-template-outlined {
+        padding: .3rem .75rem;
+    }
+</style>
+@if (session == null)
+{
+    <div class="user">
+        <a id="userdetails" href="/dang-nhap" class="user-link" title="đăng nhập"><i class="icon-profile"></i></a>
+    </div>
+}
+else
+{
+    <div class="nav-link" style="color:#ff8000; font-style: italic;">Hello! @session.DisplayName</div>
+    <div>
+        <a href="/dang-xuat" class="btn btn-primary">
+            <i class="fa fa-sign-out"></i>
+            Đăng xuất
+        </a>
+    </div>
+}
+

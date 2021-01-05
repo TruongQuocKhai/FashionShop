@@ -53,6 +53,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Facebook, Version=6.0.10.0, Culture=neutral, PublicKeyToken=58cb4f2111d1e6de, processorArchitecture=MSIL">
+      <HintPath>..\packages\Facebook.7.0.10-beta\lib\net45\Facebook.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -149,6 +152,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Common\Encryption.cs" />
     <Compile Include="Common\SessionConst.cs" />
     <Compile Include="Common\LoginUser.cs" />
     <Compile Include="Controllers\CartController.cs" />
@@ -173,6 +177,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Contents\css\bootstrap-socialcss.css" />
     <Content Include="Contents\css\custom-fonticons.css" />
     <Content Include="Contents\css\custom.css" />
     <Content Include="Contents\css\FormSearch.css" />
@@ -383,7 +388,7 @@
     <Content Include="Views\Product\ListProductsByCategory.cshtml" />
     <Content Include="Views\Product\ViewProductDetails.cshtml" />
     <Content Include="Views\Product\_ListRelatedProductsPartial.cshtml" />
-    <Content Include="Views\User\_HeaderUserLoginPartial.cshtml" />
+    <Content Include="Views\User\_HeaderLoginUserPartial.cshtml" />
     <Content Include="Views\Cart\_HeaderCartPartial.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Cart\SuccessNotification.cshtml" />

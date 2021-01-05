@@ -26,6 +26,7 @@
     <link href="/Contents/css/custom-fonticons.css" rel="stylesheet" />
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="/Contents/css/custom.css">
+    <link href="/Contents/css/bootstrap-socialcss.css" rel="stylesheet" />
     <!-- Form Search-->
     <link href="/Contents/css/FormSearch.css" rel="stylesheet" />
     <!-- Css order page-->
@@ -71,11 +72,9 @@
                                 </div>
                             </form>*@
                         <div class="search"><i class="icon-search"></i></div>
-                        <div class="user">
-                            <a id="userdetails" href="/dang-nhap" class="user-link"><i class="icon-profile"></i></a>
-                        </div>
+                       
 
-                        @*@Html.Action("_HeaderUserLoginPartial", "User")*@
+                        @Html.Action("_HeaderLoginUserPartial", "User")
 
                         @Html.Action("_HeaderCartPartial", "Cart")
                     </div>
@@ -97,7 +96,6 @@
     {
         @Html.Action("_FooterPartial", "Home")
     }
-
 
     <!-- JavaScript files-->
     <script src="/Contents/vendor/jquery/jquery.min.js"></script>

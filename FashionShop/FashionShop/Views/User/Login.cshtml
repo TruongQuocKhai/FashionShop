@@ -14,8 +14,39 @@
         position: relative;
         z-index: 2;
     }
+
     .form-group {
         margin-bottom: 0;
+    }
+
+    #social {
+        display: flex;
+        justify-content: space-between;
+        margin-top: -86px;
+    }
+
+    #hrline1 {
+        line-height: 1em;
+        position: relative;
+        top: -40px;
+        left: -33%;
+        width: 34%;
+    }
+
+    #hrline2 {
+        position: relative;
+        top: -99px;
+        left: 34%;
+        width: 31%;
+    }
+
+    #text2 {
+        font-size: 16px;
+        font-family: 'Roboto Slab', serif;
+        position: relative;
+        top: -70px;
+        left: 35%;
+        color: gray;
     }
 </style>
 
@@ -33,10 +64,10 @@
                         </div>
                         <hr>
                         <form action="@Url.Action("Login","User")" method="post">
-                            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                            @*@Html.ValidationSummary(false, "", new { @class = "text-danger" })*@
                             @Html.AntiForgeryToken()
                             <div class="form-group">
-                                <label for="text" class="form-label">Email hoặc số điện thoại</label>
+                                <label for="text" class="form-label">Email / Số điện thoại</label>
                                 <input id="Email" name="Email" type="email" class="form-control" placeholder="Nhập email hoặc số điện thoại">
                                 @Html.ValidationMessage("Email", new { @class = "text-danger" })
                             </div>
@@ -46,17 +77,30 @@
                                 <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                                 @Html.ValidationMessage("Password", new { @class = "text-danger" })
 
-
                             </div>
                             <div class="form-group text-center">
                                 <button type="submit" class="btn btn-primary"><i class="fa fa-sign-in"></i>Đăng Nhập</button>
                             </div>
-                            @*@if (Session[CommonConstantUser.MESSAGE_USER] != null)
-                                {
-                                    <div class="alert alert-danger" role="alert">
-                                        @Session[CommonConstantUser.MESSAGE_USER]
+
+                            <div style="padding-top: 50px;">
+                                <hr id="hrline1">
+                                <p id="text2">Hoặc đăng nhập với</p>
+                                <hr id="hrline2">
+                                <div id="social">
+                                    <div>
+                                        <a href="/User/FacebookLogin" class="btn btn-facebook" style="color:#fff; width: 150px;">
+                                            <i class="fa fa-facebook"></i>
+                                            Facebook
+                                        </a>
                                     </div>
-                                }*@
+                                    <div>
+                                        <a href="#" class="btn btn-google" style="color:#fff; width: 150px;">
+                                            <i class="fa fa-google"></i>
+                                            Google
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
                         </form>
                     </div>
                 </div>

@@ -56,6 +56,7 @@ D:\Web\FashionShop\FashionShop\bin\Antlr3.Runtime.dll
 D:\Web\FashionShop\FashionShop\bin\Common.dll
 D:\Web\FashionShop\FashionShop\bin\EntityFramework.dll
 D:\Web\FashionShop\FashionShop\bin\EntityFramework.SqlServer.dll
+D:\Web\FashionShop\FashionShop\bin\Facebook.dll
 D:\Web\FashionShop\FashionShop\bin\Microsoft.AI.Agent.Intercept.dll
 D:\Web\FashionShop\FashionShop\bin\Microsoft.AI.DependencyCollector.dll
 D:\Web\FashionShop\FashionShop\bin\Microsoft.AI.PerfCounterCollector.dll
@@ -80,6 +81,7 @@ D:\Web\FashionShop\FashionShop\bin\Model.pdb
 D:\Web\FashionShop\FashionShop\bin\Model.dll.config
 D:\Web\FashionShop\FashionShop\bin\EntityFramework.xml
 D:\Web\FashionShop\FashionShop\bin\EntityFramework.SqlServer.xml
+D:\Web\FashionShop\FashionShop\bin\Facebook.xml
 D:\Web\FashionShop\FashionShop\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 D:\Web\FashionShop\FashionShop\bin\System.Web.Helpers.xml
 D:\Web\FashionShop\FashionShop\bin\System.Web.Mvc.xml
