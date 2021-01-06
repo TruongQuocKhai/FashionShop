@@ -45,7 +45,18 @@ namespace Model.ADO
             {
                 return user.user_id;
             }
-           
+        }
+
+        public int InsertForGoogle(user entity)
+        {
+            var user = db.user.SingleOrDefault(x => x.email == entity.email);
+            if (user == null)
+            {
+                db.user.Add(entity);
+                db.SaveChanges();
+                return 1; 
+            }
+            return user.user_id;
         }
 
         public int Login(string email, string password, bool hasLoggedAdmin = false)

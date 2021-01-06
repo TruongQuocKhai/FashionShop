@@ -48,6 +48,10 @@ D:\Learn Programming\Web\FashionShop\FashionShop\FashionShop\bin\Microsoft.AI.Se
 D:\Learn Programming\Web\FashionShop\FashionShop\FashionShop\bin\Microsoft.AI.WindowsServer.xml
 D:\Learn Programming\Web\FashionShop\FashionShop\FashionShop\bin\Microsoft.AI.Web.xml
 D:\Learn Programming\Web\FashionShop\FashionShop\FashionShop\obj\Debug\FashionShop.csproj.CopyComplete
+D:\Web\FashionShop\FashionShop\obj\Debug\FashionShop.csprojResolveAssemblyReference.cache
+D:\Web\FashionShop\FashionShop\obj\Debug\FashionShop.EmailInfo.resources
+D:\Web\FashionShop\FashionShop\obj\Debug\FashionShop.csproj.GenerateResource.Cache
+D:\Web\FashionShop\FashionShop\obj\Debug\FashionShop.csproj.CoreCompileInputs.cache
 D:\Web\FashionShop\FashionShop\bin\ApplicationInsights.config
 D:\Web\FashionShop\FashionShop\bin\FashionShop.dll.config
 D:\Web\FashionShop\FashionShop\bin\FashionShop.dll
@@ -57,6 +61,11 @@ D:\Web\FashionShop\FashionShop\bin\Common.dll
 D:\Web\FashionShop\FashionShop\bin\EntityFramework.dll
 D:\Web\FashionShop\FashionShop\bin\EntityFramework.SqlServer.dll
 D:\Web\FashionShop\FashionShop\bin\Facebook.dll
+D:\Web\FashionShop\FashionShop\bin\Google.Apis.Auth.dll
+D:\Web\FashionShop\FashionShop\bin\Google.Apis.Auth.PlatformServices.dll
+D:\Web\FashionShop\FashionShop\bin\Google.Apis.Core.dll
+D:\Web\FashionShop\FashionShop\bin\Google.Apis.dll
+D:\Web\FashionShop\FashionShop\bin\Google.Apis.PlatformServices.dll
 D:\Web\FashionShop\FashionShop\bin\Microsoft.AI.Agent.Intercept.dll
 D:\Web\FashionShop\FashionShop\bin\Microsoft.AI.DependencyCollector.dll
 D:\Web\FashionShop\FashionShop\bin\Microsoft.AI.PerfCounterCollector.dll
@@ -64,10 +73,18 @@ D:\Web\FashionShop\FashionShop\bin\Microsoft.AI.ServerTelemetryChannel.dll
 D:\Web\FashionShop\FashionShop\bin\Microsoft.AI.Web.dll
 D:\Web\FashionShop\FashionShop\bin\Microsoft.AI.WindowsServer.dll
 D:\Web\FashionShop\FashionShop\bin\Microsoft.ApplicationInsights.dll
+D:\Web\FashionShop\FashionShop\bin\Microsoft.AspNet.Identity.Core.dll
+D:\Web\FashionShop\FashionShop\bin\Microsoft.AspNet.Identity.Owin.dll
 D:\Web\FashionShop\FashionShop\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Web\FashionShop\FashionShop\bin\Microsoft.Owin.dll
+D:\Web\FashionShop\FashionShop\bin\Microsoft.Owin.Security.Cookies.dll
+D:\Web\FashionShop\FashionShop\bin\Microsoft.Owin.Security.dll
+D:\Web\FashionShop\FashionShop\bin\Microsoft.Owin.Security.Google.dll
+D:\Web\FashionShop\FashionShop\bin\Microsoft.Owin.Security.OAuth.dll
 D:\Web\FashionShop\FashionShop\bin\Microsoft.Web.Infrastructure.dll
 D:\Web\FashionShop\FashionShop\bin\Model.dll
 D:\Web\FashionShop\FashionShop\bin\Newtonsoft.Json.dll
+D:\Web\FashionShop\FashionShop\bin\Owin.dll
 D:\Web\FashionShop\FashionShop\bin\System.Web.Helpers.dll
 D:\Web\FashionShop\FashionShop\bin\System.Web.Mvc.dll
 D:\Web\FashionShop\FashionShop\bin\System.Web.Optimization.dll
@@ -82,7 +99,21 @@ D:\Web\FashionShop\FashionShop\bin\Model.dll.config
 D:\Web\FashionShop\FashionShop\bin\EntityFramework.xml
 D:\Web\FashionShop\FashionShop\bin\EntityFramework.SqlServer.xml
 D:\Web\FashionShop\FashionShop\bin\Facebook.xml
+D:\Web\FashionShop\FashionShop\bin\Google.Apis.pdb
+D:\Web\FashionShop\FashionShop\bin\Google.Apis.xml
+D:\Web\FashionShop\FashionShop\bin\Google.Apis.Auth.pdb
+D:\Web\FashionShop\FashionShop\bin\Google.Apis.Auth.xml
+D:\Web\FashionShop\FashionShop\bin\Google.Apis.Core.pdb
+D:\Web\FashionShop\FashionShop\bin\Google.Apis.Core.xml
+D:\Web\FashionShop\FashionShop\bin\Microsoft.AspNet.Identity.Core.xml
+D:\Web\FashionShop\FashionShop\bin\Microsoft.AspNet.Identity.Owin.xml
 D:\Web\FashionShop\FashionShop\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Web\FashionShop\FashionShop\bin\Microsoft.Owin.xml
+D:\Web\FashionShop\FashionShop\bin\Microsoft.Owin.Security.xml
+D:\Web\FashionShop\FashionShop\bin\Microsoft.Owin.Security.Cookies.xml
+D:\Web\FashionShop\FashionShop\bin\Microsoft.Owin.Security.Google.xml
+D:\Web\FashionShop\FashionShop\bin\Microsoft.Owin.Security.OAuth.xml
+D:\Web\FashionShop\FashionShop\bin\Newtonsoft.Json.xml
 D:\Web\FashionShop\FashionShop\bin\System.Web.Helpers.xml
 D:\Web\FashionShop\FashionShop\bin\System.Web.Mvc.xml
 D:\Web\FashionShop\FashionShop\bin\System.Web.Optimization.xml
@@ -91,15 +122,15 @@ D:\Web\FashionShop\FashionShop\bin\System.Web.WebPages.xml
 D:\Web\FashionShop\FashionShop\bin\System.Web.WebPages.Deployment.xml
 D:\Web\FashionShop\FashionShop\bin\System.Web.WebPages.Razor.xml
 D:\Web\FashionShop\FashionShop\bin\Antlr3.Runtime.pdb
-D:\Web\FashionShop\FashionShop\bin\Newtonsoft.Json.xml
 D:\Web\FashionShop\FashionShop\bin\Microsoft.ApplicationInsights.xml
 D:\Web\FashionShop\FashionShop\bin\Microsoft.AI.DependencyCollector.xml
 D:\Web\FashionShop\FashionShop\bin\Microsoft.AI.ServerTelemetryChannel.xml
 D:\Web\FashionShop\FashionShop\bin\Microsoft.AI.WindowsServer.xml
 D:\Web\FashionShop\FashionShop\bin\Microsoft.AI.Web.xml
-D:\Web\FashionShop\FashionShop\obj\Debug\FashionShop.csprojResolveAssemblyReference.cache
-D:\Web\FashionShop\FashionShop\obj\Debug\FashionShop.EmailInfo.resources
-D:\Web\FashionShop\FashionShop\obj\Debug\FashionShop.csproj.GenerateResource.Cache
-D:\Web\FashionShop\FashionShop\obj\Debug\FashionShop.csproj.CoreCompileInputs.cache
 D:\Web\FashionShop\FashionShop\obj\Debug\FashionShop.dll
 D:\Web\FashionShop\FashionShop\obj\Debug\FashionShop.pdb
+D:\Web\FashionShop\FashionShop\bin\System.Net.Http.dll
+D:\Web\FashionShop\FashionShop\bin\System.Security.Cryptography.Algorithms.dll
+D:\Web\FashionShop\FashionShop\bin\System.Security.Cryptography.Encoding.dll
+D:\Web\FashionShop\FashionShop\bin\System.Security.Cryptography.Primitives.dll
+D:\Web\FashionShop\FashionShop\bin\System.Security.Cryptography.X509Certificates.dll

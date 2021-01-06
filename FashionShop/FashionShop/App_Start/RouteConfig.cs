@@ -17,68 +17,68 @@ namespace FashionShop
                name: "Product Detail",
                url: "chi-tiet/{alias}-{id}",
                defaults: new { controller = "Product", action = "ViewProductDetails", id = UrlParameter.Optional }
-           );
+            );
 
             routes.MapRoute(
                name: "Product Category",
                url: "san-pham/{alias}-{id}",
                defaults: new { controller = "Product", action = "ListProductsByCategory", id = UrlParameter.Optional }
-           );
+            );
 
             routes.MapRoute(
                 name: "All Products",
                 url: "tat-ca-san-pham",
                 defaults: new { controller = "Product", action = "ListAllProducts", id = UrlParameter.Optional }
-            );
+             );
 
             routes.MapRoute(
-          name: "Order",
-          url: "dat-hang",
-          defaults: new { controller = "Cart", action = "Order", id = UrlParameter.Optional }
-      );
+                 name: "Order",
+                 url: "dat-hang",
+                 defaults: new { controller = "Cart", action = "Order", id = UrlParameter.Optional }
+             );
 
             routes.MapRoute(
-           name: "Add the item to cart",
-           url: "them-vao-gio-hang",
-           defaults: new { controller = "Cart", action = "AddItems", id = UrlParameter.Optional }
+               name: "Add the item to cart",
+               url: "them-vao-gio-hang",
+               defaults: new { controller = "Cart", action = "AddItems", id = UrlParameter.Optional }
             );
 
             routes.MapRoute(
               name: "Cart",
               url: "gio-hang",
               defaults: new { controller = "Cart", action = "Index", id = UrlParameter.Optional }
-          );
+            );
 
             routes.MapRoute(
-           name: "Success notificaiton",
-           url: "dat-hang-thanh-cong",
-           defaults: new { controller = "Cart", action = "SuccessNotification", id = UrlParameter.Optional }
-       );
+               name: "Success notificaiton",
+               url: "dat-hang-thanh-cong",
+               defaults: new { controller = "Cart", action = "SuccessNotification", id = UrlParameter.Optional }
+             );
 
             routes.MapRoute(
-         name: "Failed notificaiton",
-         url: "dat-hang-khong-thanh-cong",
-         defaults: new { controller = "Cart", action = "FailedNotification", id = UrlParameter.Optional }
-     );
+             name: "Failed notificaiton",
+             url: "dat-hang-khong-thanh-cong",
+             defaults: new { controller = "Cart", action = "FailedNotification", id = UrlParameter.Optional }
+            );
 
 
             routes.MapRoute(
-         name: "Registration",
-         url: "dang-ky",
-         defaults: new { controller = "User", action = "Registration", id = UrlParameter.Optional }
-     );
+                 name: "Registration",
+                 url: "dang-ky",
+                 defaults: new { controller = "User", action = "Registration", id = UrlParameter.Optional }
+            );
 
             routes.MapRoute(
-     name: "Login",
-     url: "dang-nhap",
-     defaults: new { controller = "User", action = "Login", id = UrlParameter.Optional }
- );
+                 name: "Login",
+                 url: "dang-nhap",
+                 defaults: new { controller = "User", action = "Login", id = UrlParameter.Optional }
+             );
 
             routes.MapRoute(
-    name: "Logout",
-    url: "dang-xuat",
-    defaults: new { controller = "User", action = "Logout", id = UrlParameter.Optional }
-);
+                name: "Logout",
+                url: "dang-xuat",
+                defaults: new { controller = "User", action = "Logout", id = UrlParameter.Optional }
+            );
 
             routes.MapRoute(
                 name: "Default",

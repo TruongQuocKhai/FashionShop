@@ -32,7 +32,5 @@ namespace FashionShop.Controllers
         {
             return PartialView();
         }
-
-
     }
 }

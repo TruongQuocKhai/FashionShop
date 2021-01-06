@@ -1,7 +1,7 @@
-﻿<!-- User Sign In-->
+﻿
 @using FashionShop.Common
 @{
-    var session = (LoginUser)Session[SessionConst.USER_SESSION];
+    var session = (UserProfile)Session[SessionConst.USER_SESSION];
 }
 <style>
     .btn, .btn-template-outlined {
@@ -16,8 +16,12 @@
 }
 else
 {
-    <div class="nav-link" style="color:#ff8000; font-style: italic;">Hello! @session.DisplayName</div>
-    <div>
+    <div class="nav-link" style="color:#ff8000; font-style: italic;">Hello! @session.GivenName</div>
+    <div class="user-link">
+        <img src="@session.Picture" width="40" height="40" style="border-radius:200px" />
+    </div>
+
+    <div class="">
         <a href="/dang-xuat" class="btn btn-primary">
             <i class="fa fa-sign-out"></i>
             Đăng xuất
