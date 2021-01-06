@@ -12,8 +12,9 @@ namespace FashionShop.Common
         public int UserId { get; set; }
         [JsonProperty("email")]
         public string UserEmail { get; set; }
-        //[JsonProperty("given_name")]
-        //public string DisplayName { get; set; }
+
+        public string UserPhone { get; set; }
+
         public string GroupID { get; set; }
 
         [JsonProperty("verified_email")]

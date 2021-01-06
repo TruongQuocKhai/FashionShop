@@ -134,3 +134,40 @@ D:\Web\FashionShop\FashionShop\bin\System.Security.Cryptography.Algorithms.dll
 D:\Web\FashionShop\FashionShop\bin\System.Security.Cryptography.Encoding.dll
 D:\Web\FashionShop\FashionShop\bin\System.Security.Cryptography.Primitives.dll
 D:\Web\FashionShop\FashionShop\bin\System.Security.Cryptography.X509Certificates.dll
+D:\Learn Programming\Web\FashionShop\FashionShop\FashionShop\bin\Common.dll
+D:\Learn Programming\Web\FashionShop\FashionShop\FashionShop\bin\Facebook.dll
+D:\Learn Programming\Web\FashionShop\FashionShop\FashionShop\bin\Google.Apis.Auth.dll
+D:\Learn Programming\Web\FashionShop\FashionShop\FashionShop\bin\Google.Apis.Auth.PlatformServices.dll
+D:\Learn Programming\Web\FashionShop\FashionShop\FashionShop\bin\Google.Apis.Core.dll
+D:\Learn Programming\Web\FashionShop\FashionShop\FashionShop\bin\Google.Apis.dll
+D:\Learn Programming\Web\FashionShop\FashionShop\FashionShop\bin\Google.Apis.PlatformServices.dll
+D:\Learn Programming\Web\FashionShop\FashionShop\FashionShop\bin\Microsoft.AspNet.Identity.Core.dll
+D:\Learn Programming\Web\FashionShop\FashionShop\FashionShop\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\Learn Programming\Web\FashionShop\FashionShop\FashionShop\bin\Microsoft.Owin.dll
+D:\Learn Programming\Web\FashionShop\FashionShop\FashionShop\bin\Microsoft.Owin.Security.Cookies.dll
+D:\Learn Programming\Web\FashionShop\FashionShop\FashionShop\bin\Microsoft.Owin.Security.dll
+D:\Learn Programming\Web\FashionShop\FashionShop\FashionShop\bin\Microsoft.Owin.Security.Google.dll
+D:\Learn Programming\Web\FashionShop\FashionShop\FashionShop\bin\Microsoft.Owin.Security.OAuth.dll
+D:\Learn Programming\Web\FashionShop\FashionShop\FashionShop\bin\Owin.dll
+D:\Learn Programming\Web\FashionShop\FashionShop\FashionShop\bin\System.Net.Http.dll
+D:\Learn Programming\Web\FashionShop\FashionShop\FashionShop\bin\System.Security.Cryptography.Algorithms.dll
+D:\Learn Programming\Web\FashionShop\FashionShop\FashionShop\bin\System.Security.Cryptography.Encoding.dll
+D:\Learn Programming\Web\FashionShop\FashionShop\FashionShop\bin\System.Security.Cryptography.Primitives.dll
+D:\Learn Programming\Web\FashionShop\FashionShop\FashionShop\bin\System.Security.Cryptography.X509Certificates.dll
+D:\Learn Programming\Web\FashionShop\FashionShop\FashionShop\bin\Common.pdb
+D:\Learn Programming\Web\FashionShop\FashionShop\FashionShop\bin\Facebook.xml
+D:\Learn Programming\Web\FashionShop\FashionShop\FashionShop\bin\Google.Apis.pdb
+D:\Learn Programming\Web\FashionShop\FashionShop\FashionShop\bin\Google.Apis.xml
+D:\Learn Programming\Web\FashionShop\FashionShop\FashionShop\bin\Google.Apis.Auth.pdb
+D:\Learn Programming\Web\FashionShop\FashionShop\FashionShop\bin\Google.Apis.Auth.xml
+D:\Learn Programming\Web\FashionShop\FashionShop\FashionShop\bin\Google.Apis.Core.pdb
+D:\Learn Programming\Web\FashionShop\FashionShop\FashionShop\bin\Google.Apis.Core.xml
+D:\Learn Programming\Web\FashionShop\FashionShop\FashionShop\bin\Microsoft.AspNet.Identity.Core.xml
+D:\Learn Programming\Web\FashionShop\FashionShop\FashionShop\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\Learn Programming\Web\FashionShop\FashionShop\FashionShop\bin\Microsoft.Owin.xml
+D:\Learn Programming\Web\FashionShop\FashionShop\FashionShop\bin\Microsoft.Owin.Security.xml
+D:\Learn Programming\Web\FashionShop\FashionShop\FashionShop\bin\Microsoft.Owin.Security.Cookies.xml
+D:\Learn Programming\Web\FashionShop\FashionShop\FashionShop\bin\Microsoft.Owin.Security.Google.xml
+D:\Learn Programming\Web\FashionShop\FashionShop\FashionShop\bin\Microsoft.Owin.Security.OAuth.xml
+D:\Learn Programming\Web\FashionShop\FashionShop\FashionShop\obj\Debug\FashionShop.EmailInfo.resources
+D:\Learn Programming\Web\FashionShop\FashionShop\FashionShop\obj\Debug\FashionShop.csproj.GenerateResource.cache

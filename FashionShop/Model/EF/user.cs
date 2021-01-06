@@ -21,6 +21,9 @@ namespace Model.EF
         [StringLength(32)]
         public string password { get; set; }
 
+        [StringLength(50)]
+        public string user_group_id { get; set; }
+
         [StringLength(200)]
         public string address { get; set; }
 
@@ -29,6 +32,13 @@ namespace Model.EF
 
         [StringLength(50)]
         public string phone { get; set; }
+
+        public int province_id { get; set; }
+
+        public int district_id { get; set; }
+
+        [StringLength(200)]
+        public string avatar { get; set; }
 
         public DateTime? created_date { get; set; }
 

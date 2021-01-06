@@ -10,9 +10,13 @@ create table [user](
 	username varchar(50),
 	display_name nvarchar(200),
 	password varchar(32),
+	user_group_id varchar(50),
 	address nvarchar(200),
 	email varchar(50),
 	phone varchar(50),
+	province_id int,
+	district_id int,
+	avatar varchar(200),
 	created_date datetime default getdate(),
 	created_by	nvarchar(250),
 	edited_date datetime,
@@ -21,6 +25,7 @@ create table [user](
 );
 go
 
+drop table [user]
 create table product_category(
 	prd_category_id int identity primary key,
 	prd_category_name nvarchar(250),
@@ -176,11 +181,15 @@ create table [order](
 	order_name nvarchar(50),
 	order_phone varchar(11),
 	order_address nvarchar(250),
+	order_province_id int,
+	order_district_id int,
 	order_email varchar(50),
 	order_date datetime,
 	status bit default 1
 );
 go
+
+drop table [order]
 
 create table order_detail(
 	product_id int, 

@@ -35,7 +35,7 @@ namespace FashionShop.Controllers
         }
 
         /// <summary>  
-        /// Nghe phản hồi từ API Google sau khi user ủy quyẻn
+        /// Nghe phản hồi từ API Google sau khi user ủy quyền
         /// </summary>  
         /// <param name="code">Mã truy cập được trả về từ API google</param>  
         /// <param name="state">Một giá trị đc app chuyển qua ngăn tấn công giả mạo</param>  
@@ -66,7 +66,6 @@ namespace FashionShop.Controllers
             var obj = await GetuserProfile(token.AccessToken);
 
             var user = new user();
-          //  user.user_id = Convert.ToInt32(obj.UserId);
             user.email = obj.UserEmail;
             user.display_name = obj.GivenName;
             user.created_date = DateTime.Now;
@@ -76,13 +75,13 @@ namespace FashionShop.Controllers
             {
                 Session.Add(SessionConst.USER_SESSION, obj);
             }
-            return RedirectToAction("Index", "Home");
+            return Redirect("/");
         }
 
         /// <summary>  
         /// Để tìm nạp hồ sơ user bằng mã thông báo. 
         /// </summary>  
-        /// <param name="accesstoken">access token</param>  
+        /// <param name="accesstoken">Truy cập thẻ</param>  
         /// <returns>User Profile page</returns>  
         public async Task<UserProfile> GetuserProfile(string accesstoken)
         {
@@ -123,7 +122,6 @@ namespace FashionShop.Controllers
             return Redirect(loginUrl.AbsoluteUri);
         }
 
-
         public ActionResult FacebookCallback(string code)
         {
             var fb = new FacebookClient();
@@ -139,34 +137,28 @@ namespace FashionShop.Controllers
             {
                 fb.AccessToken = accessToken;
                 // Get the user's informaiton like email, first name, last name,...
-                dynamic me = fb.Get("me?fields=first_name,middle_name,last_name,id,email,picture");
-                //string email = me.email;
-                //string firstName = me.first_name;
-                //string middleName = me.middle_name;
-                //string lastName = me.last_name;
-                //string picture = me.picture;
+                dynamic me = fb.Get("me?fields=first_name,middle_name,last_name,id,email,phone,picture");
+                string email = me.email;
+                string firstName = me.first_name;
+                string middleName = me.middle_name;
+                string lastName = me.last_name;
+                //var token = JsonConvert.DeserializeObject(me.picture);
+                //string picture = token;
 
-                var userProfile = new UserProfile();
-                userProfile.Picture = me.picture;
+                var user = new user();
+                user.email = email;
+                user.display_name = lastName + " " + middleName + " " + firstName;
+                user.created_date = DateTime.Now;
+                user.status = true;
 
-                Session.Add(SessionConst.USER_SESSION, userProfile);
-
-                //var user = new user();
-                //user.email = me.email;
-                //user.display_name = me.last_name + " " + me.middle_name + " " + me.first_name;
-                //user.status = true;
-                //user.created_date = DateTime.Now;
-
-                //var insertResult = new UserADO().InsertForFacebook(user);
-                //if (insertResult > 0)
-                //{
-                //    var userSession = new UserProfile();
-                //    userSession.UserId = user.user_id;
-                //    userSession.GivenName = user.display_name;
-                //    userSession.UserEmail = user.email;
-                //    userSession.Picture = 
-                //    Session.Add(SessionConst.USER_SESSION, userSession);
-                //}
+                var insertResult = new UserADO().InsertForFacebook(user);
+                if (insertResult > 0)
+                {
+                    var userProfile = new UserProfile();
+                    userProfile.GivenName = user.display_name;
+                    Session.Add(SessionConst.USER_SESSION, userProfile);
+                }
+                return Redirect("/");
             }
             return Redirect("/");
         }
