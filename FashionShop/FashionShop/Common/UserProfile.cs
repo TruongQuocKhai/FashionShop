@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using Newtonsoft.Json;
@@ -10,6 +11,7 @@ namespace FashionShop.Common
     {
        // [JsonProperty("id")]
         public int UserId { get; set; }
+
         [JsonProperty("email")]
         public string UserEmail { get; set; }
 

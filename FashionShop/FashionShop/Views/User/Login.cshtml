@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_LayoutUser.cshtml";
 }
 @section jsFooter {
-    <script src="~/Contents/js/show-hide-password.js"></script>
+    <script src="~/Contents/js/JsFileController/show-hide-password.js"></script>
 }
 <style>
     .field-icon {
@@ -64,7 +64,7 @@
                         </div>
                         <hr>
                         <form action="@Url.Action("Login","User")" method="post">
-                            @*@Html.ValidationSummary(false, "", new { @class = "text-danger" })*@
+                            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
                             @Html.AntiForgeryToken()
                             <div class="form-group">
                                 <label for="text" class="form-label">Email / Số điện thoại</label>

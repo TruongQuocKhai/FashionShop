@@ -207,7 +207,6 @@
     <Compile Include="Common\Encryption.cs" />
     <Compile Include="Common\GmailToken.cs" />
     <Compile Include="Common\SessionConst.cs" />
-    <Compile Include="Common\LoginUser.cs" />
     <Compile Include="Common\UserProfile.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
@@ -226,8 +225,10 @@
     </Compile>
     <Compile Include="MailHelper.cs" />
     <Compile Include="Models\CartModel.cs" />
+    <Compile Include="Models\DistrictModel.cs" />
     <Compile Include="Models\EmailNotifyViewModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\ProvinceModel.cs" />
     <Compile Include="Models\RegistrationModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -243,6 +244,7 @@
     <Content Include="Contents\css\StyleOrder.css" />
     <Content Include="Contents\css\util.css" />
     <Content Include="Contents\css\util.min.css" />
+    <Content Include="Contents\data\provinces-data.xml" />
     <Content Include="Contents\Images\banner-1.jpg" />
     <Content Include="Contents\Images\banner-2.jpg" />
     <Content Include="Contents\Images\blog-1.jpg" />
@@ -292,15 +294,16 @@
     <Content Include="Contents\Images\video\Bed-Phone.mp4" />
     <Content Include="Contents\Images\video\Bed-Phone.webm" />
     <Content Include="Contents\js\front.js" />
+    <Content Include="Contents\js\JsFileController\load-province-district.js" />
     <Content Include="Contents\js\main.js" />
     <Content Include="Contents\js\main.min.js" />
     <Content Include="Contents\js\map-custom.js" />
     <Content Include="Contents\js\map-custom.min.js" />
     <Content Include="Contents\js\modernizr.custom.79639.js" />
-    <Content Include="Contents\js\show-hide-password.js" />
+    <Content Include="Contents\js\JsFileController\show-hide-password.js" />
     <Content Include="Contents\js\slick-custom.js" />
     <Content Include="Contents\js\slick-custom.min.js" />
-    <Content Include="Contents\js\user-cart-controller.js" />
+    <Content Include="Contents\js\JsFileController\user-cart-controller.js" />
     <Content Include="Contents\EmailTemplate\neworder.html" />
     <Content Include="Contents\vendor\animate\animate.css" />
     <Content Include="Contents\vendor\animsition\css\animsition.css" />
@@ -456,7 +459,6 @@
     <Content Include="Views\User\Registration.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\Shared\_PartialPage1.cshtml" />
-    <Content Include="Views\User\UserProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

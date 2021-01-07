@@ -137,17 +137,12 @@ namespace FashionShop.Controllers
             {
                 fb.AccessToken = accessToken;
                 // Get the user's informaiton like email, first name, last name,...
-                dynamic me = fb.Get("me?fields=first_name,middle_name,last_name,id,email,phone,picture");
-                string email = me.email;
-                string firstName = me.first_name;
-                string middleName = me.middle_name;
-                string lastName = me.last_name;
-                //var token = JsonConvert.DeserializeObject(me.picture);
-                //string picture = token;
+                dynamic me = fb.Get("me?fields=first_name,middle_name,last_name,id,email,picture");
 
                 var user = new user();
-                user.email = email;
-                user.display_name = lastName + " " + middleName + " " + firstName;
+                user.avatar = me.picture.data.url;
+                user.email = me.email;
+                user.display_name = me.last_name + " " + me.middle_name + " " + me.first_name;
                 user.created_date = DateTime.Now;
                 user.status = true;
 
@@ -156,13 +151,14 @@ namespace FashionShop.Controllers
                 {
                     var userProfile = new UserProfile();
                     userProfile.GivenName = user.display_name;
+                    userProfile.Picture = user.avatar;
                     Session.Add(SessionConst.USER_SESSION, userProfile);
                 }
                 return Redirect("/");
             }
             return Redirect("/");
         }
-
+     
         public ActionResult _HeaderLoginUserPartial()
         {
             return PartialView();
@@ -184,11 +180,11 @@ namespace FashionShop.Controllers
                 if (result == 1)
                 {
                     var user = userAdo.GetEmail(model.Email);
-                    var userSession = new LoginUser();
-                    userSession.UserId = user.user_id;
-                    userSession.DisplayName = user.display_name;
-                    userSession.UserEmail = user.email;
-                    Session.Add(SessionConst.USER_SESSION, userSession);
+                    var userProfile = new UserProfile();
+                    userProfile.UserId = user.user_id;
+                    userProfile.GivenName = user.display_name;
+                    userProfile.UserEmail = user.email;
+                    Session.Add(SessionConst.USER_SESSION, userProfile);
                     return Redirect("/");
                 }
                 else if (result == 0)

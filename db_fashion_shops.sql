@@ -24,8 +24,8 @@ create table [user](
 	status bit default 1
 );
 go
-
 drop table [user]
+
 create table product_category(
 	prd_category_id int identity primary key,
 	prd_category_name nvarchar(250),

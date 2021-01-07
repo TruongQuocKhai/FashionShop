@@ -9,17 +9,17 @@ using System.Web.Script.Serialization;
 using Model.EF;
 using System.Configuration;
 using Common;
+using FashionShop.Common;
+using System.Xml.Linq;
 
 namespace FashionShop.Controllers
 {
     public class CartController : Controller
     {
         // GET: Cart
-        private const string CART_SESSION = "CART_SESSION";
-
         public ActionResult Index()
         {
-            var cart = Session[CART_SESSION];
+            var cart = Session[SessionConst.CART_SESSION];
             var listItems = new List<CartModel>();
             if (cart != null)
             {
@@ -31,7 +31,7 @@ namespace FashionShop.Controllers
         [HttpGet]
         public ActionResult Order()
         {
-            var cart = Session[CART_SESSION];
+            var cart = Session[SessionConst.CART_SESSION];
             var listItems = new List<CartModel>();
             if (cart != null)
             {
@@ -40,20 +40,22 @@ namespace FashionShop.Controllers
             return PartialView(listItems);
         }
         [HttpPost]
-        public ActionResult Order(string name, string email, string phone, string address)
+        public ActionResult Order(string name, string email, string phone, string address, int province_id, int district_id)
         {
-            var order = new order();
-            order.order_name = name;
-            order.order_email = email;
-            order.order_phone = phone;
-            order.order_address = address;
-            order.order_date = DateTime.Now;
+            var objOrder = new order();
+            objOrder.order_name = name;
+            objOrder.order_email = email;
+            objOrder.order_phone = phone;
+            objOrder.order_address = address;
+            objOrder.province_id = province_id;
+            objOrder.district_id = district_id;
+            objOrder.order_date = DateTime.Now;
 
             // Get user infor
             try
             {
-                var orderId = new OrderADO().Insert(order);
-                var cart = (List<CartModel>)Session[CART_SESSION];
+                var orderId = new OrderADO().Insert(objOrder);
+                var cart = (List<CartModel>)Session[SessionConst.CART_SESSION];
                 var orderDetailADO = new OrderDetailADO();
                 decimal total = 0;
                 foreach (var item in cart)
@@ -82,13 +84,39 @@ namespace FashionShop.Controllers
             {
                 return Redirect("/dat-hang-khong-thanh-cong");
             }
+            Session[SessionConst.CART_SESSION] = null;
             return Redirect("/dat-hang-thanh-cong");
         }
 
+        // Load Province & District
+        public JsonResult LoadProvince()
+        {
+            // Load dữ liệu trừ file xml
+            var xmlDoc = XDocument.Load(Server.MapPath(@"~/Contents/data/provinces-data.xml"));
+            // Truy vấn ra các trường trong file xml 
+            var xElements = xmlDoc.Element("Root").Elements("Item").Where(x => x.Attribute("type").Value == "province");
+
+            var list = new List<ProvinceModel>();
+            ProvinceModel provinceModel = null;
+            foreach (var item in xElements)
+            {
+                provinceModel = new ProvinceModel();
+                provinceModel.Id = int.Parse(item.Attribute("id").Value);
+                provinceModel.name = item.Attribute("value").Value;
+                list.Add(provinceModel);
+
+            }
+            return Json(new
+            {
+                data = list,
+                status = true
+            
+            });
+        }
 
         public ActionResult SuccessNotification()
         {
-            Session[CART_SESSION] = null;
+            Session[SessionConst.CART_SESSION] = null;
             return View();
         }
 
@@ -101,7 +129,7 @@ namespace FashionShop.Controllers
         public JsonResult Update(string cartModel)
         {
             var jsonCart = new JavaScriptSerializer().Deserialize<List<CartModel>>(cartModel);
-            var sessionCart = (List<CartModel>)Session[CART_SESSION];
+            var sessionCart = (List<CartModel>)Session[SessionConst.CART_SESSION];
 
             foreach (var item in sessionCart)
             {   // SingleOrDefault trả về phần từ duy nhất của chuỗi, or giá trị mặc định khi chuỗi trống.
@@ -111,7 +139,7 @@ namespace FashionShop.Controllers
                     item.Quantity = jsonItem.Quantity;
                 }
             }
-            Session[CART_SESSION] = sessionCart;
+            Session[SessionConst.CART_SESSION] = sessionCart;
             return Json(new
             {
                 status = true
@@ -120,9 +148,9 @@ namespace FashionShop.Controllers
 
         public JsonResult Delete(int product_id)
         {
-            var sessionCart = (List<CartModel>)Session[CART_SESSION];
+            var sessionCart = (List<CartModel>)Session[SessionConst.CART_SESSION];
             sessionCart.RemoveAll(x => x.Product.product_id == product_id);
-            Session[CART_SESSION] = sessionCart;
+            Session[SessionConst.CART_SESSION] = sessionCart;
             return Json(new
             {
                 status = true
@@ -131,7 +159,7 @@ namespace FashionShop.Controllers
 
         public ActionResult _HeaderCartPartial()
         {
-            var cart = Session[CART_SESSION];
+            var cart = Session[SessionConst.CART_SESSION];
             var listItems = new List<CartModel>();
             if (cart != null)
             {
@@ -144,7 +172,7 @@ namespace FashionShop.Controllers
         {
             // get product id
             var product = new ProductADO().GetProductId(productId);
-            var cart = Session[CART_SESSION];
+            var cart = Session[SessionConst.CART_SESSION];
 
             if (cart != null) // giỏ hàng đã tồn tại -> cộng số lượng 
             {
@@ -174,7 +202,7 @@ namespace FashionShop.Controllers
                 item.Quantity = quantity;
                 var listItems = new List<CartModel>();
                 listItems.Add(item);
-                Session[CART_SESSION] = listItems; // Assign to session
+                Session[SessionConst.CART_SESSION] = listItems; // Assign to session
             }
             return Redirect(Request.UrlReferrer.ToString());
         }
