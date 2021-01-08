@@ -104,13 +104,34 @@ namespace FashionShop.Controllers
                 provinceModel.Id = int.Parse(item.Attribute("id").Value);
                 provinceModel.name = item.Attribute("value").Value;
                 list.Add(provinceModel);
-
             }
             return Json(new
             {
                 data = list,
                 status = true
-            
+            });
+        }
+
+        public JsonResult LoadDistrict(int provinceId)
+        {
+            var xmlDoc = XDocument.Load(Server.MapPath(@"/Contents/data/provinces-data.xml"));
+            var xElement = xmlDoc.Element("Root").Elements("Item")
+                .SingleOrDefault(x => x.Attribute("type").Value == "province"
+                && int.Parse(x.Attribute("id").Value) == provinceId);
+
+            var list = new List<DistrictModel>();
+            DistrictModel districtModel = null;
+            foreach (var item in xElement.Elements("Item").Where(x => x.Attribute("type").Value == "district"))
+            {
+                districtModel = new DistrictModel();
+                districtModel.Id = int.Parse(item.Attribute("id").Value);
+                districtModel.Name = item.Attribute("value").Value;
+                districtModel.ProvinceId = int.Parse(xElement.Attribute("id").Value);
+                list.Add(districtModel);
+            }
+            return Json(new {
+                data = list,
+                status = true
             });
         }
 

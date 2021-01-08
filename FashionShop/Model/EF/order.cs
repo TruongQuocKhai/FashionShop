@@ -16,8 +16,8 @@
         public string order_phone { get; set; }
         public string order_email { get; set; }
         public string order_address { get; set; }
-        public int province_id { get; set; }
-        public int district_id { get; set; }
+        public int order_province_id { get; set; }
+        public int order_district_id { get; set; }
         public DateTime order_date { get; set; }
         public bool? status { get; set; }
     }
