@@ -1241,7 +1241,7 @@ select {
     .main {
         width: 52%;
         /*height: 52%;*/
-        padding-right: 6%;
+        /*padding-right: 6%;*/
         float: left;
     }
 
@@ -1258,7 +1258,7 @@ select {
             }
 
     .sidebar {
-        width: 38%;
+        width: 42%;
         padding-left: 4%;
         background-position: left top;
         float: right;

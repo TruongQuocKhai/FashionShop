@@ -181,8 +181,9 @@ create table [order](
 	order_name nvarchar(50),
 	order_phone varchar(11),
 	order_address nvarchar(250),
-	order_province_id int,
-	order_district_id int,
+	order_province nvarchar(250),
+	order_district nvarchar(250),
+	order_ward nvarchar(250),
 	order_email varchar(50),
 	order_date datetime,
 	status bit default 1

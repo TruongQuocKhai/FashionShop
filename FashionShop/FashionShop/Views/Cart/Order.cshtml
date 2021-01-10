@@ -85,7 +85,7 @@
                                         </td>
                                         <td class="total-line-name payment-due">
                                             <span class="payment-due-price" data-checkout-payment-due-target="33000000">
-                                                @Model.Sum(x => x.Product.price.GetValueOrDefault(0) * x.Quantity + 20000).ToString("N0") <sup>đ</sup>
+                                                @Model.Sum(x => x.Product.price.GetValueOrDefault(0) * x.Quantity).ToString("N0") <sup>đ</sup>
                                             </span>
                                         </td>
                                     </tr>
@@ -159,8 +159,7 @@
                                                 <div class="field field-show-floating-label field-required field-third ">
                                                     <div class="field-input-wrapper field-input-wrapper-select">
                                                         <label class="field-label" for=""> Tỉnh/Thành phố </label>
-                                                        @Html.DropDownList("order_province_id", new SelectList(new string[] { }), new { @class = "field-input", @id = "ddlProvince" })
-
+                                                        @Html.DropDownList("province", new SelectList(new string[] { }), new { @class = "field-input", @id = "ddlProvince" })
                                                         @*<select class="field-input" id="ddlProvince" name="ddlProvince">
                                                                 <option data-code="null" value="0" selected="">  Chọn tỉnh thành </option>
                                                             </select>*@
@@ -170,16 +169,14 @@
                                                 <div class="field field-show-floating-label field-required field-third ">
                                                     <div class="field-input-wrapper field-input-wrapper-select">
                                                         <label class="field-label" for="">Quận/Huyện</label>
-                                                        @Html.DropDownList("order_district_id", new SelectList(new string[] { }), new { @class = "field-input", @id = "ddlDistrict" })
+                                                        @Html.DropDownList("district", new SelectList(new string[] { }), new { @class = "field-input", @id = "ddlDistrict" })
                                                     </div>
                                                 </div>
 
                                                 <div class="field field-show-floating-label field-required  field-third  ">
                                                     <div class="field-input-wrapper field-input-wrapper-select">
                                                         <label class="field-label" for="customer_shipping_ward">Phường</label>
-                                                        <select class="field-input" id="customer_shipping_ward" name="customer_shipping_ward">
-                                                            <option data-code="null" value="null" selected="">Chọn phường</option>
-                                                        </select>
+                                                        @Html.DropDownList("ward", new SelectList(new string[] { }), new { @class = "field-input", @id = "ddlWard" })
                                                     </div>
                                                 </div>
                                             </div>

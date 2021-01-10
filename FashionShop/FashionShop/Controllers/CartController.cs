@@ -40,15 +40,16 @@ namespace FashionShop.Controllers
             return PartialView(listItems);
         }
         [HttpPost]
-        public ActionResult Order(string name, string email, string phone, string address, int province_id, int district_id)
+        public ActionResult Order(string name, string email, string phone, string address, string province, string district, string ward)
         {
             var objOrder = new order();
             objOrder.order_name = name;
             objOrder.order_email = email;
             objOrder.order_phone = phone;
             objOrder.order_address = address;
-            objOrder.province_id = province_id;
-            objOrder.district_id = district_id;
+            objOrder.order_province = province;
+            objOrder.order_district = district;
+            objOrder.order_ward = ward;
             objOrder.order_date = DateTime.Now;
 
             // Get user infor
@@ -73,6 +74,8 @@ namespace FashionShop.Controllers
                 content = content.Replace("{{CustomerPhone}}", phone);
                 content = content.Replace("{{CustomerEmail}}", email);
                 content = content.Replace("{{CustomerAddress}}", address);
+                //content = content.Replace("{{CustomerProvince}}", province_id);
+                //content = content.Replace("{{CustomerProvince}}", district_id);
                 content = content.Replace("{{CustomerTotal}}", total.ToString("N0"));
 
                 var toEmailAddress = ConfigurationManager.AppSettings["ToEmailAddress"].ToString();
@@ -93,16 +96,15 @@ namespace FashionShop.Controllers
         {
             // Load dữ liệu trừ file xml
             var xmlDoc = XDocument.Load(Server.MapPath(@"~/Contents/data/provinces-data.xml"));
-            // Truy vấn ra các trường trong file xml 
+            // Truy vấn ra các trường Tỉnh/Thành phố trong file xml 
             var xElements = xmlDoc.Element("Root").Elements("Item").Where(x => x.Attribute("type").Value == "province");
-
             var list = new List<ProvinceModel>();
             ProvinceModel provinceModel = null;
             foreach (var item in xElements)
             {
                 provinceModel = new ProvinceModel();
                 provinceModel.Id = int.Parse(item.Attribute("id").Value);
-                provinceModel.name = item.Attribute("value").Value;
+                provinceModel.Name = item.Attribute("value").Value;
                 list.Add(provinceModel);
             }
             return Json(new
@@ -112,15 +114,17 @@ namespace FashionShop.Controllers
             });
         }
 
-        public JsonResult LoadDistrict(int provinceId)
+        public JsonResult LoadDistrict(string provinceName)
         {
-            var xmlDoc = XDocument.Load(Server.MapPath(@"/Contents/data/provinces-data.xml"));
+            var xmlDoc = XDocument.Load(Server.MapPath(@"~/Contents/data/provinces-data.xml"));
+            // Lấy ra tỉnh theo tên truyền vào tương ứng
             var xElement = xmlDoc.Element("Root").Elements("Item")
-                .SingleOrDefault(x => x.Attribute("type").Value == "province"
-                && int.Parse(x.Attribute("id").Value) == provinceId);
+                .Single(x => x.Attribute("type").Value == "province"
+                && (x.Attribute("value").Value) == provinceName);
 
             var list = new List<DistrictModel>();
             DistrictModel districtModel = null;
+            // Vòng lặp các quận theo tỉnh
             foreach (var item in xElement.Elements("Item").Where(x => x.Attribute("type").Value == "district"))
             {
                 districtModel = new DistrictModel();
@@ -129,10 +133,36 @@ namespace FashionShop.Controllers
                 districtModel.ProvinceId = int.Parse(xElement.Attribute("id").Value);
                 list.Add(districtModel);
             }
-            return Json(new {
+            return Json(new
+            {
                 data = list,
                 status = true
             });
+        }
+
+        public JsonResult LoadWard(string districtName)
+        {
+            var xmlDoc = XDocument.Load(Server.MapPath(@"/Contents/data/provinces-data.xml"));
+            // Lấy ra Quận theo biến truyền vào tương ứng
+            var xElement = xmlDoc.Element("Root").Elements("Item").Elements("Item")
+                .Single(x => x.Attribute("type").Value == "district"
+                && (x.Attribute("type").Value == districtName));
+            var list = new List<WardModel>();
+            WardModel wardModel = null;
+            // Vòng lặp các phường theo quận
+            foreach (var item in xElement.Elements("Item").Where(x => x.Attribute("type").Value == "precinct"))
+            {
+                wardModel = new WardModel();
+                wardModel.Id = int.Parse(item.Attribute("id").Value);
+                wardModel.Name = item.Attribute("value").Value;
+                wardModel.DistrictId = int.Parse(xElement.Attribute("id").Value);
+            }
+            return Json(new
+            {
+                data = list,
+                status = true
+
+            }) ;
         }
 
         public ActionResult SuccessNotification()
