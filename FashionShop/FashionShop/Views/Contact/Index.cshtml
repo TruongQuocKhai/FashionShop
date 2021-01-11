@@ -1,8 +1,100 @@
-﻿
+﻿@model Model.EF.contact
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Liên hệ";
     Layout = "~/Views/Shared/_LayoutUser.cshtml";
 }
+@section cssOrderPage{
+    <link href="/Contents/css/StyleOrder.css" rel="stylesheet" />
+}
 
-<h2>Index</h2>
+<section class="hero hero-page gray-bg padding-small">
+    <div class="container">
+        <div class="row d-flex">
+            <div class="col-lg-9 order-2 order-lg-1">
+                <h2>Liên hệ với chúng tôi</h2><p class="lead text-muted"></p>
+            </div>
+            <div class="col-lg-3 text-right order-1 order-lg-2">
+                <ul class="breadcrumb justify-content-lg-end">
+                    <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
+                    <li class="breadcrumb-item active">Giới thiệu</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="content">
+    <div class="wrap">
+        <div class="sidebar">
+            <div class="sidebar-content">
+                <div class="order-summary order-summary-is-collapsed">
+                    <h2 class="visually-hidden">Địa chỉ shop</h2>
+                    <div class="order-summary-sections">
+                        <div class="order-summary-section order-summary-section-product-list" data-order-summary-section="line-items">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main">
+            <div class="main-header">
+                <a href="/" class="logo">
+                    <h1 class="logo-text">Fashion Shop</h1>
+                </a>
+            </div>
+            <div class="main-content">
+                <div class="step">
+                    <div class="step-sections " step="1">
+                        <div class="section">
+                            <div class="section-header">
+                                <h2 class="section-title">Thông tin giao hàng</h2>
+                            </div>
+                            <div class="section-content section-customer-information ">
+                                <div class="fieldset">
+                                    <form action="@Url.Action("Contact", "Cart")" method="post">
+                                        <div class="field field-required field-show-floating-label">
+                                            <div class="field-input-wrapper">
+                                                <label class="field-label" for="billing_address_full_name">Họ và tên</label>
+                                                <input placeholder="Họ và tên" autocapitalize="off" spellcheck="false" class="field-input" size="30" type="text" id="name" name="name" required="required">
+                                            </div>
+                                        </div>
+                                        <div class="field  field-two-thirds field-show-floating-label  ">
+                                            <div class="field-input-wrapper">
+                                                <label class="field-label">Email</label>
+                                                <input placeholder="Email" autocapitalize="off" spellcheck="false" class="field-input" size="30" type="email" id="email" name="email" required="required">
+                                            </div>
+                                        </div>
+                                        <div class="field field-required field-third field-show-floating-label ">
+                                            <div class="field-input-wrapper">
+                                                <label class="field-label" for="billing_address_phone">Điện thoại</label>
+                                                <input placeholder="Điện thoại" autocapitalize="off" spellcheck="false" class="field-input" size="30" maxlength="11" type="tel" id="phone" name="phone" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required="required">
+                                            </div>
+                                        </div>
+
+                                        <textarea rows="10" id="ContactFormMessage" class="input-full" name="contact[body]" placeholder="Nội dung"></textarea>
+
+                                        <div class="field field-required  ">
+                                            <div class="step-footer">
+                                                <input name="utf8" type="hidden" value="✓">
+                                                <button type="submit" class="btn btn-template">
+                                                    <span class="btn-content">Hoàn tất đơn hàng</span>
+                                                    <i class="btn-spinner icon icon-button-spinner"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 

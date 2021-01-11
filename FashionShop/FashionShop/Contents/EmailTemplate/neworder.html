@@ -4,11 +4,44 @@
     <meta charset="utf-8" />
     <title>Thông tin đơn hàng từ FashionShop</title>
 </head>
+
 <body>
-    Họ tên: {{CustomerName}}<br />
+    Dear {{CustomerName}},   <br /><br />
+
+    Tóm tắt thông tin đơn hàng: <br /><br />
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Mã sản phẩm</th>
+                <th scope="col">Tên sản phẩm</th>
+                <th scope="col">Số lượng</th>
+                <th scope="col">Giá bán</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>{{CustomerProdCode}}</td>
+                <td>{{CustomerProdName}}</td>
+                <td>{{CustomerQuantity}}</td>
+                <td>{{CustomerPrice}}</td>
+            </tr>
+        </tbody>
+    </table>
+    Tổng tiền: {{CustomerTotal}}<sup>đ</sup><br />   <br />
+
+    Thông tin giao hàng:<br /><br />
+    Họ tên: {{CustomerName}} <br />
     Điện thoại: {{CustomerPhone}} <br />
     Email: {{CustomerEmail}}<br />
     Địa chỉ: {{CustomerAddress}}<br />
-    Tổng tiền: {{CustomerTotal}}<sup>đ</sup><br />
+    <!--{{CustomerWard}}<br />-->
+    {{CustomerDistrict}} <br />
+    {{CustomerProvince}}<br /> <br />
+
+    Thanks & Regards, <br />
+    FashionShop"
 </body>
 </html>

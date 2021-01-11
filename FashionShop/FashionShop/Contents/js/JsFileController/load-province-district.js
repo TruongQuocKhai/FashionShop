@@ -5,18 +5,18 @@
     },
     orderEvent: function () {
         $('#ddlProvince').off('change').on('change', function () {
-            var nameProvince = $(this).val();
-            if (nameProvince != '') {
-                order.loadDistrict(nameProvince);
+            var provinceName = $(this).val();
+            if (provinceName != '') {
+                order.loadDistrict(provinceName);
             }
             else {
                 $('#ddlDistrict').html('');
             }
         });
-        $('#ddlDistrict').off('change').on('change', function () {
-            var nameDistrict = $(this).val();
-            if (nameDistrict != '') {
-                order.loadWard(nameDistrict);
+        $('#ddlDistrict').on('change', function () {
+            var districtName = $(this).val();
+            if (districtName != '') {
+                order.loadWard(districtName);
             }
             else {
                 $('#ddlWard').html('');
@@ -75,6 +75,6 @@
                 }
             }
         });
-    }
+    },
 }
 order.init();

@@ -212,6 +212,7 @@
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\EmailNotifyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\ProductCategoryController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -223,7 +224,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="MailHelper.cs" />
     <Compile Include="Models\CartModel.cs" />
     <Compile Include="Models\DistrictModel.cs" />
     <Compile Include="Models\EmailNotifyViewModel.cs" />
@@ -238,6 +238,7 @@
     <Content Include="Contents\css\custom-fonticons.css" />
     <Content Include="Contents\css\custom.css" />
     <Content Include="Contents\css\FormSearch.css" />
+    <Content Include="Contents\css\jquery-ui.css" />
     <Content Include="Contents\css\main.css" />
     <Content Include="Contents\css\main.min.css" />
     <Content Include="Contents\css\PagedList.css" />
@@ -245,7 +246,9 @@
     <Content Include="Contents\css\StyleOrder.css" />
     <Content Include="Contents\css\util.css" />
     <Content Include="Contents\css\util.min.css" />
-    <Content Include="Contents\data\provinces-data.xml" />
+    <Content Include="Contents\data\provinces-data.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Contents\Images\banner-1.jpg" />
     <Content Include="Contents\Images\banner-2.jpg" />
     <Content Include="Contents\Images\blog-1.jpg" />
@@ -276,6 +279,7 @@
     <Content Include="Contents\Images\person-2.jpg" />
     <Content Include="Contents\Images\person-3.jpg" />
     <Content Include="Contents\Images\person-4.jpg" />
+    <Content Include="Contents\Images\qtay.jpg" />
     <Content Include="Contents\Images\s1.png" />
     <Content Include="Contents\Images\shirt-black-small.png" />
     <Content Include="Contents\Images\shirt-black.png" />
@@ -295,7 +299,9 @@
     <Content Include="Contents\Images\video\Bed-Phone.mp4" />
     <Content Include="Contents\Images\video\Bed-Phone.webm" />
     <Content Include="Contents\js\front.js" />
+    <Content Include="Contents\js\jquery-ui.js" />
     <Content Include="Contents\js\JsFileController\load-province-district.js" />
+    <Content Include="Contents\js\JsFileController\search-autocomplete.js" />
     <Content Include="Contents\js\main.js" />
     <Content Include="Contents\js\main.min.js" />
     <Content Include="Contents\js\map-custom.js" />
@@ -460,6 +466,8 @@
     <Content Include="Views\User\Registration.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\Shared\_PartialPage1.cshtml" />
+    <Content Include="Views\News\Index.cshtml" />
+    <Content Include="Views\Product\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

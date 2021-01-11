@@ -40,7 +40,7 @@ namespace FashionShop.Controllers
             return PartialView(listItems);
         }
         [HttpPost]
-        public ActionResult Order(string name, string email, string phone, string address, string province, string district, string ward)
+        public ActionResult Order(string name, string email, string phone, string address, string province, string district)
         {
             var objOrder = new order();
             objOrder.order_name = name;
@@ -49,7 +49,7 @@ namespace FashionShop.Controllers
             objOrder.order_address = address;
             objOrder.order_province = province;
             objOrder.order_district = district;
-            objOrder.order_ward = ward;
+           // objOrder.order_ward = ward;
             objOrder.order_date = DateTime.Now;
 
             // Get user infor
@@ -57,11 +57,13 @@ namespace FashionShop.Controllers
             {
                 var orderId = new OrderADO().Insert(objOrder);
                 var cart = (List<CartModel>)Session[SessionConst.CART_SESSION];
+
                 var orderDetailADO = new OrderDetailADO();
                 decimal total = 0;
+
+                var orderDetail = new order_detail();
                 foreach (var item in cart)
                 {
-                    var orderDetail = new order_detail();
                     orderDetail.product_id = item.Product.product_id;
                     orderDetail.order_id = orderId;
                     orderDetail.price = item.Product.price;
@@ -69,13 +71,27 @@ namespace FashionShop.Controllers
                     orderDetailADO.Insert(orderDetail);
                     total += (item.Product.price.GetValueOrDefault(0) * item.Quantity);
                 }
+                var productInfo = new product();
+                foreach (var item in cart)
+                {
+                    productInfo.prod_code = item.Product.prod_code;
+                    productInfo.product_name = item.Product.product_name;
+                    productInfo.quantity = item.Product.quantity;
+                    productInfo.price = item.Product.price;
+                }
+              
                 string content = System.IO.File.ReadAllText(Server.MapPath("~/Contents/EmailTemplate/neworder.html"));
                 content = content.Replace("{{CustomerName}}", name);
                 content = content.Replace("{{CustomerPhone}}", phone);
                 content = content.Replace("{{CustomerEmail}}", email);
                 content = content.Replace("{{CustomerAddress}}", address);
-                //content = content.Replace("{{CustomerProvince}}", province_id);
-                //content = content.Replace("{{CustomerProvince}}", district_id);
+                content = content.Replace("{{CustomerProvince}}", province);
+                content = content.Replace("{{CustomerDistrict}}", district);
+                //  content = content.Replace("{{CustomerWard}}", ward);
+                content = content.Replace("{{CustomerProdCode}}", productInfo.prod_code);
+                content = content.Replace("{{CustomerProdName}}", productInfo.product_name);
+                content = content.Replace("{{CustomerQuantity}}", productInfo.quantity.ToString());
+                content = content.Replace("{{CustomerPrice}}", productInfo.price.ToString());
                 content = content.Replace("{{CustomerTotal}}", total.ToString("N0"));
 
                 var toEmailAddress = ConfigurationManager.AppSettings["ToEmailAddress"].ToString();
@@ -140,30 +156,31 @@ namespace FashionShop.Controllers
             });
         }
 
-        public JsonResult LoadWard(string districtName)
-        {
-            var xmlDoc = XDocument.Load(Server.MapPath(@"/Contents/data/provinces-data.xml"));
-            // Lấy ra Quận theo biến truyền vào tương ứng
-            var xElement = xmlDoc.Element("Root").Elements("Item").Elements("Item")
-                .Single(x => x.Attribute("type").Value == "district"
-                && (x.Attribute("type").Value == districtName));
-            var list = new List<WardModel>();
-            WardModel wardModel = null;
-            // Vòng lặp các phường theo quận
-            foreach (var item in xElement.Elements("Item").Where(x => x.Attribute("type").Value == "precinct"))
-            {
-                wardModel = new WardModel();
-                wardModel.Id = int.Parse(item.Attribute("id").Value);
-                wardModel.Name = item.Attribute("value").Value;
-                wardModel.DistrictId = int.Parse(xElement.Attribute("id").Value);
-            }
-            return Json(new
-            {
-                data = list,
-                status = true
+        //public JsonResult LoadWard(string districtName)
+        //{
+        //    var xmlDoc = XDocument.Load(Server.MapPath(@"/Contents/data/provinces-data.xml"));
+        //    // Lấy ra Quận theo biến truyền vào tương ứng
+        //    var xElement = xmlDoc.Elements("Root").Elements("Item").Elements("Item")
+        //        .Single(x => x.Attribute("type").Value == "district"
+        //        && (x.Attribute("type").Value == districtName));
+        //    var list = new List<WardModel>();
+        //    WardModel wardModel = null;
+        //    // Vòng lặp các phường theo quận
+        //    foreach (var item in xElement.Elements("Item").Where(x => x.Attribute("type").Value == "precinct"))
+        //    {
+        //        wardModel = new WardModel();
+        //        wardModel.Id = int.Parse(item.Attribute("id").Value);
+        //        wardModel.Name = item.Attribute("value").Value;
+        //        wardModel.DistrictId = int.Parse(xElement.Attribute("id").Value);
+        //        list.Add(wardModel);
+        //    }
+        //    return Json(new
+        //    {
+        //        data = list,
+        //        status = true
 
-            }) ;
-        }
+        //    }) ;
+        //}
 
         public ActionResult SuccessNotification()
         {

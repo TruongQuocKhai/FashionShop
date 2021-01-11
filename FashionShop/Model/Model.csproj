@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ADO\ContactADO.cs" />
     <Compile Include="ADO\FooterADO.cs" />
     <Compile Include="ADO\MainMenuADO.cs" />
     <Compile Include="ADO\OrderADO.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="EF\slide.cs" />
     <Compile Include="EF\tag.cs" />
     <Compile Include="EF\user.cs" />
+    <Compile Include="ProductAndCategoryJoinModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

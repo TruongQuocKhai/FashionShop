@@ -81,6 +81,18 @@ namespace FashionShop
             );
 
             routes.MapRoute(
+               name: "Search",
+               url: "tim-kiem",
+               defaults: new { controller = "Product", action = "Search", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+                name: "Contact",
+                url: "lien-he",
+                defaults: new { controller = "Contact", action = "Index", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
