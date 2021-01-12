@@ -212,6 +212,7 @@
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\EmailNotifyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NewsCategoryController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\ProductCategoryController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
@@ -249,6 +250,8 @@
     <Content Include="Contents\data\provinces-data.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Contents\Images\3-phong-cach-thoi-trang-2.jpg" />
+    <Content Include="Contents\Images\3-phong-cach-thoi-trang-3.jpg" />
     <Content Include="Contents\Images\banner-1.jpg" />
     <Content Include="Contents\Images\banner-2.jpg" />
     <Content Include="Contents\Images\blog-1.jpg" />
@@ -468,6 +471,8 @@
     <Content Include="Views\Shared\_PartialPage1.cshtml" />
     <Content Include="Views\News\Index.cshtml" />
     <Content Include="Views\Product\Search.cshtml" />
+    <Content Include="Views\NewsCategory\_NewsCategoryPartial.cshtml" />
+    <Content Include="Views\News\ContentDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

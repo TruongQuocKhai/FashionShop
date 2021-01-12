@@ -115,6 +115,7 @@
 	margin: 0;
 	display: block;
 	outline: 0;
+    z-index:3;
 }
 .ui-menu .ui-menu {
 	position: absolute;

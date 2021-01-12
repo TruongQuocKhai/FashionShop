@@ -93,6 +93,18 @@ namespace FashionShop
             );
 
             routes.MapRoute(
+                name: "News",
+                url: "tin-tuc",
+                defaults: new { controller = "News", action = "Index", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "News Detail",
+                url: "chi-tiet-tin-tuc/{alias}-{id}",
+                defaults: new { controller = "News", action = "ContentDetail", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

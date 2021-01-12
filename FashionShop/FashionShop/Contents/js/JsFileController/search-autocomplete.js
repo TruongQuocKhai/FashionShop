@@ -1,8 +1,8 @@
 ﻿var common = {
     init: function () {
-        common.searchEvent();
+        common.RegisterEvent();
     },
-    searchEvent: function () {
+    RegisterEvent: function () {
         $("#txtKeyword").autocomplete({
             minLength: 0,
             source: function (request, response) {

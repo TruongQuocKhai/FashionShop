@@ -1,0 +1,7 @@
+﻿
+@model List<Model.EF.news_category>
+
+@foreach (var item in Model)
+{
+    <li class="breadcrumb-item"><a href="~/tin-tuc/@item.news_category_name-@item.news_category_id">@item.news_category_name</a></li>
+}

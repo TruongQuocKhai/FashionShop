@@ -1,0 +1,45 @@
+﻿@model Model.EF.content
+
+@{
+    ViewBag.Title = "chitietbaiviet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="hero hero-page gray-bg padding-small">
+    <div class="container">
+        <div class="row d-flex">
+            <div class="col-lg-9 order-2 order-lg-1">
+                <h1>@Model.content_name</h1><p class="author-date-top">By <a href="#">@Model.created_by</a> | @Model.created_date</p>
+            </div>
+            <div class="col-lg-3 text-right order-1 order-lg-2">
+                <ul class="breadcrumb justify-content-lg-end">
+                    <li class="breadcrumb-item"><a href="~/">trang chủ</a></li>
+                    <li class="breadcrumb-item"><a href="~/tin-tuc">Blog</a></li>
+                    <li class="breadcrumb-item active">Post</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="padding-small">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-8 col-lg-10">
+                <header>
+                    <p class="lead">
+                        @Model.description
+                    </p>
+                </header>
+                <div class="text-content">
+                    @Html.Raw(Model.detail)
+                </div>
+            </div>
+        </div>
+        <div class="comments">
+            <div class="row">
+                <!-- /.comments-->
+                <div class="fb-comments" data-href="http://localhost:20697/tin-tuc/chi-tiet/@Model.meta-@Model.id_InformationTravel" data-width="100%" data-numposts="5"></div>
+            </div>
+        </div>
+    </div>
+</section>

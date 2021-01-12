@@ -1,4 +1,4 @@
-﻿@model List<ProductAndCategoryJoinModel>
+﻿@model List<Model.EF.product>
 @using FashionShop.Models;
 @{
     //var category = (MyProject.Models.EF.ProductCategory)ViewBag.Category;
@@ -61,19 +61,19 @@
                                         <div class="ribbon ribbon-primary text-uppercase">
                                             Sale
                                         </div>
-                                        <img src="/Contents/Images/@item.ProdImages" alt="product" class="img-fluid">
+                                        <img src="/Contents/Images/@item.image" alt="product" class="img-fluid">
                                         <div class="hover-overlay d-flex align-items-center justify-content-center">
                                             <div class="CTA d-flex align-items-center justify-content-center">
-                                                <a href="/them-vao-gio-hang?productId=@item.ProdId&quantity=1" class="add-to-cart" title="Thêm vào giỏ"><i class="fa fa-shopping-cart"></i></a>
-                                                <a href="~/chi-tiet/@item.ProdAlias-@item.ProdId" class="visit-product active"><i class="icon-search"></i>Xem chi tiết</a>
-                                                <a href="#" data-toggle="modal" data-target="#@item.ProdId" class="quick-view" title="Xem nhanh"><i class="fa fa-arrows-alt"></i></a>
+                                                <a href="/them-vao-gio-hang?productId=@item.product_id&quantity=1" class="add-to-cart" title="Thêm vào giỏ"><i class="fa fa-shopping-cart"></i></a>
+                                                <a href="~/chi-tiet/@item.alias-@item.product_id" class="visit-product active"><i class="icon-search"></i>Xem chi tiết</a>
+                                                <a href="#" data-toggle="modal" data-target="#@item.product_id" class="quick-view" title="Xem nhanh"><i class="fa fa-arrows-alt"></i></a>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="title">
                                         <small class="text-muted">Danh muc</small><a>
-                                            <h3 class="h6 text-uppercase no-margin-bottom">@item.ProdName</h3>
-                                        </a><span class="price text-muted">@item.ProdPrice.GetValueOrDefault(0).ToString("N0")<sup>đ</sup></span>
+                                            <h3 class="h6 text-uppercase no-margin-bottom">@item.product_name</h3>
+                                        </a><span class="price text-muted">@item.price.GetValueOrDefault(0).ToString("N0")<sup>đ</sup></span>
                                     </div>
                                 </div>
                             </div>
@@ -90,7 +90,7 @@
                         var startPage = Math.Max(1, (currentPage - displayMaxPages) / 2);
                         var endPage = Math.Min(totalPage, (currentPage + displayMaxPages) / 2);
 
-                        var link = "/tat-ca-san-pham";
+                        var link = "/tim-kiem";
                         <nav aria-label="page navigation example" class="d-flex justify-content-center">
                             <ul class="pagination pagination-custom">
                                 <li class="page-item">
