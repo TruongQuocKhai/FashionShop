@@ -1,0 +1,101 @@
+﻿@model FashionShop.Models.FeedbackModel
+
+
+@{
+    ViewBag.Title = "Phản hồi";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row d-flex align-items-center flex-wrap">
+            <div class="col-md-7">
+                <h1 class="h2">liên hệ tôi</h1>
+            </div>
+            <div class="col-md-5">
+                <ul class="breadcrumb d-flex justify-content-end">
+                    <li class="breadcrumb-item"><a href="/">trang chủ</a></li>
+                    <li class="breadcrumb-item active">liên hệ</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="content">
+    <div id="contact" class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <section class="bar">
+                    <div class="heading">
+                        <h3>Send your comments.</h3>
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.LabelFor(m => m.FeedbackName, new { @class = "col-md-5 control-label" })
+                                        <div class="col-md-12">
+                                            @Html.TextBoxFor(m => m.FeedbackName, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(m => m.FeedbackName)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.LabelFor(m => m.Email, new { @class = "col-md-5 control-label" })
+                                        <div class="col-md-12">
+                                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(m => m.Email)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.LabelFor(m => m.Subject, new { @class = "col-md-5 control-label" })
+                                        <div class="col-md-12">
+                                            @Html.TextBoxFor(m => m.Subject, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(m => m.Subject)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        @Html.LabelFor(m => m.Message, new { @class = "col-md-5 control-label" })
+                                        <div class="col-md-12">
+                                            @Html.TextAreaFor(m => m.Message, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(m => m.Message)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <div class="col-md-offset-2 col-md-10">
+                                            <button type="submit" class="btn btn-template-outlined"><i class="fa fa-envelope-o"></i> Send message</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </section>
+            </div>
+            @*@Html.Action("Contact", "Chil")*@
+            <div class="col-md-8 mx-auto">
+            </div>
+        </div>
+    </div>
+</div>
+<section class="bar bg-gray">
+    <div class="container">
+        <div class="heading text-center">
+            <h2>Social Network</h2>
+        </div>
+        <ul class="list-unstyled owl-carousel customers no-mb">
+            @*@Html.Action("Social", "Chil")*@
+        </ul>
+    </div>
+</section>
+
+

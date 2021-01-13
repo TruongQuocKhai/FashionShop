@@ -1,15 +1,15 @@
 ﻿@model Model.EF.content
 
 @{
-    ViewBag.Title = "chitietbaiviet";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Nôi dung tin tức";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
 }
 
 <section class="hero hero-page gray-bg padding-small">
     <div class="container">
         <div class="row d-flex">
             <div class="col-lg-9 order-2 order-lg-1">
-                <h1>@Model.content_name</h1><p class="author-date-top">By <a href="#">@Model.created_by</a> | @Model.created_date</p>
+                <h1>@Model.content_name</h1><p class="author-date-top">Được đăng bởi <a href="#">@Model.created_by</a> | @Model.created_date</p>
             </div>
             <div class="col-lg-3 text-right order-1 order-lg-2">
                 <ul class="breadcrumb justify-content-lg-end">
@@ -25,11 +25,11 @@
     <div class="container">
         <div class="row">
             <div class="col-xl-8 col-lg-10">
-                <header>
+                @*<header>
                     <p class="lead">
                         @Model.description
                     </p>
-                </header>
+                </header>*@
                 <div class="text-content">
                     @Html.Raw(Model.detail)
                 </div>
@@ -38,8 +38,32 @@
         <div class="comments">
             <div class="row">
                 <!-- /.comments-->
-                <div class="fb-comments" data-href="http://localhost:20697/tin-tuc/chi-tiet/@Model.meta-@Model.id_InformationTravel" data-width="100%" data-numposts="5"></div>
+                <div class="fb-comments" data-href="http://localhost:62132/chi-tiet-tin-tuc/@Model.alias-@Model.content_id" data-width="100%" data-numposts="5"></div>
             </div>
         </div>
     </div>
 </section>
+
+
+@*<h2>JIKEY X DAWG c&ugrave;ng bộ ảnh nghệ thuật ho&agrave;n hảo đ&aacute;ng ch&uacute; &yacute;</h2>
+
+
+@*<p>V&agrave;o kho&atilde;ng th&aacute;ng 7 năm nay, những h&igrave;nh ảnh đầu ti&ecirc;n của c&aacute;c sản phẩm Timberland 6-Inch Boots collab c&ugrave;ng h&atilde;ng sportswear Champion đ&atilde; l&ecirc;n s&oacute;ng internet. Độ hype th&igrave; kh&ocirc;ng cần b&agrave;n c&atilde;i, thế nhưng cả Timberland lẫn Champion lẫn b&igrave;nh th&aacute;n m&agrave; &eacute;m, &eacute;m cho đến tận b&acirc;y giờ.</p>
+
+<p>H&ocirc;m nay xin giới thiệu đến c&aacute;c bạn, to&agrave;n bộ những g&igrave; m&agrave; Timberland v&agrave; Champion đ&atilde; ấp ủ trong suốt thời gian qua</p>
+
+<p>.<img alt="" src="/Contents/Images/3-phong-cach-thoi-trang-6.jpg" style="height:1024px; width:682px" /></p>
+
+<p>Những g&igrave; m&agrave; collab của cả 2 mang đến kh&ocirc;ng chỉ l&agrave; boots, m&agrave; c&ograve;n bao gồm loạt apparel d&agrave;nh cho m&ugrave;a lạnh. Cụ thể, collab sẽ được chia l&agrave;m 2 BST &ndash; &ldquo;Luxe Pack&rdquo; v&agrave; &ldquo;Sport Pack&rdquo;.</p>
+
+<p>&ldquo;Luxe Pack&rdquo; sẽ bao gồm loạt sản phẩm quần &aacute;o theo phong c&aacute;ch sportswear d&agrave;nh cho m&ugrave;a Đ&ocirc;ng, với branding của cả 2 thương hiệu. Những item trong BST n&agrave;y bao gồm &aacute;o thun tay ngắn, tay d&agrave;i, hoodie l&oacute;t b&ocirc;ng, quần jogger,&hellip;</p>
+
+<p><img alt="" src="/Contents/Images/3-phong-cach-thoi-trang-4.jpg" style="height:1024px; width:682px" /></p>
+
+<p>&ldquo;Luxe Pack&rdquo; sẽ được release v&agrave;o ng&agrave;y 10/11 tới. C&ograve;n &ldquo;Sport Pack&rdquo; sẽ c&oacute; một đợi release online exclusive d&agrave;nh cho bản boots v&agrave; sản phẩm trong t&ocirc;ng &ldquo;Oxford Grey&rdquo; v&agrave;o ng&agrave;y 26/11. Phần c&ograve;n lại sẽ tiếp tục ra mắt v&agrave;o 30/11.</p>
+
+<p>Địa điểm ph&aacute;t h&agrave;nh sẽ l&agrave; hệ thống của Foot Locker v&agrave; một số retailer chọn lọc kh&aacute;c.</p>
+
+<p><img alt="" src="/Contents/Images/3-phong-cach-thoi-trang-3.jpg" style="height:1024px; width:682px" /></p>
+
+<p>&nbsp;</p>*@

@@ -1,0 +1,35 @@
+﻿@model Model.EF.introduce
+    @using Model.EF
+@{
+    var intro = new introduce();
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<section class="hero hero-page gray-bg padding-small">
+    <div class="container">
+        <div class="row d-flex">
+            <div class="col-lg-9 order-2 order-lg-1">
+                <h1>Giới thiệu</h1><p class="author-date-top">Được đăng bởi <a href="#">@Model.created_by</a> | @Model.created_date</p>
+            </div>
+            <div class="col-lg-3 text-right order-1 order-lg-2">
+                <ul class="breadcrumb justify-content-lg-end">
+                    <li class="breadcrumb-item"><a href="~/">Trang chủ</a></li>
+                    <li class="breadcrumb-item"><a href="#">giới thiệu</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="padding-small">
+    <div class="container">
+        <div class="grid__item large--two-thirds push--large--one-sixth">
+            <div class="rte">
+                <p></p><div class="_2cuy _3dgx _2vxa"><p>Thương hiệu thời trang nam FashionShop   chính thức ra mắt những người yêu mến thời trang vào năm 2010. Buổi ban đầu, FashionShop  được các bạn trẻ biết đến với những dòng sản phẩm đơn giản, mang phong cách trẻ trung, năng động và thoải mái. Sau thành công ban đầu, với khởi nguồn từ niềm đam mê thời trang, thương hiệu FashionShop  đã đa dạng hoá các sản phẩm của mình hơn, ra mắt thêm nhiều mẫu sản phẩm mới và cập nhật nhiều thêm các xu hướng thời trang. FashionShop  mong muốn mang đến cho khách hàng những sản phẩm tốt nhất để các bạn có thể tự tin hơn trên con đường chọn lựa phong cách thời trang của riêng mình.</p><p>&nbsp;</p><p>ĐỐI TƯỢNG KHÁCH HÀNG</p><p>* Bạn là một chàng trai sinh viên yêu thích sự gọn nhẹ và thoải mái?</p><p>* Bạn là anh chàng cá tính yêu thời trang thích phối hợp những phong cách hợp thời?</p><p>* Bạn là một nhân viên văn phòng yêu thích sự đơn giản nhưng lịch lãm?</p><p>&nbsp;</p><p>Dù cho bạn là ai, phong cách thời trang của bạn như thế nào thì FashionShop  hoàn toàn tự tin có thể đáp ứng mọi nhu cầu của bạn. Hơn thế, FashionShop  luôn cập nhật sản phẩm mới liên tục để bạn có thể “update” cho tủ đồ của mình thêm đa dạng hơn. Với hệ thống cửa hàng mua sắm thuận tiện, và các kênh mua sắm online, FashionShop  mong muốn sẽ luôn mang đến cho khách hàng sự tiện ích, thoải mái, và thân thiện trong suốt quá trình mua sắm. Còn chần chờ gì nữa, hãy đến với FashionShop  để trở thành một chàng trai đa phong cách các bạn nhé!&nbsp;</p><p>&nbsp;</p><br></div><p></p>
+            </div>
+
+        </div>
+
+    </div>
+</section>>

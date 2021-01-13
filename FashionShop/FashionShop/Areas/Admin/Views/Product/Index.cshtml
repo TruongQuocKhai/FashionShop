@@ -1,0 +1,170 @@
+﻿@model List<Model.EF.product>
+@using FashionShop.Models;
+@{
+    ViewBag.Title = "ProductsList";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+@section jsFooter{
+    <script>
+        function Remove(id) {
+            var conf = confirm("Bạn xác nhận muốn xóa! Sau khi xóa dữ liệu sẽ không được phục hồi");
+            if (conf == true) {
+                $.ajax({
+                    url: '/Admin/Products/Delete',
+                    type: 'POST',
+                    data: {
+                        'id': id
+                    }
+                }).done(function (data) {
+                    if (data.message == 1) {
+                        alert("Xóa thành công");
+                        location.reload();
+                    }
+                    else {
+                        alert("Xóa thất bại");
+                    }
+                })
+            }
+        }
+    </script>
+}
+<style>
+    .btn-outline.red:hover {
+        border-color: #e7505a;
+        color: #fff;
+        background: #e7505a;
+    }
+
+
+    .btn-outline.red {
+        border-color: #e7505a;
+        color: #e7505a;
+        background: 0 0;
+        /*border-radius: 20px;*/
+        width: 27%;
+    }
+
+        .btn-outline.red:active {
+            position: relative;
+            top: 2px;
+        }
+
+    .btn-outline.blue:hover {
+        background-color: #5bc0de;
+        border-color: #46b8da;
+        color: #fff;
+    }
+
+    .btn-outline.blue {
+        border-color: #17a2b8;
+        color: #17a2b8;
+        background: 0 0;
+        /*border-radius: 20px;*/
+        width: 27%;
+    }
+
+        .btn-outline.blue:active {
+            position: relative;
+            top: 2px;
+        }
+</style>
+
+@section header{
+    Danh sách sản phẩm
+}
+<div class="product-status mg-b-30">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="product-status-wrap">
+                    @*<h4>Products List</h4>*@
+                    <div class="add-product">
+                        <a href="/Admin/Products/AddProducts/" class="btn btn-warning">Thêm mới</a>
+                    </div>
+                    <table>
+                        <tr>
+                            <th>Hình ảnh</th>
+                            <th>Tên sản phẩm </th>
+                            <th>Trạng thái</th>
+                            <th>Ngày đăng</th>
+                            <th>Giá tiền</th>
+                            <th>Thao tác</th>
+                        </tr>
+                        @foreach (var item in Model)
+                        {
+                            <tr id="@item.product_id">
+                                <td><img src="~/Contents/Images/@item.image" alt="" /></td>
+                                <td>@item.product_name</td>
+                                <td>
+                                    <button class="pd-setting">Active</button>
+                                </td>
+                                <td>@item.created_date</td>
+                                <td>@item.price.GetValueOrDefault(0).ToString("N0")<sup>đ</sup></td>
+                                <td>
+                                    <a href="/Admin/Products/ProductsEdit/@item.product_id">
+                                        <i class="fa fa-pencil-square-o btn btn-icon-only btn-circle btn-outline blue"></i>
+                                    </a>
+                                    @*<a title="Cập nhật" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>*@
+                                    @*<button onclick="xoa(@item.ID)" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>*@
+                                    <a onclick="Remove(@item.product_id)"><i class="fa fa-trash btn btn-icon-only btn-circle btn-outline red"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                    <!-- Pagination  -->
+                    @if (ViewBag.TotalPage >= 1)
+                    {
+                        int displayMaxPages = (int)ViewBag.DisplayMaxPages;  // chỉ cho hiển thị chỉ mục 1-6 ptu;
+                        int totalPage = (int)ViewBag.TotalPage;  // Total page is display
+                        int currentPage = (int)ViewBag.StartIndex;
+
+
+
+                        //  Create number links
+                        var startPage = Math.Max(1, (currentPage - displayMaxPages) / 2);
+                        var endPage = Math.Min(totalPage, (currentPage + displayMaxPages) / 2);
+
+                        var link = "/admin/san-pham";
+                        <nav aria-label="page navigation example" class="d-flex justify-content-center">
+                            <ul class="pagination pagination-custom">
+                                <li class="page-item">
+                                    <a href="@link?page=@ViewBag.Prev" aria-label="Previous" class="page-link">
+                                        <span aria-hidden="true">Prev</span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                </li>
+
+                                @for (int i = startPage; i <= endPage; i++)
+                                {
+                                    if (currentPage == i)
+                                    {
+                                        <li class="page-item">
+                                            <a href="@link?page=@i" class="page-link active">@i</a>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li class="page-item">
+                                            <a href="@link?page=@i" class="page-link">@i</a>
+                                        </li>
+                                    }
+                                }
+                                <li class="page-item">
+                                    <a href="@link?page=@ViewBag.Next" class="page-link">
+                                        <span aria-hidden="true">Next</span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    }
+                    else { }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

@@ -51,7 +51,9 @@
   <ItemGroup>
     <Compile Include="ADO\ContactADO.cs" />
     <Compile Include="ADO\ContentADO.cs" />
+    <Compile Include="ADO\FeedbackADO.cs" />
     <Compile Include="ADO\FooterADO.cs" />
+    <Compile Include="ADO\IntroduceADO.cs" />
     <Compile Include="ADO\MainMenuADO.cs" />
     <Compile Include="ADO\NewsCategoryADO.cs" />
     <Compile Include="ADO\OrderADO.cs" />

@@ -96,7 +96,7 @@ namespace FashionShop.Controllers
 
                 var toEmailAddress = ConfigurationManager.AppSettings["ToEmailAddress"].ToString();
                 new MailHelper().SendMail(email, "FashionShop - Xác nhận đơn hàng", content); // Send Email to Customer
-                new MailHelper().SendMail(toEmailAddress, "FashionShop - Xác nhận đơn hàng", content); // Send Email to Admin
+                new MailHelper().SendMail(toEmailAddress, "FashionShop - Đơn hàng mới", content); // Send Email to Admin
 
             }
             catch (Exception)
