@@ -33,9 +33,13 @@ namespace Model.EF
         [StringLength(50)]
         public string phone { get; set; }
 
-        public int province_id { get; set; }
+        [StringLength(250)]
+        public string province { get; set; }
 
-        public int district_id { get; set; }
+        [StringLength(250)]
+        public string district { get; set; }
+        [StringLength(250)]
+        public string ward { get; set; }
 
         [StringLength(200)]
         public string avatar { get; set; }

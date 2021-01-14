@@ -79,6 +79,9 @@
     <Compile Include="EF\slide.cs" />
     <Compile Include="EF\tag.cs" />
     <Compile Include="EF\user.cs" />
+    <Compile Include="EF\role.cs" />
+    <Compile Include="EF\permission.cs" />
+    <Compile Include="EF\user_group.cs" />
     <Compile Include="ProductAndCategoryJoinModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -86,6 +89,11 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{6FAEF5CC-2674-4B7E-BBB7-9B651CF6215E}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

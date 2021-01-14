@@ -28,6 +28,9 @@ namespace Model.EF
         public virtual DbSet<user> user { get; set; }
         public virtual DbSet<order> order { get; set; }
         public virtual DbSet<order_detail> order_detail { get; set; }
+        public virtual DbSet<user_group> user_group { get; set; }
+        public virtual DbSet<role> role { get; set; }
+        public virtual DbSet<permission> permission { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

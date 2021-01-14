@@ -14,8 +14,9 @@ create table [user](
 	address nvarchar(200),
 	email varchar(50),
 	phone varchar(50),
-	province_id int,
-	district_id int,
+	province nvarchar(250),
+	district nvarchar(250),
+	ward nvarchar(250),
 	avatar varchar(200),
 	created_date datetime default getdate(),
 	created_by	nvarchar(250),
@@ -25,6 +26,25 @@ create table [user](
 );
 go
 drop table [user]
+
+create table user_group(
+	user_group_id varchar(50) primary key,
+	name nvarchar(50) default('member')
+);
+
+create table role(
+	role_id varchar(50) primary key,
+	name nvarchar(50)
+);
+
+create table permission(
+	user_group_id varchar(50),
+	role_id varchar(50),
+
+	constraint pk_UserGroupId_RoleId primary key(user_group_id, role_id) 
+);
+
+
 
 create table product_category(
 	prd_category_id int identity primary key,

@@ -16,6 +16,14 @@ namespace Model.ADO
             db = new DbFashionShop();
         }
 
+
+        public int Insert(product entity)
+        {
+            db.product.Add(entity);
+            db.SaveChanges();
+            return entity.product_id;
+        }
+
         public List<product> GetListNewProducts(int quantity)
         {
             return db.product.Where(x => x.discount == null).OrderByDescending(x => x.created_date).Take(quantity).ToList();

@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Common;
 using Model.EF;
+
+
 
 namespace Model.ADO
 {
@@ -13,6 +16,12 @@ namespace Model.ADO
         public UserADO()
         {
             db = new DbFashionShop();
+        }
+
+        public List<user> GetListUser(ref int totalRecord, int page, int pageSize)
+        {
+            totalRecord = db.user.Count();
+            return db.user.OrderByDescending(x => x.created_date).Skip((page - 1) * pageSize).Take(pageSize).ToList();
         }
 
         public bool CheckEmail(string email)
@@ -54,7 +63,7 @@ namespace Model.ADO
             {
                 db.user.Add(entity);
                 db.SaveChanges();
-                return 1; 
+                return 1;
             }
             return user.user_id;
         }
@@ -68,33 +77,43 @@ namespace Model.ADO
             }
             else
             {
-                if (hasLoggedAdmin == true)
+                if (hasLoggedAdmin == true)  // Đăng nhập bên trong admin
+                {
+                    if (result.user_group_id == ConstUserGroup.ADMIN_GROUP || result.user_group_id == ConstUserGroup.MODERATOR_GROUP)
+                    {
+                        if (result.status == false)
+                        {
+                            return -1; // Account locked
+                        }
+                        else
+                        {
+                            if (result.password == password)
+                            {
+                                return 1; // correct correctly
+                            }
+                            else
+                            {
+                                return -2; // wrong password
+                            }
+                        }
+                    }
+                    else
+                    {
+                        return -3; // login incorrect
+                    }
+                }
+                else   // Đăng nhập bên ngoài
                 {
                     if (result.status == false)
                     {
-                        return -1; // Account locked
+                        return -1;
                     }
                     else
                     {
                         if (result.password == password)
-                        {
-                            return 1; // Login correctly
-                        }
+                            return 1;
                         else
-                        {
-                            return -2; // Login incorrectly
-                        }
-                    }
-                }
-                else
-                {
-                    if (result.password == password)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return -2;
+                            return -2;
                     }
                 }
             }
