@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using FashionShop.Areas.Admin.Models;
 using FashionShop.Common;
+using FashionShop.Models;
 using Model.ADO;
 
 namespace FashionShop.Areas.Admin.Controllers
@@ -12,13 +12,11 @@ namespace FashionShop.Areas.Admin.Controllers
     public class LoginController : Controller
     {
         // GET: Admin/Login
-
-        [HttpGet]
-        public ActionResult Login()
+        public ActionResult Index()
         {
             return View();
         }
-        [HttpPost]
+
         public ActionResult Login(LoginModel model)
         {
             if (ModelState.IsValid)
@@ -47,7 +45,7 @@ namespace FashionShop.Areas.Admin.Controllers
                 {
                     ModelState.AddModelError("", "Mật khẩu không đúng!");
                 }
-                else if(result == -3)
+                else if (result == -3)
                 {
                     ModelState.AddModelError("", "Tài khoản của bạn không có quyền đăng nhập!");
                 }
@@ -57,6 +55,12 @@ namespace FashionShop.Areas.Admin.Controllers
                 }
             }
             return View("Login");
+        }
+
+        public ActionResult Logout()
+        {
+            Session[SessionConst.USER_SESSION] = null;
+            return Redirect("/Admin");
         }
     }
 }

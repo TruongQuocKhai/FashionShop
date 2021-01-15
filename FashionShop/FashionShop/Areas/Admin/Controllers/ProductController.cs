@@ -8,7 +8,7 @@ using Model.EF;
 
 namespace FashionShop.Areas.Admin.Controllers
 {
-    public class ProductController : Controller
+    public class ProductController : BaseController
     {
         // GET: Admin/Product
         public ActionResult Index(int page = 1, int pageSize = 3)
@@ -53,5 +53,18 @@ namespace FashionShop.Areas.Admin.Controllers
             GetDropDownListCategory();
             return View();
         }
+
+
+        public ActionResult RemoveProduct()
+        {
+            return View();
+        }
+
+        public ActionResult EditProduct()
+        {
+            return View();
+        }
+
+
     }                      
 }

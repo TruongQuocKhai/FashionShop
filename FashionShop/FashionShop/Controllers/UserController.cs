@@ -210,7 +210,7 @@ namespace FashionShop.Controllers
         public ActionResult Logout()
         {
             Session.Abandon();
-            Response.Cookies.Clear();
+            //Response.Cookies.Clear();
             return Redirect("/");
         }
 

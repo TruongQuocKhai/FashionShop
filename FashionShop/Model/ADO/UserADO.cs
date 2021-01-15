@@ -29,6 +29,11 @@ namespace Model.ADO
             return db.user.Count(x => x.email == email) > 0;
         }
 
+        public bool CheckPhone(string phone)
+        {
+            return db.user.Count(x => x.phone == phone) > 0;
+        }
+
         public user GetEmail(string email)
         {
             return db.user.SingleOrDefault(x => x.email == email);

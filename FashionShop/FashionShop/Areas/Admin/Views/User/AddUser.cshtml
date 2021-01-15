@@ -1,0 +1,87 @@
+﻿@model Model.EF.user
+
+@{
+    ViewBag.Title = "Thêm mới User";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@section header {
+    Thêm mới User
+}
+
+<div class="single-product-tab-area mg-b-30">
+    <!-- Single pro tab review Start-->
+    <div class="single-pro-review-area">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="review-tab-pro-inner">
+                        <ul id="myTab3" class="tab-review-design">
+                            <li class="active"><a href="#inforProducts"><i class="icon nalika-edit" aria-hidden="true"></i> Thông tin sản phẩm</a></li>
+                            @*<li><a href="#reviews"><i class="icon nalika-picture" aria-hidden="true"></i> Hình ảnh</a></li>*@
+                        </ul>
+
+                        <div id="myTabContent" class="tab-content custom-product-edit">
+                            @using (Html.BeginForm("AddUser", "User", FormMethod.Post))
+                            {
+                                <div class="product-tab-list tab-pane fade active in" id="inforProducts">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                            <div class="review-content-section">
+
+                                                <!-- add dropdownlist for group_user_id-->
+                                                <div class="input-group mg-b-pro-edt">
+                                                    <span class="input-group-addon"><i class="icon nalika-user" aria-hidden="true"></i></span>
+                                                    <select id="user_group_id" name="user_group_id" class="form-control">
+                                                        <option selected>-- Chọn loại user --</option>
+                                                        <option value="ADMIN">Admin</option>
+                                                        <option value="">Quản lý</option>
+                                                        <option value="ADMIN">Thành viên</option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="input-group mg-b-pro-edt">
+                                                    <span class="input-group-addon"><i class="fa fa-barcode"></i></span>
+                                                    <input type="text" class="form-control" name="email" placeholder="Nhập email">
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                            <div class="review-content-section">
+                                                <div class="input-group mg-b-pro-edt">
+                                                    <span class="input-group-addon"><i class="icon nalika-user" aria-hidden="true"></i></span>
+                                                    <input type="text" class="form-control" name="display_name" placeholder="Nhập tên hiển thị">
+                                                </div>
+                                                <div class="input-group mg-b-pro-edt">
+                                                    <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
+                                                    <input type="text" class="form-control" name="password" placeholder="Nhập mật khẩu">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="text-center custom-pro-edt-ds">
+                                            <button type="submit" class="btn btn-ctl-bt waves-effect waves-light m-r-10">
+                                                Thêm mới
+                                            </button>
+                                            <a href="/Admin/quan-ly-user" class="btn btn-ctl-bt waves-effect waves-light">
+                                                Hủy bỏ
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

@@ -13,6 +13,7 @@ namespace Model.ADO
         public ProductCategoryADO()
         {
             db = new DbFashionShop();
+            
         }
 
         public List<product_category> GetListProductCategory()
