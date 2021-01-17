@@ -1,21 +1,20 @@
 ﻿@model Model.EF.introduce
-    @using Model.EF
+@using Model.EF
 @{
     var intro = new introduce();
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutUser.cshtml";
 }
 
-<section class="hero hero-page gray-bg padding-small">
+<section class="hero hero-page gray-bg padding-small" style="padding: 5px 0 !important;">
     <div class="container">
         <div class="row d-flex">
             <div class="col-lg-9 order-2 order-lg-1">
-                <h1>Giới thiệu</h1><p class="author-date-top">Được đăng bởi <a href="#">@Model.created_by</a> | @Model.created_date</p>
             </div>
             <div class="col-lg-3 text-right order-1 order-lg-2">
                 <ul class="breadcrumb justify-content-lg-end">
-                    <li class="breadcrumb-item"><a href="~/">Trang chủ</a></li>
-                    <li class="breadcrumb-item"><a href="#">giới thiệu</a></li>
+                    <li class="breadcrumb-item"><a href="~/">Trang Chủ</a></li>
+                    <li class="breadcrumb-item active">giới thiệu</li>
                 </ul>
             </div>
         </div>

@@ -18,6 +18,21 @@ namespace Model.ADO
             db = new DbFashionShop();
         }
 
+        public bool Delete(int id)
+        {
+            try
+            {
+                var userSelected = db.user.Find(id);
+                db.user.Remove(userSelected);
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+        }
+
         public List<user> GetListUser(ref int totalRecord, int page, int pageSize)
         {
             totalRecord = db.user.Count();

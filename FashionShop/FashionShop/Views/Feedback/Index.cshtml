@@ -6,95 +6,113 @@
     Layout = "~/Views/Shared/_LayoutUser.cshtml";
 }
 
-<div id="heading-breadcrumbs">
+<section class="hero hero-page gray-bg padding-small" style="padding: 5px 0 !important;">
     <div class="container">
-        <div class="row d-flex align-items-center flex-wrap">
-            <div class="col-md-7">
-                <h1 class="h2">liên hệ tôi</h1>
+        <div class="row d-flex">
+            <div class="col-lg-9 order-2 order-lg-1">
             </div>
-            <div class="col-md-5">
-                <ul class="breadcrumb d-flex justify-content-end">
-                    <li class="breadcrumb-item"><a href="/">trang chủ</a></li>
-                    <li class="breadcrumb-item active">liên hệ</li>
+            <div class="col-lg-3 text-right order-1 order-lg-2">
+                <ul class="breadcrumb justify-content-lg-end">
+                    <li class="breadcrumb-item"><a href="~/">Trang Chủ</a></li>
+                    <li class="breadcrumb-item active">feedback</li>
                 </ul>
             </div>
         </div>
     </div>
-</div>
+</section>
 
-<div id="content">
-    <div id="contact" class="container">
+<section>
+    <div class="container">
         <div class="row">
-            <div class="col-lg-8">
-                <section class="bar">
-                    <div class="heading">
-                        <h3>Send your comments.</h3>
+
+            <div class="col-md-6 p-b-30">
+                <header class="mb-5">
+                    <h2 class="heading-line">Liên hệ</h2>
+                </header>
+                <div style="padding-bottom: 14px;">
+                    <div>
+                        <i class="fa fa-phone" aria-hidden="true"></i>
+                        <a href="tel: 0909 313 375" class="contact-info a">
+                            Hotline: 0909 090909
+                        </a>
+                    </div>
+                    <div>
+                        <i class="fa fa-home" aria-hidden="true"></i>
+                        <a class="contact-info">
+                            223 Bùi Đình Túy, phường 24, Quận Bình Thạnh, Tp.HCM
+                        </a>
+                    </div>
+                    <div>
+                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                        <a href="lienhe.fashionshop@gmail.com" class="contact-info a">
+                            lienhe.fashionshop@gmail.com
+                        </a>
+                    </div>
+                </div>
+
+                <div class="p-r-20 p-r-0-lg">
+                    <div class="contact-map size21" id="google_map" data-map-x="40.614439" data-map-y="-73.926781" data-pin="images/icons/icon-position-map.png" data-scrollwhell="0" data-draggable="1">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.6870762601925!2d106.80333331744384!3d10.835242000000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317527257904fa17%3A0xa27eb98be2cffc1c!2zVmnhu4duIEPDtG5nIE5naOG7hyBDYW8gSHV0ZWNo!5e0!3m2!1svi!2s!4v1536128310367" width="100%" height="503" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 p-b-30">
+                <header class="mb-5">
+                    <h2 class="heading-line">Feedback</h2>
+                </header>
+                <div class="row">
+                    <div class="col-md-12">
                         @using (Html.BeginForm())
                         {
                             @Html.AntiForgeryToken()
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        @Html.LabelFor(m => m.FeedbackName, new { @class = "col-md-5 control-label" })
-                                        <div class="col-md-12">
-                                            @Html.TextBoxFor(m => m.FeedbackName, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(m => m.FeedbackName)
+
+                            <form class="custom-form form">
+                                <div class="controls">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="name" class="form-label">Họ và Tên</label>
+                                                <input type="text" name="FromName" id="FromName" placeholder="Nhập Tên" required="required" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="surname" class="form-label">Số Điện Thoại</label>
+                                                <input type="text" name="NumberPhone" id="NumberPhone" placeholder="Nhập SĐT" required="required" class="form-control">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        @Html.LabelFor(m => m.Email, new { @class = "col-md-5 control-label" })
-                                        <div class="col-md-12">
-                                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(m => m.Email)
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="email" class="form-label">Email</label>
+                                                <input type="email" name="FromEmail" id="FromEmail" placeholder="Nhập Email" required="required" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="email" class="form-label">Tiêu Đề</label>
+                                                <input type="text" name="Subject" id="Subject" placeholder="Nhập Tiêu Đề" required="required" class="form-control">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
                                     <div class="form-group">
-                                        @Html.LabelFor(m => m.Subject, new { @class = "col-md-5 control-label" })
-                                        <div class="col-md-12">
-                                            @Html.TextBoxFor(m => m.Subject, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(m => m.Subject)
-                                        </div>
+                                        <label for="message" class="form-label">Tin Nhắn</label>
+                                        <textarea rows="4" name="Message" id="Message" placeholder="Nhập tin nhắn" required="required" class="form-control"></textarea>
                                     </div>
+                                    <button type="submit" class="btn btn-template">Gửi feedback</button>
                                 </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        @Html.LabelFor(m => m.Message, new { @class = "col-md-5 control-label" })
-                                        <div class="col-md-12">
-                                            @Html.TextAreaFor(m => m.Message, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(m => m.Message)
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <div class="col-md-offset-2 col-md-10">
-                                            <button type="submit" class="btn btn-template-outlined"><i class="fa fa-envelope-o"></i> Send message</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            </form>
+
+
                         }
                     </div>
-                </section>
-            </div>
-            @*@Html.Action("Contact", "Chil")*@
-            <div class="col-md-8 mx-auto">
+
+                </div>
             </div>
         </div>
-    </div>
-</div>
-<section class="bar bg-gray">
-    <div class="container">
-        <div class="heading text-center">
-            <h2>Social Network</h2>
-        </div>
-        <ul class="list-unstyled owl-carousel customers no-mb">
-            @*@Html.Action("Social", "Chil")*@
-        </ul>
+
     </div>
 </section>
 

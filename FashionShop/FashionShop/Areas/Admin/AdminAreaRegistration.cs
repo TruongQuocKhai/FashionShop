@@ -17,7 +17,7 @@ namespace FashionShop.Areas.Admin
             context.MapRoute(
               "Add logout",
               "Admin/dang-xuat",
-              new { controller = "User", action = "Logout", id = UrlParameter.Optional },
+              new { controller = "Login", action = "Logout", id = UrlParameter.Optional },
               namespaces: new[] { "FashionShop.Areas.Admin.Controllers" }
           );
 
@@ -57,9 +57,16 @@ namespace FashionShop.Areas.Admin
             );
 
             context.MapRoute(
-                "Admin_default",
+                "Admin login",
                 "Admin",
-                new { controller = "Login", action = "Index", id = UrlParameter.Optional },
+                new { controller = "Login", action = "Login", id = UrlParameter.Optional },
+                namespaces: new[] { "FashionShop.Areas.Admin.Controllers" }
+            );
+
+            context.MapRoute(
+                "Admin_default",
+                "Admin/{controller}/{action}/{id}",
+                new { action = "Index", id = UrlParameter.Optional },
                 namespaces: new[] { "FashionShop.Areas.Admin.Controllers" }
             );
         }

@@ -9,7 +9,7 @@
             var conf = confirm("Bạn xác nhận muốn xóa! Sau khi xóa dữ liệu sẽ không được phục hồi");
             if (conf == true) {
                 $.ajax({
-                    url: '/Admin/User/Delete',
+                    url: '/Admin/User/DeleteUser',
                     type: 'POST',
                     data: {
                         'id': id
@@ -82,7 +82,7 @@
                 <div class="product-status-wrap">
                     @*<h4>Products List</h4>*@
                     <div class="add-product">
-                        <a href="/Admin/them-user" class="btn btn-warning" style="top:0">Thêm mới user</a>
+                        <a href="/Admin/them-user" class="btn btn-warning" style="top:0">Thêm mới</a>
                     </div>
                     <table>
                         <tr>

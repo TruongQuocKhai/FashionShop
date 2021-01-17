@@ -9,7 +9,7 @@ namespace Common
     public class ConstUserGroup
     {
         public static string ADMIN_GROUP = "ADMIN";
-        public static string MEMBER_GROUP = "MEMER";
+        public static string MEMBER_GROUP = "MEMBER";
         public static string MODERATOR_GROUP = "MOD";
     }
 }

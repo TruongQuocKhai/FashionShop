@@ -12,17 +12,19 @@ namespace FashionShop.Areas.Admin.Controllers
     public class LoginController : Controller
     {
         // GET: Admin/Login
-        public ActionResult Index()
+        [HttpGet]
+        public ActionResult Login()
         {
             return View();
         }
 
+        [HttpPost]
         public ActionResult Login(LoginModel model)
         {
             if (ModelState.IsValid)
             {
                 var userAdo = new UserADO();
-                var result = userAdo.Login(model.Email, Encryption.MD5Hash(model.Password));
+                var result = userAdo.Login(model.Email, Encryption.MD5Hash(model.Password), true);
                 if (result == 1)
                 {
                     var user = userAdo.GetEmail(model.Email);
@@ -31,7 +33,7 @@ namespace FashionShop.Areas.Admin.Controllers
                     userProfile.UserEmail = user.email;
                     userProfile.GivenName = user.display_name;
                     Session.Add(SessionConst.USER_SESSION, userProfile);
-                    return Redirect("/Admin/bashboard");
+                    return Redirect("/Admin/dashboard");
                 }
                 else if (result == 0)
                 {

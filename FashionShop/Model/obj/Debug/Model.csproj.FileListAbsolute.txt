@@ -23,3 +23,5 @@ D:\Web\FashionShop\Model\obj\Debug\Model.pdb
 D:\Web\FashionShop\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
 D:\Web\FashionShop\Model\bin\Debug\Common.dll
 D:\Web\FashionShop\Model\bin\Debug\Common.pdb
+D:\Learn Programming\Web\FashionShop\FashionShop\Model\bin\Debug\Common.dll
+D:\Learn Programming\Web\FashionShop\FashionShop\Model\bin\Debug\Common.pdb
