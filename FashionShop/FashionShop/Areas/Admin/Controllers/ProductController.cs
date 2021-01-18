@@ -49,12 +49,11 @@ namespace FashionShop.Areas.Admin.Controllers
             {
                 entity.created_date = DateTime.Now;
                 new ProductADO().Insert(entity);
-                return Redirect("/quan-ly-san-pham");
+                return View("Index");
             }
             GetDropDownListCategory();
             return View();
         }
-
 
         public JsonResult RemoveProduct(int id)
         {

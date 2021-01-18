@@ -73,7 +73,6 @@ namespace FashionShop.Areas.Admin.Controllers
             }
             return View(userOfParameterPassed);
         }
-
         public JsonResult RemoveUser(int id)
         {
             try
@@ -92,7 +91,6 @@ namespace FashionShop.Areas.Admin.Controllers
                 });
             }
         }
-
 
         [HttpGet]
         public ActionResult EditUser(int id)

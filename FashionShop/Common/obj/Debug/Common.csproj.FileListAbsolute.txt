@@ -1,6 +1,5 @@
 D:\Learn Programming\Web\FashionShop\FashionShop\Common\bin\Debug\Common.dll
 D:\Learn Programming\Web\FashionShop\FashionShop\Common\bin\Debug\Common.pdb
-D:\Learn Programming\Web\FashionShop\FashionShop\Common\obj\Debug\Common.csprojAssemblyReference.cache
 D:\Learn Programming\Web\FashionShop\FashionShop\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
 D:\Learn Programming\Web\FashionShop\FashionShop\Common\obj\Debug\Common.dll
 D:\Learn Programming\Web\FashionShop\FashionShop\Common\obj\Debug\Common.pdb

@@ -14,7 +14,6 @@
     <script>
         $('#btnSelectImage').on('click', function (e) {
             e.preventDefault();
-            alert("abc")
             var finder = new CKFinder();
             finder.selectActionFunction = function (url) {
                 $('#txtImage').val(url);
@@ -80,20 +79,29 @@
                                                     <input type="text" class="form-control" name="quantity" placeholder="Số lượng">
                                                 </div>
 
-                                                <div class="col-lg-4" style="padding-left:0;">
+                                                @*<div class="col-lg-4" style="padding-left:0;">
+                                                        <div class="pro-edt-img">
+                                                            <img src="~/Contents/Images/Model.image" alt="Chọn ảnh mới" />
+                                                        </div>
+                                                    </div>*@
+
+                                                <div class="col-lg-3" style="padding-left:0;">
                                                     <div class="pro-edt-img">
-                                                        <img src="~/Contents/Images/Model.image" alt="Chọn ảnh mới" />
+                                                        <button class="btn btn-ctl-bt" id="btnSelectImage">
+                                                            Chọn ảnh <i class="fa fa-check"></i>
+                                                        </button>
                                                     </div>
                                                 </div>
                                                 <div class="input-group mg-b-pro-edt">
-                                                    <span class="input-group-addon"><i class="fa fa-image"></i> </span>
-                                                    <input type="file" name="Image" class="form-control" id="txtImage">
+                                                    <span class="input-group-addon"><i class="fa fa-image"></i></span>
+                                                    @Html.TextBoxFor(model => model.image, new { @class = "form-control", @readonly = "readonly", @placeholder = "Bấm chọn ảnh...", @id = "txtImage", @style = "color:black;" })
+                                                    @*<input type="text" name="Image" class="form-control" id="txtImage" placeholder="Chọn hình ảnh">*@
                                                 </div>
-                                                <div class="custom-pro-edt-ds">
-                                                    <button class="btn btn-ctl-bt" id="btnSelectImage">
-                                                        Update <i class="fa fa-check"></i>
-                                                    </button>
-                                                </div>
+                                                @*<div class="custom-pro-edt-ds">
+                                                        <button class="btn btn-ctl-bt" id="btnSelectImage">
+                                                            Chọn ảnh <i class="fa fa-check"></i>
+                                                        </button>
+                                                    </div>*@
                                             </div>
                                         </div>
                                     </div>
