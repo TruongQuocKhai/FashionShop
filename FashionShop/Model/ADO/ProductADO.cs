@@ -16,6 +16,22 @@ namespace Model.ADO
             db = new DbFashionShop();
         }
 
+        public bool Remove(int id)
+        {
+            try
+            {
+                var prodRecord = db.product.Find(id);
+                db.product.Remove(prodRecord);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+        }
+
 
         public int Insert(product entity)
         {

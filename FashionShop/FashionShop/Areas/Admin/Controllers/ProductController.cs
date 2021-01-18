@@ -15,7 +15,7 @@ namespace FashionShop.Areas.Admin.Controllers
         {
             int totalRecord = 0;
             var model = new ProductADO().GetAllProducts(ref totalRecord, page, pageSize);
-           
+
             // Tổng bản ghi Lấy từ DB / số sp muốn hiển thị 
             int totalPage = 0;
             totalPage = (int)Math.Ceiling((double)(totalRecord / pageSize));
@@ -47,24 +47,41 @@ namespace FashionShop.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                entity.created_date = DateTime.Now;
                 new ProductADO().Insert(entity);
-                return Redirect("Admin/quan-ly-san-pham");
+                return Redirect("/quan-ly-san-pham");
             }
             GetDropDownListCategory();
             return View();
         }
 
 
-        public ActionResult RemoveProduct()
+        public JsonResult RemoveProduct(int id)
         {
-            return View();
+            try
+            {
+                new ProductADO().Remove(id);
+                return Json(new
+                {
+                    message = 1
+                });
+            }
+            catch (Exception)
+            {
+                return Json(new
+                {
+                    message = 0
+                });
+            }
         }
 
+        [HttpGet]
         public ActionResult EditProduct()
         {
+            GetDropDownListCategory();
             return View();
         }
 
 
-    }                      
+    }
 }

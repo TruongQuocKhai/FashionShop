@@ -150,6 +150,7 @@ namespace FashionShop.Controllers
                 if (insertResult > 0)
                 {
                     var userProfile = new UserProfile();
+                    userProfile.UserEmail = user.email;
                     userProfile.GivenName = user.display_name;
                     userProfile.Picture = user.avatar;
                     Session.Add(SessionConst.USER_SESSION, userProfile);

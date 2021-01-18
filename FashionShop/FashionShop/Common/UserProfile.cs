@@ -9,7 +9,7 @@ namespace FashionShop.Common
 {
     public class UserProfile
     {
-       // [JsonProperty("id")]
+        //[JsonProperty("id")]
         public int UserId { get; set; }
 
         [JsonProperty("email")]

@@ -31,6 +31,11 @@ namespace FashionShop.Controllers
         [HttpGet]
         public ActionResult Order()
         {
+            if (Session[SessionConst.USER_SESSION] != null)
+            {
+                var userInfo = (UserProfile)Session[SessionConst.USER_SESSION];
+                ViewBag.UserInfo = new UserADO().GetUserInfo(userInfo.UserEmail);
+            }
             var cart = Session[SessionConst.CART_SESSION];
             var listItems = new List<CartModel>();
             if (cart != null)
@@ -49,7 +54,7 @@ namespace FashionShop.Controllers
             objOrder.order_address = address;
             objOrder.order_province = province;
             objOrder.order_district = district;
-           // objOrder.order_ward = ward;
+            // objOrder.order_ward = ward;
             objOrder.order_date = DateTime.Now;
 
             // Get user infor
@@ -79,7 +84,7 @@ namespace FashionShop.Controllers
                     productInfo.quantity = item.Product.quantity;
                     productInfo.price = item.Product.price;
                 }
-              
+
                 string content = System.IO.File.ReadAllText(Server.MapPath("~/Contents/EmailTemplate/neworder.html"));
                 content = content.Replace("{{CustomerName}}", name);
                 content = content.Replace("{{CustomerPhone}}", phone);

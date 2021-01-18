@@ -18,12 +18,47 @@ namespace Model.ADO
             db = new DbFashionShop();
         }
 
-        public bool Delete(int id)
+        public List <user> GetUserInfo(string email)
+        {
+            return db.user.Where(x => x.email == email).ToList();
+        }
+
+        public bool Update(user userEntity)
+        {
+            try
+            {
+                var userTable = db.user.Find(userEntity.user_id);
+                if (!string.IsNullOrEmpty(userEntity.password))
+                {
+                    userTable.password = userEntity.password;
+                }
+                userTable.user_group_id = userEntity.user_group_id;
+                userTable.display_name = userEntity.display_name;
+                userTable.phone = userEntity.phone;
+                userTable.edited_date = DateTime.Now;
+
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+        }
+
+        public user ViewDetail(int id)
+        {
+            return db.user.Find(id);
+        }
+
+        public bool Remove(int id)
         {
             try
             {
                 var userSelected = db.user.Find(id);
                 db.user.Remove(userSelected);
+                db.SaveChanges();
                 return true;
             }
             catch (Exception)

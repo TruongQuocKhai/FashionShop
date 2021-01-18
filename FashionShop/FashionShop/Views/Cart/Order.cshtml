@@ -69,14 +69,14 @@
                                             </span>
                                         </td>
                                     </tr>
-                                    <tr class="total-line total-line-shipping">
+                                    @*<tr class="total-line total-line-shipping">
                                         <td class="total-line-name">Phí ship</td>
                                         <td class="total-line-price">
                                             <span class="order-summary-emphasis" data-checkout-total-shipping-target="0">
                                                 20,000<sup>đ</sup>
                                             </span>
                                         </td>
-                                    </tr>
+                                    </tr>*@
                                 </tbody>
                                 <tfoot class="total-line-table-footer">
                                     <tr class="total-line">
@@ -129,72 +129,151 @@
                                 </p>
                                 <div class="fieldset">
                                     <form action="@Url.Action("Order", "Cart")" method="post">
-                                        <div class="field field-required field-show-floating-label">
-                                            <div class="field-input-wrapper">
-                                                <label class="field-label" for="billing_address_full_name">Họ và tên</label>
-                                                <input placeholder="Họ và tên" autocapitalize="off" spellcheck="false" class="field-input" size="30" type="text" id="name" name="name" required="required">
-                                            </div>
-                                        </div>
-                                        <div class="field  field-two-thirds field-show-floating-label  ">
-                                            <div class="field-input-wrapper">
-                                                <label class="field-label">Email</label>
-                                                <input placeholder="Email" autocapitalize="off" spellcheck="false" class="field-input" size="30" type="email" id="email" name="email" required="required">
-                                            </div>
-                                        </div>
-                                        <div class="field field-required field-third field-show-floating-label ">
-                                            <div class="field-input-wrapper">
-                                                <label class="field-label" for="billing_address_phone">Điện thoại</label>
-                                                <input placeholder="Điện thoại" autocapitalize="off" spellcheck="false" class="field-input" size="30" maxlength="11" type="tel" id="phone" name="phone" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required="required">
-                                            </div>
-                                        </div>
-                                        <div class="field field-required field-show-floating-label  ">
-                                            <div class="field-input-wrapper">
-                                                <label class="field-label" for="billing_address_address1">Địa chỉ</label>
-                                                <input placeholder="Địa chỉ" autocapitalize="off" spellcheck="false" class="field-input" size="30" type="text" id="address" name="address" required="required">
-                                            </div>
-                                        </div>
+                                        @if (Session["USER_SESSION"] == null)
+                                        {
 
-                                        <div class="field field-required field-show-floating-label">
-                                            <div class="fieldset">
-                                                <div class="field field-show-floating-label field-required field-third ">
-                                                    <div class="field-input-wrapper field-input-wrapper-select">
-                                                        <label class="field-label" for=""> Tỉnh/Thành phố </label>
-                                                        @Html.DropDownList("province", new SelectList(new string[] { }), new { @class = "field-input", @id = "ddlProvince" })
-                                                        @*<select class="field-input" id="ddlProvince" name="ddlProvince">
-                                                                <option data-code="null" value="0" selected="">  Chọn tỉnh thành </option>
-                                                            </select>*@
+
+                                            <div class="field field-required field-show-floating-label">
+                                                <div class="field-input-wrapper">
+                                                    <label class="field-label" for="billing_address_full_name">Họ và tên</label>
+                                                    <input placeholder="Họ và tên" autocapitalize="off" spellcheck="false" class="field-input" size="30" type="text" id="name" name="name" required="required">
+                                                </div>
+                                            </div>
+                                            <div class="field  field-two-thirds field-show-floating-label  ">
+                                                <div class="field-input-wrapper">
+                                                    <label class="field-label">Email</label>
+                                                    <input placeholder="Email" autocapitalize="off" spellcheck="false" class="field-input" size="30" type="email" id="email" name="email" required="required">
+                                                </div>
+                                            </div>
+                                            <div class="field field-required field-third field-show-floating-label ">
+                                                <div class="field-input-wrapper">
+                                                    <label class="field-label" for="billing_address_phone">Điện thoại</label>
+                                                    <input placeholder="Điện thoại" autocapitalize="off" spellcheck="false" class="field-input" size="30" maxlength="11" type="tel" id="phone" name="phone" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required="required">
+                                                </div>
+                                            </div>
+                                            <div class="field field-required field-show-floating-label  ">
+                                                <div class="field-input-wrapper">
+                                                    <label class="field-label" for="billing_address_address1">Địa chỉ</label>
+                                                    <input placeholder="Địa chỉ" autocapitalize="off" spellcheck="false" class="field-input" size="30" type="text" id="address" name="address" required="required">
+                                                </div>
+                                            </div>
+
+                                            <div class="field field-required field-show-floating-label">
+                                                <div class="fieldset">
+                                                    <div class="field field-show-floating-label field-required field-third ">
+                                                        <div class="field-input-wrapper field-input-wrapper-select">
+                                                            <label class="field-label" for=""> Tỉnh/Thành phố </label>
+                                                            @Html.DropDownList("province", new SelectList(new string[] { }), new { @class = "field-input", @id = "ddlProvince" })
+                                                            @*<select class="field-input" id="ddlProvince" name="ddlProvince">
+                                                                    <option data-code="null" value="0" selected="">  Chọn tỉnh thành </option>
+                                                                </select>*@
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="field field-show-floating-label field-required field-third ">
+                                                        <div class="field-input-wrapper field-input-wrapper-select">
+                                                            <label class="field-label" for="">Quận/Huyện</label>
+                                                            @Html.DropDownList("district", new SelectList(new string[] { }), new { @class = "field-input", @id = "ddlDistrict" })
+                                                        </div>
+                                                    </div>
+
+                                                    @*<div class="field field-show-floating-label field-required  field-third  ">
+                                                            <div class="field-input-wrapper field-input-wrapper-select">
+                                                                <label class="field-label" for="customer_shipping_ward">Phường</label>
+                                                                @Html.DropDownList("ward", new SelectList(new string[] { }), new { @class = "field-input", @id = "ddlWard" })
+                                                            </div>
+                                                        </div>*@
+                                                </div>
+                                            </div>
+
+                                            <div class="field field-required  ">
+                                                <div class="step-footer">
+                                                    <input name="utf8" type="hidden" value="✓">
+                                                    <button type="submit" class="btn btn-template">
+                                                        <span class="btn-content">Hoàn tất đơn hàng</span>
+                                                        <i class="btn-spinner icon icon-button-spinner"></i>
+                                                    </button>
+                                                    <a class="step-footer-previous-link" href="/gio-hang">
+                                                        <svg class="previous-link-icon icon-chevron icon" width="6.7" height="11.3" viewBox="0 0 6.7 11.3"><path d="M6.7 1.1l-1-1.1-4.6 4.6-1.1 1.1 1.1 1 4.6 4.6 1-1-4.6-4.6z"></path></svg>
+                                                        Giỏ hàng
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            foreach (var item in ViewBag.UserInfo)
+                                            {
+
+                                                <div class="field field-required field-show-floating-label">
+                                                    <div class="field-input-wrapper">
+                                                        <label class="field-label" for="billing_address_full_name">Họ và tên</label>
+                                                        <input placeholder="Họ và tên" autocapitalize="off" spellcheck="false" class="field-input" size="30" type="text" id="name" name="name" value="@item.display_name" required="required">
+                                                    </div>
+                                                </div>
+                                                <div class="field  field-two-thirds field-show-floating-label  ">
+                                                    <div class="field-input-wrapper">
+                                                        <label class="field-label">Email</label>
+                                                        <input placeholder="Email" autocapitalize="off" spellcheck="false" class="field-input" size="30" type="email" id="email" name="email" value="@item.email" required="required">
+                                                    </div>
+                                                </div>
+                                                <div class="field field-required field-third field-show-floating-label ">
+                                                    <div class="field-input-wrapper">
+                                                        <label class="field-label" for="billing_address_phone">Điện thoại</label>
+                                                        <input placeholder="Điện thoại" autocapitalize="off" spellcheck="false" class="field-input" size="30" maxlength="11" type="tel" id="phone" name="phone" value="@item.phone" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required="required">
+                                                    </div>
+                                                </div>
+                                                <div class="field field-required field-show-floating-label  ">
+                                                    <div class="field-input-wrapper">
+                                                        <label class="field-label" for="billing_address_address1">Địa chỉ</label>
+                                                        <input placeholder="Địa chỉ" autocapitalize="off" spellcheck="false" class="field-input" size="30" type="text" id="address" name="address" value="@item.address" required="required">
                                                     </div>
                                                 </div>
 
-                                                <div class="field field-show-floating-label field-required field-third ">
-                                                    <div class="field-input-wrapper field-input-wrapper-select">
-                                                        <label class="field-label" for="">Quận/Huyện</label>
-                                                        @Html.DropDownList("district", new SelectList(new string[] { }), new { @class = "field-input", @id = "ddlDistrict" })
+                                                <div class="field field-required field-show-floating-label">
+                                                    <div class="fieldset">
+                                                        <div class="field field-show-floating-label field-required field-third ">
+                                                            <div class="field-input-wrapper field-input-wrapper-select">
+                                                                <label class="field-label" for=""> Tỉnh/Thành phố </label>
+                                                                @Html.DropDownList("province", new SelectList(new string[] { }), new { @class = "field-input", @id = "ddlProvince"})
+                                                                @*<select class="field-input" id="ddlProvince" name="ddlProvince">
+                                                                        <option data-code="null" value="0" selected="">  Chọn tỉnh thành </option>
+                                                                    </select>*@
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="field field-show-floating-label field-required field-third ">
+                                                            <div class="field-input-wrapper field-input-wrapper-select">
+                                                                <label class="field-label" for="">Quận/Huyện</label>
+                                                                @Html.DropDownList("district", new SelectList(new string[] { }), new { @class = "field-input", @id = "ddlDistrict" })
+                                                            </div>
+                                                        </div>
+
+                                                        @*<div class="field field-show-floating-label field-required  field-third  ">
+                                                                <div class="field-input-wrapper field-input-wrapper-select">
+                                                                    <label class="field-label" for="customer_shipping_ward">Phường</label>
+                                                                    @Html.DropDownList("ward", new SelectList(new string[] { }), new { @class = "field-input", @id = "ddlWard" })
+                                                                </div>
+                                                            </div>*@
                                                     </div>
                                                 </div>
 
-                                                @*<div class="field field-show-floating-label field-required  field-third  ">
-                                                    <div class="field-input-wrapper field-input-wrapper-select">
-                                                        <label class="field-label" for="customer_shipping_ward">Phường</label>
-                                                        @Html.DropDownList("ward", new SelectList(new string[] { }), new { @class = "field-input", @id = "ddlWard" })
+                                                <div class="field field-required  ">
+                                                    <div class="step-footer">
+                                                        <input name="utf8" type="hidden" value="✓">
+                                                        <button type="submit" class="btn btn-template">
+                                                            <span class="btn-content">Hoàn tất đơn hàng</span>
+                                                            <i class="btn-spinner icon icon-button-spinner"></i>
+                                                        </button>
+                                                        <a class="step-footer-previous-link" href="/gio-hang">
+                                                            <svg class="previous-link-icon icon-chevron icon" width="6.7" height="11.3" viewBox="0 0 6.7 11.3"><path d="M6.7 1.1l-1-1.1-4.6 4.6-1.1 1.1 1.1 1 4.6 4.6 1-1-4.6-4.6z"></path></svg>
+                                                            Giỏ hàng
+                                                        </a>
                                                     </div>
-                                                </div>*@
-                                            </div>
-                                        </div>
+                                                </div>
+                                            }
 
-                                        <div class="field field-required  ">
-                                            <div class="step-footer">
-                                                <input name="utf8" type="hidden" value="✓">
-                                                <button type="submit" class="btn btn-template">
-                                                    <span class="btn-content">Hoàn tất đơn hàng</span>
-                                                    <i class="btn-spinner icon icon-button-spinner"></i>
-                                                </button>
-                                                <a class="step-footer-previous-link" href="/gio-hang">
-                                                    <svg class="previous-link-icon icon-chevron icon" width="6.7" height="11.3" viewBox="0 0 6.7 11.3"><path d="M6.7 1.1l-1-1.1-4.6 4.6-1.1 1.1 1.1 1 4.6 4.6 1-1-4.6-4.6z"></path></svg>
-                                                    Giỏ hàng
-                                                </a>
-                                            </div>
-                                        </div>
+                                        }
                                     </form>
                                 </div>
                             </div>

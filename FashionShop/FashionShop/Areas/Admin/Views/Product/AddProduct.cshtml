@@ -46,36 +46,38 @@
 
                                                 <div class="input-group mg-b-pro-edt">
                                                     <span class="input-group-addon"><i class="icon nalika-like" aria-hidden="true"></i></span>
-                                                    @Html.DropDownListFor(model => model.prd_category_id, null, new { @class = "form-control" })
+                                                    @Html.DropDownList("prd_category_id", (IEnumerable<SelectListItem>)ViewBag.CategoryId, "-- Chọn danh mục --", new { @class = "form-control" })
                                                 </div>
 
                                                 <div class="input-group mg-b-pro-edt">
                                                     <span class="input-group-addon"><i class="fa fa-barcode"></i></span>
-                                                    <input type="text" class="form-control" name="Code" placeholder="Mã sản phẩm">
+                                                    <input type="text" class="form-control" name="prod_code" placeholder="Mã sản phẩm">
                                                 </div>
                                                 <div class="input-group mg-b-pro-edt">
                                                     <span class="input-group-addon"><i class="icon nalika-user" aria-hidden="true"></i></span>
-                                                    <input type="text" class="form-control" name="Name" placeholder="Tên sản phẩm">
+                                                    <input type="text" class="form-control" name="product_name" placeholder="Tên sản phẩm">
                                                 </div>
                                                 <div class="input-group mg-b-pro-edt">
                                                     <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
-                                                    <input type="text" class="form-control" name="MetaTitle" placeholder="Alias">
+                                                    <input type="text" class="form-control" name="alias" placeholder="Alias">
                                                 </div>
                                                 <div class="input-group mg-b-pro-edt">
                                                     <span class="input-group-addon"><i class="icon nalika-new-file" aria-hidden="true"></i></span>
-                                                    <textarea type="" class="form-control" name="Description" placeholder="Mô tả cho sản phẩm"></textarea>
-                                                </div>
-                                                <div class="input-group mg-b-pro-edt">
-                                                    <span class="input-group-addon"><i class="fa fa-usd" aria-hidden="true"></i></span>
-                                                    <input type="text" class="form-control" name="Price" placeholder="Giá bán">
+                                                    <textarea type="" class="form-control" name="description" placeholder="Mô tả cho sản phẩm"></textarea>
                                                 </div>
                                             </div>
                                         </div>
+
+
                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                             <div class="review-content-section">
                                                 <div class="input-group mg-b-pro-edt">
+                                                    <span class="input-group-addon"><i class="fa fa-usd" aria-hidden="true"></i></span>
+                                                    <input type="text" class="form-control" name="price" placeholder="Giá bán">
+                                                </div>
+                                                <div class="input-group mg-b-pro-edt">
                                                     <span class="input-group-addon"><i class="icon nalika-user" aria-hidden="true"></i></span>
-                                                    <input type="text" class="form-control" name="Quantity" placeholder="Số lượng">
+                                                    <input type="text" class="form-control" name="quantity" placeholder="Số lượng">
                                                 </div>
 
                                                 <div class="col-lg-4" style="padding-left:0;">

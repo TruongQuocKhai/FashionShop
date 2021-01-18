@@ -74,12 +74,11 @@ namespace FashionShop.Areas.Admin.Controllers
             return View(userOfParameterPassed);
         }
 
-        public JsonResult DeleteUser(int id)
+        public JsonResult RemoveUser(int id)
         {
             try
             {
-                var model = new UserADO();
-                model.Delete(id);
+                new UserADO().Remove(id);
                 return Json(new
                 {
                     message = 1
@@ -92,6 +91,39 @@ namespace FashionShop.Areas.Admin.Controllers
                     message = 0
                 });
             }
+        }
+
+
+        [HttpGet]
+        public ActionResult EditUser(int id)
+        {
+            var model = new UserADO().ViewDetail(id);
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult EditUser(user userEntity)
+        {
+            if (ModelState.IsValid)
+            {
+                if (!string.IsNullOrEmpty(userEntity.password))
+                {
+                    userEntity.password = Encryption.MD5Hash(userEntity.password);
+                }
+                var userAdo = new UserADO();
+                var result = userAdo.Update(userEntity);
+                if (result)
+                {
+                    SetAlert("Cập nhật user thành công!", "success");
+                    return Redirect("Index");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Cập nhật user không thành công");
+                }
+            }
+            return View();
+
         }
     }
 }

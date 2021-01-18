@@ -13,14 +13,12 @@ namespace Model.ADO
         public ProductCategoryADO()
         {
             db = new DbFashionShop();
-            
+
         }
 
         public List<product_category> GetListProductCategory()
         {
             return db.product_category.Where(x => x.status == true).OrderBy(x => x.display_order).ToList();
         }
-
-        
     }
 }
