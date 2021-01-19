@@ -26,7 +26,7 @@ namespace Model.ADO
             }
             catch (Exception)
             {
-               return false;
+                return false;
             }
         }
 
@@ -55,19 +55,53 @@ namespace Model.ADO
 
         public List<product> GetListNewProducts(int quantity)
         {
-            return db.product.Where(x => x.discount == null).OrderByDescending(x => x.created_date).Take(quantity).ToList();
+            return db.product.Where(x => x.discount == null && x.status == true).OrderByDescending(x => x.created_date).Take(quantity).ToList();
         }
 
         public List<product> GetListDiscountProducts(int quantity)
         {
-            return db.product.Where(x => x.discount != null).OrderByDescending(x => x.created_date).Take(quantity).ToList();
+            return db.product.Where(x => x.discount != null && x.status == true).OrderByDescending(x => x.created_date).Take(quantity).ToList();
         }
 
         // Pagination
         public List<product> GetAllProducts(ref int totalRecord, int page, int pageSize)
         {
             totalRecord = db.product.Count(); // get total record of products
+            return db.product.Where(x => x.status == true).OrderByDescending(x => x.created_date).Skip((page - 1) * pageSize).Take(pageSize).ToList();
+        }
+
+        public List<product> GetAllProductsForAdmin(ref int totalRecord, int page, int pageSize)
+        {
+            totalRecord = db.product.Count(); // get total record of products
             return db.product.OrderByDescending(x => x.created_date).Skip((page - 1) * pageSize).Take(pageSize).ToList();
+        }
+
+
+        public List<product> GetSearchList(string keyword, ref int totalRecord, int page, int pageSize)
+        {
+            totalRecord = db.product.Where(x => x.product_name.Contains(keyword)).Count();
+            return db.product.Where(x => x.product_name == keyword && x.status == true).OrderByDescending(x => x.created_date).Skip((page - 1) * pageSize).Take(pageSize).ToList();
+        }
+
+        public List<product> GetListProductsByCategoryId(int id)
+        {
+            return db.product.Where(x => x.prd_category_id == id && x.status == true).OrderByDescending(x => x.created_date).ToList();
+        }
+
+        public product GetProductId(int id)
+        {
+            return db.product.Find(id);
+        }
+
+        public List<product> GetListRelatedProducts(int id)
+        {
+            var product = db.product.Find(id);
+            return db.product.Where(x => x.product_id != id && x.prd_category_id == product.prd_category_id && x.status == true).ToList();
+        }
+
+        public List<string> GetProductName(string keyword)
+        {
+            return db.product.Where(x => x.product_name.Contains(keyword)).Select(x => x.product_name).ToList();
         }
 
         //public List<ProductAndCategoryJoinModel> GetSearchList(string keyword, ref int totalRecord, int page, int pageSize)
@@ -100,33 +134,5 @@ namespace Model.ADO
         //                 });
         //    return model.OrderByDescending(x => x.CreatedDate).Skip((page - 1) * pageSize).Take(pageSize).ToList();
         //}
-
-        public List<product> GetSearchList(string keyword, ref int totalRecord, int page, int pageSize )
-        {
-            totalRecord = db.product.Where(x => x.product_name.Contains(keyword)).Count();
-            return db.product.Where(x => x.product_name == keyword).OrderByDescending(x => x.created_date).Skip((page - 1) * pageSize).Take(pageSize).ToList();
-        }
-
-        public List<product> GetListProductsByCategoryId(int id)
-        {
-            return db.product.Where(x => x.prd_category_id == id).OrderByDescending(x => x.created_date).ToList();
-        }
-
-        public product GetProductId(int id)
-        {
-            return db.product.Find(id);
-        }
-
-        public List<product> GetListRelatedProducts(int id)
-        {
-            var product = db.product.Find(id);
-            return db.product.Where(x => x.product_id != id && x.prd_category_id == product.prd_category_id).ToList();
-        }
-
-        public List<string> GetProductName(string keyword)
-        {
-            return db.product.Where(x => x.product_name.Contains(keyword)).Select(x => x.product_name).ToList();
-        }
-
     }
 }

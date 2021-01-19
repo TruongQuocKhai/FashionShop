@@ -1,10 +1,8 @@
 ﻿@model Model.EF.product
-
 @{
     ViewBag.Title = "Cập nhật sản phẩm";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
-
 @section header {
     Cập nhật sản phẩm
 }
@@ -20,8 +18,8 @@
             };
             finder.popup();
         });
-        var editor = CKEDITOR.replace('#txtContent', {
-            customConfig: '/assets/admin/js/plugins/ckeditor/config.js',
+        var editor = CKEDITOR.replace('txtContent', {
+            customConfig: '/Areas/Admin/Contents/js/ckeditor/config.js',
         });
     </script>
 }
@@ -62,27 +60,26 @@
                                                 </div>
                                                 <div class="input-group mg-b-pro-edt">
                                                     <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
-                                                    <input type="text" class="form-control" name="alias" placeholder="Alias">
+                                                    <input type="text" class="form-control" value="@Model.alias" name="alias" placeholder="Alias">
                                                 </div>
-                                                <div class="input-group mg-b-pro-edt">
-                                                    <span class="input-group-addon"><i class="icon nalika-new-file" aria-hidden="true"></i></span>
-                                                    <textarea type="" class="form-control" name="description" placeholder="Mô tả cho sản phẩm"></textarea>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                            <div class="review-content-section">
                                                 <div class="input-group mg-b-pro-edt">
                                                     <span class="input-group-addon"><i class="fa fa-usd" aria-hidden="true"></i></span>
                                                     <input type="number" class="form-control" value="@Model.price" name="price" placeholder="Giá bán">
                                                 </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                            <div class="review-content-section">
+
                                                 <div class="input-group mg-b-pro-edt">
                                                     <span class="input-group-addon"><i class="icon nalika-user" aria-hidden="true"></i></span>
                                                     <input type="number" class="form-control" value="@Model.quantity" name="quantity" placeholder="Số lượng">
                                                 </div>
-
+                                                <div class="input-group mg-b-pro-edt">
+                                                    <span class="input-group-addon"><i class="icon nalika-new-file" aria-hidden="true"></i></span>
+                                                    <textarea type="" class="form-control" value="@Model.description" name="description" placeholder="Mô tả cho sản phẩm"></textarea>
+                                                </div>
                                                 @*<div class="col-lg-4" style="padding-left:0;">
                                                         <div class="pro-edt-img">
                                                             <img src="@Model.image" alt="Chọn ảnh mới" />
@@ -98,8 +95,13 @@
                                                 <div class="input-group mg-b-pro-edt">
                                                     <span class="input-group-addon"><i class="fa fa-image"></i></span>
                                                     @Html.TextBoxFor(model => model.image, new { @class = "form-control", @readonly = "readonly", @placeholder = "Bấm chọn ảnh...", @id = "txtImage", @style = "color:black;" })
-                                                    @*<input type="text" name="Image" class="form-control" id="txtImage" placeholder="Chọn hình ảnh">*@
                                                 </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding-bottom: 50px;">
+                                            <div class="review-content-section">
+                                                <span class="input-group-addon" style="text-align: left;"><i class="icon nalika-new-file" aria-hidden="true"></i> Chi tiết sản phẩm</span>
+                                                @Html.TextAreaFor(model => model.detail, new { htmlAttributes = new { @class = "form-control" }, id = "txtContent" })
                                             </div>
                                         </div>
                                     </div>

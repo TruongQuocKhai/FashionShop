@@ -173,3 +173,5 @@ D:\Web\FashionShop\FashionShop\obj\Debug\FashionShop.dll
 D:\Web\FashionShop\FashionShop\obj\Debug\FashionShop.pdb
 D:\Web\FashionShop\FashionShop\bin\CKFinder.dll
 D:\Web\FashionShop\FashionShop\bin\CKFinder.pdb
+D:\Learn Programming\Web\FashionShop\FashionShop\FashionShop\bin\CKFinder.dll
+D:\Learn Programming\Web\FashionShop\FashionShop\FashionShop\bin\CKFinder.pdb

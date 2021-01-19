@@ -14,7 +14,7 @@ namespace FashionShop.Areas.Admin.Controllers
         public ActionResult Index(int page = 1, int pageSize = 3)
         {
             int totalRecord = 0;
-            var model = new ProductADO().GetAllProducts(ref totalRecord, page, pageSize);
+            var model = new ProductADO().GetAllProductsForAdmin(ref totalRecord, page, pageSize);
 
             // Tổng bản ghi Lấy từ DB / số sp muốn hiển thị 
             int totalPage = 0;
@@ -29,7 +29,7 @@ namespace FashionShop.Areas.Admin.Controllers
             return View(model);
         }
 
-        public void GetDropDownListCategory(int? selectedId = null)
+        public void DropDownListCategory(int? selectedId = null)
         {
             var model = new ProductCategoryADO();
             ViewBag.CategoryId = new SelectList(model.GetListProductCategory(), "prd_category_id", "prd_category_name", selectedId);
@@ -38,11 +38,11 @@ namespace FashionShop.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult AddProduct()
         {
-            GetDropDownListCategory();
+            DropDownListCategory();
             return View();
         }
 
-        [HttpPost]
+        [HttpPost, ValidateInput(false)]
         public ActionResult AddProduct(product entity)
         {
             if (ModelState.IsValid)
@@ -60,33 +60,9 @@ namespace FashionShop.Areas.Admin.Controllers
                     ModelState.AddModelError("", "Thêm mới không thành công!");
                 }
             }
-            GetDropDownListCategory();
+            DropDownListCategory();
             return View();
         }
-
-        //public ActionResult FileUpload(HttpPostedFileBase file)
-        //{
-        //    if (file != null)
-        //    {
-        //        string pic = System.IO.Path.GetFileName(file.FileName);
-        //        string path = System.IO.Path.Combine(
-        //                               Server.MapPath("~/images/profile"), pic);
-        //        // file is uploaded
-        //        file.SaveAs(path);
-
-        //        // save the image path path to the database or you can send image 
-        //        // directly to database
-        //        // in-case if you want to store byte[] ie. for DB
-        //        using (MemoryStream ms = new MemoryStream())
-        //        {
-        //            file.InputStream.CopyTo(ms);
-        //            byte[] array = ms.GetBuffer();
-        //        }
-
-        //    }
-        //    // after successfully uploading redirect the user
-        //    return RedirectToAction("actionname", "controller name");
-        //}
 
         public JsonResult RemoveProduct(int id)
         {
@@ -110,12 +86,12 @@ namespace FashionShop.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult EditProduct(int id)
         {
-            GetDropDownListCategory();
+            DropDownListCategory();
             var model = new ProductADO().GetProductId(id);
             return View(model);
         }
 
-        [HttpPost]
+        [HttpPost, ValidateInput(false)]
         public ActionResult EditProduct(product prdEntity)
         {
             if (ModelState.IsValid)
@@ -132,7 +108,7 @@ namespace FashionShop.Areas.Admin.Controllers
                     ModelState.AddModelError("", "Cập nhật không thành công!");
                 }
             }
-            GetDropDownListCategory();
+            DropDownListCategory();
             return View();
             // return Redirect("/Admin/quan-ly-san-pham");
         }

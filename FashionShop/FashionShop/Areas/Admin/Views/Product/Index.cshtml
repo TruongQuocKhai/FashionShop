@@ -35,15 +35,14 @@
         background: #e7505a;
     }
 
-
     .btn-outline.red {
         border-color: #e7505a;
         color: #e7505a;
         background: 0 0;
         /*border-radius: 20px;*/
         width: 27%;
-        display:inline-flex;
-        justify-content:center;
+        display: inline-flex;
+        justify-content: center;
     }
 
         .btn-outline.red:active {
@@ -81,7 +80,7 @@
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="product-status-wrap">
-                    <div class="add-product">
+                    <div class="add-product" style="padding-bottom: 20px;">
                         <a href="/Admin/them-san-pham/" class="btn btn-warning" style="top:0">Thêm mới</a>
                     </div>
                     <table>
@@ -89,8 +88,9 @@
                             <th>Hình ảnh</th>
                             <th>Tên sản phẩm </th>
                             <th>Trạng thái</th>
-                            <th>Ngày đăng</th>
                             <th>Giá tiền</th>
+                            <th>Số lượng</th>
+                            <th>Ngày đăng</th>
                             <th>Thao tác</th>
                         </tr>
                         @foreach (var item in Model)
@@ -99,10 +99,18 @@
                                 <td><img src="@item.image" alt="" /></td>
                                 <td>@item.product_name</td>
                                 <td>
-                                    <button class="pd-setting">Còn hàng</button>
+                                    @if (item.status == true && item.quantity != 0)
+                                    {
+                                        <span class="pd-setting">Còn hàng</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="ds-setting">Hết hàng</span>
+                                    }
                                 </td>
-                                <td>@item.created_date</td>
                                 <td>@item.price.GetValueOrDefault(0).ToString("N0")<sup>đ</sup></td>
+                                <td>@item.quantity</td>
+                                <td>@item.created_date</td>
                                 <td>
                                     <a href="/Admin/cap-nhat-san-pham-@item.product_id">
                                         <i class="fa fa-pencil-square-o btn btn-icon-only btn-circle btn-outline blue"></i>

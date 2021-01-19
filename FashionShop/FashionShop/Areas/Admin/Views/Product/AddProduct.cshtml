@@ -41,7 +41,7 @@
                             @using (Html.BeginForm("AddProduct", "Product", FormMethod.Post))
                             {
                                 <div style="padding: 0 0 10px 15px;">
-                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
                                 </div>
                                 <div class="product-tab-list tab-pane fade active in" id="inforProducts">
                                     <div class="row">
