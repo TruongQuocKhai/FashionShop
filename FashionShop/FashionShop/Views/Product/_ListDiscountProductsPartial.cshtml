@@ -14,7 +14,7 @@
                     <div class="product is-gray">
                         <div class="image d-flex align-items-center justify-content-center">
                             <div class="ribbon-primary text-uppercase">Sale @item.discount%</div> <!-- discount labels -->
-                            <img src="/Contents/Images/@item.image" alt="product" class="img-fluid">
+                            <img src="@item.image" alt="product" class="img-fluid">
                             <div class="hover-overlay d-flex align-items-center justify-content-center">
                                 <div class="CTA d-flex align-items-center justify-content-center">
                                     <a href="/them-vao-gio-hang?productId=@item.product_id&quantity=1" class="add-to-cart" title="Thêm vào giỏ"><i class="fa fa-shopping-cart"></i></a>
@@ -44,7 +44,7 @@
                 <div class="modal-body">
                     <div class="ribbon-primary text-uppercase">Sale @item.discount%</div>
                     <div class="row d-flex align-items-center">
-                        <div class="image col-lg-5"><img src="/Contents/Images/@item.image" alt="..." class="img-fluid d-block"></div>
+                        <div class="image col-lg-5"><img src="@item.image" alt="..." class="img-fluid d-block"></div>
                         <div class="details col-lg-7">
                             <h2>@item.product_name</h2>
                             <ul class="price list-inline">

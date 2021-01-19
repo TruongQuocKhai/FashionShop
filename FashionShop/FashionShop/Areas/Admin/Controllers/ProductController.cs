@@ -48,12 +48,45 @@ namespace FashionShop.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 entity.created_date = DateTime.Now;
-                new ProductADO().Insert(entity);
-                return View("Index");
+                entity.status = true;
+                var result = new ProductADO().Insert(entity);
+                if (result > 0)
+                {
+                    SetAlert("Thêm mới thành công!", "success");
+                    return Redirect("/Admin/quan-ly-san-pham");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Thêm mới không thành công!");
+                }
             }
             GetDropDownListCategory();
             return View();
         }
+
+        //public ActionResult FileUpload(HttpPostedFileBase file)
+        //{
+        //    if (file != null)
+        //    {
+        //        string pic = System.IO.Path.GetFileName(file.FileName);
+        //        string path = System.IO.Path.Combine(
+        //                               Server.MapPath("~/images/profile"), pic);
+        //        // file is uploaded
+        //        file.SaveAs(path);
+
+        //        // save the image path path to the database or you can send image 
+        //        // directly to database
+        //        // in-case if you want to store byte[] ie. for DB
+        //        using (MemoryStream ms = new MemoryStream())
+        //        {
+        //            file.InputStream.CopyTo(ms);
+        //            byte[] array = ms.GetBuffer();
+        //        }
+
+        //    }
+        //    // after successfully uploading redirect the user
+        //    return RedirectToAction("actionname", "controller name");
+        //}
 
         public JsonResult RemoveProduct(int id)
         {
@@ -75,12 +108,33 @@ namespace FashionShop.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public ActionResult EditProduct()
+        public ActionResult EditProduct(int id)
         {
             GetDropDownListCategory();
-            return View();
+            var model = new ProductADO().GetProductId(id);
+            return View(model);
         }
 
-
+        [HttpPost]
+        public ActionResult EditProduct(product prdEntity)
+        {
+            if (ModelState.IsValid)
+            {
+                prdEntity.created_date = DateTime.Now;
+                var result = new ProductADO().Update(prdEntity);
+                if (result)
+                {
+                    SetAlert("Cập nhật sản phẩm thành công!", "success");
+                    return Redirect("/Admin/quan-ly-san-pham");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Cập nhật không thành công!");
+                }
+            }
+            GetDropDownListCategory();
+            return View();
+            // return Redirect("/Admin/quan-ly-san-pham");
+        }
     }
 }

@@ -171,3 +171,5 @@ D:\Web\FashionShop\FashionShop\obj\Debug\FashionShop.csproj.GenerateResource.Cac
 D:\Web\FashionShop\FashionShop\obj\Debug\FashionShop.csproj.CoreCompileInputs.cache
 D:\Web\FashionShop\FashionShop\obj\Debug\FashionShop.dll
 D:\Web\FashionShop\FashionShop\obj\Debug\FashionShop.pdb
+D:\Web\FashionShop\FashionShop\bin\CKFinder.dll
+D:\Web\FashionShop\FashionShop\bin\CKFinder.pdb

@@ -17,7 +17,7 @@ namespace FashionShop.Areas.Admin.Controllers
             if (session == null)
             {
                 filterContext.Result = new RedirectToRouteResult(new
-                    RouteValueDictionary(new { controller = "Login", action = "Index", area = "Admin" }));
+                    RouteValueDictionary(new { controller = "Login", action = "Login", area = "Admin" }));
             }
             base.OnActionExecuting(filterContext);
         }

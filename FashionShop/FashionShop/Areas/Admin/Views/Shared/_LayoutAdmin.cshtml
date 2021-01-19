@@ -248,7 +248,6 @@
         </div>
         @RenderBody()
     </div>
-
     <!-- jquery
         ============================================ -->
     <script src="/Areas/Admin/Contents/js/vendor/jquery-1.12.4.min.js"></script>
@@ -303,12 +302,11 @@
         ============================================ -->
     <script src="/Areas/Admin/Contents/js/main.js"></script>
     <script src="/Areas/Admin/Contents/js/ckfinder/ckfinder.js"></script>
+    <script src="/Areas/Admin/Contents/js/ckeditor/ckeditor.js"></script>
     <script>
         $('#AlertBox').removeClass('hide');
-        $('#AlertBox').delay(1000).slideUp(5000);
-
+        $('#AlertBox').delay(1000).slideUp(500);
     </script>
-
     @RenderSection("jsFooter", required: false)
 </body>
 </html>

@@ -20,6 +20,9 @@
             };
             finder.popup();
         });
+        var editor = CKEDITOR.replace('txtContent', {
+            customConfig: '/Areas/Admin/Contents/js/ckeditor/config.js',
+        });
     </script>
 }
 <div class="single-product-tab-area mg-b-30">
@@ -37,17 +40,17 @@
                         <div id="myTabContent" class="tab-content custom-product-edit">
                             @using (Html.BeginForm("AddProduct", "Product", FormMethod.Post))
                             {
+                                <div style="padding: 0 0 10px 15px;">
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                </div>
                                 <div class="product-tab-list tab-pane fade active in" id="inforProducts">
                                     <div class="row">
                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                             <div class="review-content-section">
-
-
                                                 <div class="input-group mg-b-pro-edt">
                                                     <span class="input-group-addon"><i class="icon nalika-like" aria-hidden="true"></i></span>
                                                     @Html.DropDownList("prd_category_id", (IEnumerable<SelectListItem>)ViewBag.CategoryId, "-- Chọn danh mục --", new { @class = "form-control" })
                                                 </div>
-
                                                 <div class="input-group mg-b-pro-edt">
                                                     <span class="input-group-addon"><i class="fa fa-barcode"></i></span>
                                                     <input type="text" class="form-control" name="prod_code" placeholder="Mã sản phẩm">
@@ -61,30 +64,30 @@
                                                     <input type="text" class="form-control" name="alias" placeholder="Alias">
                                                 </div>
                                                 <div class="input-group mg-b-pro-edt">
-                                                    <span class="input-group-addon"><i class="icon nalika-new-file" aria-hidden="true"></i></span>
-                                                    <textarea type="" class="form-control" name="description" placeholder="Mô tả cho sản phẩm"></textarea>
+                                                    <span class="input-group-addon"><i class="fa fa-usd" aria-hidden="true"></i></span>
+                                                    <input type="number" class="form-control" name="price" placeholder="Giá bán">
                                                 </div>
+
                                             </div>
                                         </div>
 
-
                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                             <div class="review-content-section">
-                                                <div class="input-group mg-b-pro-edt">
-                                                    <span class="input-group-addon"><i class="fa fa-usd" aria-hidden="true"></i></span>
-                                                    <input type="text" class="form-control" name="price" placeholder="Giá bán">
-                                                </div>
+
                                                 <div class="input-group mg-b-pro-edt">
                                                     <span class="input-group-addon"><i class="icon nalika-user" aria-hidden="true"></i></span>
-                                                    <input type="text" class="form-control" name="quantity" placeholder="Số lượng">
+                                                    <input type="number" class="form-control" name="quantity" placeholder="Số lượng">
+                                                </div>
+                                                <div class="input-group mg-b-pro-edt">
+                                                    <span class="input-group-addon"><i class="icon nalika-new-file" aria-hidden="true"></i></span>
+                                                    <textarea type="" class="form-control" name="description" placeholder="Mô tả cho sản phẩm"></textarea>
                                                 </div>
 
                                                 @*<div class="col-lg-4" style="padding-left:0;">
                                                         <div class="pro-edt-img">
-                                                            <img src="~/Contents/Images/Model.image" alt="Chọn ảnh mới" />
+                                                            <img src="@Model.image" alt="Chọn ảnh mới" />
                                                         </div>
                                                     </div>*@
-
                                                 <div class="col-lg-3" style="padding-left:0;">
                                                     <div class="pro-edt-img">
                                                         <button class="btn btn-ctl-bt" id="btnSelectImage">
@@ -97,11 +100,12 @@
                                                     @Html.TextBoxFor(model => model.image, new { @class = "form-control", @readonly = "readonly", @placeholder = "Bấm chọn ảnh...", @id = "txtImage", @style = "color:black;" })
                                                     @*<input type="text" name="Image" class="form-control" id="txtImage" placeholder="Chọn hình ảnh">*@
                                                 </div>
-                                                @*<div class="custom-pro-edt-ds">
-                                                        <button class="btn btn-ctl-bt" id="btnSelectImage">
-                                                            Chọn ảnh <i class="fa fa-check"></i>
-                                                        </button>
-                                                    </div>*@
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding-bottom: 50px;">
+                                            <div class="review-content-section">
+                                                <span class="input-group-addon" style="text-align: left;"><i class="icon nalika-new-file" aria-hidden="true"></i> Chi tiết sản phẩm</span>
+                                                @Html.TextAreaFor(model => model.detail, new { htmlAttributes = new { @class = "form-control" }, id = "txtContent" })
                                             </div>
                                         </div>
                                     </div>
@@ -110,11 +114,11 @@
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="text-center custom-pro-edt-ds">
                                             <button type="submit" class="btn btn-ctl-bt waves-effect waves-light m-r-10">
-                                                Cập nhật
+                                                Thêm mới
                                             </button>
-                                            <button type="submit" class="btn btn-ctl-bt waves-effect waves-light">
+                                            <a href="/Admin/quan-ly-san-pham" class="btn btn-ctl-bt waves-effect waves-light">
                                                 Hủy bỏ
-                                            </button>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>

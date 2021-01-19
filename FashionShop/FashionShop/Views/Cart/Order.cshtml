@@ -38,7 +38,7 @@
                                             <td class="product-image">
                                                 <div class="product-thumbnail">
                                                     <div class="product-thumbnail-wrapper">
-                                                        <img class="product-thumbnail-image" alt="" src="~/Contents/Images/@item.Product.image">
+                                                        <img class="product-thumbnail-image" alt="" src="@item.Product.image">
                                                     </div>
                                                     <span class="product-thumbnail-quantity" aria-hidden="true">@item.Quantity</span>
                                                 </div>
@@ -69,14 +69,14 @@
                                             </span>
                                         </td>
                                     </tr>
-                                    @*<tr class="total-line total-line-shipping">
+                                    <tr class="total-line total-line-shipping">
                                         <td class="total-line-name">Phí ship</td>
                                         <td class="total-line-price">
                                             <span class="order-summary-emphasis" data-checkout-total-shipping-target="0">
-                                                20,000<sup>đ</sup>
+                                                _<sup>đ</sup>
                                             </span>
                                         </td>
-                                    </tr>*@
+                                    </tr>
                                 </tbody>
                                 <tfoot class="total-line-table-footer">
                                     <tr class="total-line">

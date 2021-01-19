@@ -12,7 +12,7 @@ namespace FashionShop.Controllers
         // GET: Product
         public ActionResult _ListNewProductsPartial()
         {
-            var model = new ProductADO().GetListNewProducts(4);
+            var model = new ProductADO().GetListNewProducts(8);
             return PartialView(model);
         }
 

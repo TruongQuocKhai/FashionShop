@@ -17,8 +17,8 @@
         // ... where Session[ "IsAuthorized" ] is set to "true" as soon as the
         // user logs on your system.
 
-        return Session["USER_SESSION"] != null;
-        //return true;
+       // return Session["USER_SESSION"] != null;
+        return true;
     }
 
     /**
@@ -32,11 +32,11 @@
         LicenseKey = "";
 
         // The base URL used to reach files in CKFinder through the browser.
-        BaseUrl = "/ImageData/";
+        BaseUrl = "~/Upload/";
 
         // The phisical directory in the server where the file will end up. If
         // blank, CKFinder attempts to resolve BaseUrl.
-        BaseDir = "";
+        BaseDir = HttpContext.Current.Server.MapPath("~/Upload/");
 
         // Optional: enable extra plugins (remember to copy .dll files first).
         Plugins = new string[] {

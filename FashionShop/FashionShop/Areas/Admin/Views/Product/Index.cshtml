@@ -96,7 +96,7 @@
                         @foreach (var item in Model)
                         {
                             <tr id="@item.product_id">
-                                <td><img src="~/Contents/Images/@item.image" alt="" /></td>
+                                <td><img src="@item.image" alt="" /></td>
                                 <td>@item.product_name</td>
                                 <td>
                                     <button class="pd-setting">Còn hàng</button>

@@ -16,6 +16,20 @@ namespace Model.ADO
             db = new DbFashionShop();
         }
 
+        public bool Update(product prdTable)
+        {
+            try
+            {
+                db.Entry(prdTable).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+               return false;
+            }
+        }
+
         public bool Remove(int id)
         {
             try
@@ -31,7 +45,6 @@ namespace Model.ADO
                 return false;
             }
         }
-
 
         public int Insert(product entity)
         {

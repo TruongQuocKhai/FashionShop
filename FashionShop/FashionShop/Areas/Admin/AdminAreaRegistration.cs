@@ -14,12 +14,7 @@ namespace FashionShop.Areas.Admin
 
         public override void RegisterArea(AreaRegistrationContext context)
         {
-            context.MapRoute(
-              "Edit product",
-              "Admin/cap-nhat-san-pham-{id}",
-              new { controller = "Product", action = "EditProduct", id = UrlParameter.Optional },
-              namespaces: new[] { "FashionShop.Areas.Admin.Controllers" }
-          );
+           
 
             context.MapRoute(
               "Edit user",
@@ -27,6 +22,7 @@ namespace FashionShop.Areas.Admin
               new { controller = "User", action = "EditUser", id = UrlParameter.Optional },
               namespaces: new[] { "FashionShop.Areas.Admin.Controllers" }
           );
+
 
             context.MapRoute(
               "Add logout",
@@ -48,6 +44,13 @@ namespace FashionShop.Areas.Admin
                 new { controller = "User", action = "Index", id = UrlParameter.Optional },
                 namespaces: new[] { "FashionShop.Areas.Admin.Controllers" }
             );
+
+            context.MapRoute(
+             "Edit product",
+             "Admin/cap-nhat-san-pham-{id}",
+             new { controller = "Product", action = "EditProduct", id = UrlParameter.Optional },
+             namespaces: new[] { "FashionShop.Areas.Admin.Controllers" }
+         );
 
             context.MapRoute(
                "Add Products",

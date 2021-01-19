@@ -8,3 +8,4 @@ D:\Web\FashionShop\Common\bin\Debug\Common.pdb
 D:\Web\FashionShop\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
 D:\Web\FashionShop\Common\obj\Debug\Common.dll
 D:\Web\FashionShop\Common\obj\Debug\Common.pdb
+D:\Web\FashionShop\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache

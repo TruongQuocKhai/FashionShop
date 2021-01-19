@@ -14,12 +14,14 @@
     <script>
         $('#btnSelectImage').on('click', function (e) {
             e.preventDefault();
-            alert("abc")
             var finder = new CKFinder();
             finder.selectActionFunction = function (url) {
                 $('#txtImage').val(url);
             };
             finder.popup();
+        });
+        var editor = CKEDITOR.replace('#txtContent', {
+            customConfig: '/assets/admin/js/plugins/ckeditor/config.js',
         });
     </script>
 }
@@ -36,13 +38,14 @@
                         </ul>
 
                         <div id="myTabContent" class="tab-content custom-product-edit">
-                            @using (Html.BeginForm("EditProduct", "Product", FormMethod.Post))
+                            @using (Html.BeginForm("EditProduct", "Product"))
                             {
                                 <div class="product-tab-list tab-pane fade active in" id="inforProducts">
                                     <div class="row">
                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                             <div class="review-content-section">
 
+                                                <input type="hidden" class="form-control" value="@Model.product_id" name="product_id" placeholder="Mã sản phẩm">
 
                                                 <div class="input-group mg-b-pro-edt">
                                                     <span class="input-group-addon"><i class="icon nalika-like" aria-hidden="true"></i></span>
@@ -51,19 +54,19 @@
 
                                                 <div class="input-group mg-b-pro-edt">
                                                     <span class="input-group-addon"><i class="fa fa-barcode"></i></span>
-                                                    <input type="text" class="form-control" name="Code" placeholder="Mã sản phẩm">
+                                                    <input type="text" class="form-control" value="@Model.prod_code" name="prod_code" placeholder="Mã sản phẩm">
                                                 </div>
                                                 <div class="input-group mg-b-pro-edt">
                                                     <span class="input-group-addon"><i class="icon nalika-user" aria-hidden="true"></i></span>
-                                                    <input type="text" class="form-control" name="Name" placeholder="Tên sản phẩm">
+                                                    <input type="text" class="form-control" value="@Model.product_name" name="product_name" placeholder="Tên sản phẩm">
                                                 </div>
                                                 <div class="input-group mg-b-pro-edt">
                                                     <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
-                                                    <input type="text" class="form-control" name="MetaTitle" placeholder="Alias">
+                                                    <input type="text" class="form-control" name="alias" placeholder="Alias">
                                                 </div>
                                                 <div class="input-group mg-b-pro-edt">
                                                     <span class="input-group-addon"><i class="icon nalika-new-file" aria-hidden="true"></i></span>
-                                                    <textarea type="" class="form-control" name="Description" placeholder="Mô tả cho sản phẩm"></textarea>
+                                                    <textarea type="" class="form-control" name="description" placeholder="Mô tả cho sản phẩm"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -73,26 +76,29 @@
                                             <div class="review-content-section">
                                                 <div class="input-group mg-b-pro-edt">
                                                     <span class="input-group-addon"><i class="fa fa-usd" aria-hidden="true"></i></span>
-                                                    <input type="text" class="form-control" name="Price" placeholder="Giá bán">
+                                                    <input type="number" class="form-control" value="@Model.price" name="price" placeholder="Giá bán">
                                                 </div>
                                                 <div class="input-group mg-b-pro-edt">
                                                     <span class="input-group-addon"><i class="icon nalika-user" aria-hidden="true"></i></span>
-                                                    <input type="text" class="form-control" name="Quantity" placeholder="Số lượng">
+                                                    <input type="number" class="form-control" value="@Model.quantity" name="quantity" placeholder="Số lượng">
                                                 </div>
 
-                                                <div class="col-lg-4" style="padding-left:0;">
+                                                @*<div class="col-lg-4" style="padding-left:0;">
+                                                        <div class="pro-edt-img">
+                                                            <img src="@Model.image" alt="Chọn ảnh mới" />
+                                                        </div>
+                                                    </div>*@
+                                                <div class="col-lg-3" style="padding-left:0;">
                                                     <div class="pro-edt-img">
-                                                        <img src="~/Contents/Images/Model.image" alt="Chọn ảnh mới" />
+                                                        <button class="btn btn-ctl-bt" id="btnSelectImage">
+                                                            Chọn ảnh <i class="fa fa-check"></i>
+                                                        </button>
                                                     </div>
                                                 </div>
                                                 <div class="input-group mg-b-pro-edt">
-                                                    <span class="input-group-addon"><i class="fa fa-image"></i> </span>
-                                                    <input type="file" name="Image" class="form-control" id="txtImage">
-                                                </div>
-                                                <div class="custom-pro-edt-ds">
-                                                    <button class="btn btn-ctl-bt" id="btnSelectImage">
-                                                        Update <i class="fa fa-check"></i>
-                                                    </button>
+                                                    <span class="input-group-addon"><i class="fa fa-image"></i></span>
+                                                    @Html.TextBoxFor(model => model.image, new { @class = "form-control", @readonly = "readonly", @placeholder = "Bấm chọn ảnh...", @id = "txtImage", @style = "color:black;" })
+                                                    @*<input type="text" name="Image" class="form-control" id="txtImage" placeholder="Chọn hình ảnh">*@
                                                 </div>
                                             </div>
                                         </div>
@@ -104,9 +110,9 @@
                                             <button type="submit" class="btn btn-ctl-bt waves-effect waves-light m-r-10">
                                                 Cập nhật
                                             </button>
-                                            <button type="submit" class="btn btn-ctl-bt waves-effect waves-light">
+                                            <a href="/Admin/quan-ly-san-pham" class="btn btn-ctl-bt waves-effect waves-light">
                                                 Hủy bỏ
-                                            </button>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
