@@ -113,7 +113,7 @@ namespace FashionShop.Areas.Admin.Controllers
                 if (result)
                 {
                     SetAlert("Cập nhật user thành công!", "success");
-                    return Redirect("Index");
+                    return Redirect("/Admin/quan-ly-user");
                 }
                 else
                 {
@@ -121,7 +121,6 @@ namespace FashionShop.Areas.Admin.Controllers
                 }
             }
             return View();
-
         }
     }
 }

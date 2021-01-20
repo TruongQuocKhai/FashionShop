@@ -9,7 +9,34 @@ namespace FashionShop.Controllers
 {
     public class ProductController : Controller
     {
-        // GET: Product
+
+        // Ghi comment vào đầu source theo format dưới
+        /****************************************************************/
+        /* All Rights Reserved. Copyright (c) 1999 ソリマチ株式会社     */
+        /****************************************************************/
+        /* File Name    : ADXMAIN.CPP                                   */
+        /* Function     : 会計王DXのメイン処理                          */
+        /* System Name  : 会計王DX for Windows V1.0                     */
+        /* Create       : S.Sato 1999/09/09                             */
+        /* Update       :                                               */
+        /* Comment      :                                               */
+        /****************************************************************/
+
+        // Ghi comment vào đầu hàm theo format dưới đây: 
+        // Ghi rõ parameter được dùng cho (i)input hay (o)output hay sử dụng cho cả 2 (i/o)input và output
+        /****************************************************************/
+        /* Function Name : GetStatus()                                  */
+        /* Function      : 状態を取得する                               */
+        /* Param         : nStateID(i) 状態を取得する部品のID(0～15)    */
+        /* Return        : ０ ： 正常な状態                             */
+        /*               : １ ： エラー有り                             */
+        /* Create        : S.Sato 1999/09/09                            */
+        /* Update        :                                              */
+        /* Comment       :                                              */
+        /****************************************************************/
+
+
+
         public ActionResult _ListNewProductsPartial()
         {
             var model = new ProductADO().GetListNewProducts(8);
@@ -68,14 +95,14 @@ namespace FashionShop.Controllers
 
         public JsonResult ListName(string q)
         {
-             var productName = new ProductADO().GetProductName(q);
+            var productName = new ProductADO().GetProductName(q);
             return Json(new
             {
                 data = productName,
                 status = true
-            },JsonRequestBehavior.AllowGet);
+            }, JsonRequestBehavior.AllowGet);
         }
-        public ActionResult Search(string keyword, int page = 1, int pageSize = 1)// pageSize = productsPerPage
+        public ActionResult Search(string keyword, int nPage = 1, int pageSize = 1)// pageSize = productsPerPage
         {
             int totalRecord = 0;
             var model = new ProductADO().GetSearchList(keyword, ref totalRecord, page, pageSize);

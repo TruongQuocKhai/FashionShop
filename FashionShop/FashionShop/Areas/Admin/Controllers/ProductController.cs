@@ -97,6 +97,7 @@ namespace FashionShop.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 prdEntity.created_date = DateTime.Now;
+                prdEntity.status = true;
                 var result = new ProductADO().Update(prdEntity);
                 if (result)
                 {

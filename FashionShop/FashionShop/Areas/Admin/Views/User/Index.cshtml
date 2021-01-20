@@ -81,13 +81,14 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="product-status-wrap">
                     @*<h4>Products List</h4>*@
-                    <div class="add-product">
+                    <div class="add-product"  style="padding-bottom: 20px;">
                         <a href="/Admin/them-user" class="btn btn-warning" style="top:0">Thêm mới</a>
                     </div>
                     <table>
                         <tr>
                             <th>Avatar</th>
                             <th>Tên người dùng</th>
+                            <th>User thuộc nhóm</th>
                             <th>Email</th>
                             <th>Số điện thoại</th>
                             <th>Trạng thái</th>
@@ -95,21 +96,22 @@
                         </tr>
                         @foreach (var item in Model)
                         {
-                            <tr id="@item.user_id">
-                                <td><img src="~/Contents/Images/" alt=" " width="40px;" height="40px;" style="border-radius: 200px;" /></td>
-                                <td>@item.display_name</td>
-                                <td>@item.email</td>
-                                <td>@item.phone</td>
-                                <td>
-                                    <button class="pd-setting">Active</button>
-                                </td>
-                                <td>
-                                    <a href="/Admin/cap-nhat-user-@item.user_id"><i class="fa fa-pencil-square-o btn btn-icon-only btn-circle btn-outline blue"></i></a>
-                                    @*<a title="Cập nhật" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>*@
-                                    @*<button onclick="xoa(@item.ID)" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>*@
-                                    <a onclick="Remove(@item.user_id)"><i class="fa fa-trash btn btn-icon-only btn-circle btn-outline red"></i></a>
-                                </td>
-                            </tr>
+                        <tr id="@item.user_id">
+                            <td><img src="~/Contents/Images/" alt=" " width="40px;" height="40px;" style="border-radius: 200px;" /></td>
+                            <td>@item.display_name</td>
+                            <td>@item.user_group_id</td>
+                            <td>@item.email</td>
+                            <td>@item.phone</td>
+                            <td>
+                                <button class="pd-setting">Active</button>
+                            </td>
+                            <td>
+                                <a href="/Admin/cap-nhat-user-@item.user_id"><i class="fa fa-pencil-square-o btn btn-icon-only btn-circle btn-outline blue"></i></a>
+                                @*<a title="Cập nhật" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>*@
+                                @*<button onclick="xoa(@item.ID)" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>*@
+                                <a onclick="Remove(@item.user_id)"><i class="fa fa-trash btn btn-icon-only btn-circle btn-outline red"></i></a>
+                            </td>
+                        </tr>
                         }
                     </table>
                     @if (ViewBag.TotalPage >= 1)

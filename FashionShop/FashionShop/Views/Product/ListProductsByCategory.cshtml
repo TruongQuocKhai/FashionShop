@@ -2,7 +2,7 @@
 @using Model.EF;
 @{
     var category = new product_category();
-    ViewBag.Title = "ListProductsByCategory";
+    ViewBag.Title = "Sản phẩm theo danh mục";
     Layout = "~/Views/Shared/_LayoutUser.cshtml";
 }
 
@@ -10,7 +10,7 @@
     <div class="container">
         <div class="row d-flex">
             <div class="col-lg-9 order-2 order-lg-1">
-                <h1>Shop</h1><p class="lead text-muted">@category.prd_category_name</p>
+                <h1>Shop</h1><p class="lead text-muted"></p>
             </div>
             <div class="col-lg-3 text-right order-1 order-lg-2">
                 <ul class="breadcrumb justify-content-lg-end">
@@ -64,7 +64,7 @@
                                     {
                                         <div class="ribbon ribbon-primary text-uppercase">Sale</div>
                                     }
-                                    <img src="~@item.image" alt="product" class="img-fluid">
+                                    <img src="@item.image" alt="product" class="img-fluid">
                                     <div class="hover-overlay d-flex align-items-center justify-content-center">
                                         <div class="CTA d-flex align-items-center justify-content-center">
                                             <a href="/them-vao-gio-hang?productId=@item.product_id&quantity=1" class="add-to-cart" title="Thêm vào giỏ"><i class="fa fa-shopping-cart"></i></a>
