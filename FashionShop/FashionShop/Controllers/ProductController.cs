@@ -9,19 +9,6 @@ namespace FashionShop.Controllers
 {
     public class ProductController : Controller
     {
-
-        // Ghi comment vào đầu source theo format dưới
-        /****************************************************************/
-        /* All Rights Reserved. Copyright (c) 1999 ソリマチ株式会社     */
-        /****************************************************************/
-        /* File Name    : ADXMAIN.CPP                                   */
-        /* Function     : 会計王DXのメイン処理                          */
-        /* System Name  : 会計王DX for Windows V1.0                     */
-        /* Create       : S.Sato 1999/09/09                             */
-        /* Update       :                                               */
-        /* Comment      :                                               */
-        /****************************************************************/
-
         // Ghi comment vào đầu hàm theo format dưới đây: 
         // Ghi rõ parameter được dùng cho (i)input hay (o)output hay sử dụng cho cả 2 (i/o)input và output
         /****************************************************************/
@@ -34,9 +21,6 @@ namespace FashionShop.Controllers
         /* Update        :                                              */
         /* Comment       :                                              */
         /****************************************************************/
-
-
-
         public ActionResult _ListNewProductsPartial()
         {
             var model = new ProductADO().GetListNewProducts(8);
@@ -53,73 +37,118 @@ namespace FashionShop.Controllers
         // currentPage (optional) - the current active page, default to first page
         // pageSize (optional) - the number of items per page, defaults to 10
         // maxPages (optional) - the maximum number of page navigation link to display, defaul to 7
-        public ActionResult ListAllProducts(int page = 1, int pageSize = 4)// pageSize = productsPerPage
+        public ActionResult ListAllProducts(int nPage = 1, int nPageSize = 4)// pageSize = productsPerPage
         {
-            int totalRecord = 0;
-            var model = new ProductADO().GetAllProducts(ref totalRecord, page, pageSize);
+            int nTotalRecord = 0;
+            var model = new ProductADO().GetAllProducts(ref nTotalRecord, nPage, nPageSize);
 
-            ViewBag.TotalRecord = totalRecord;
-            ViewBag.StartIndex = page;
+            ViewBag.TotalRecord = nTotalRecord;
+            ViewBag.StartIndex = nPage;
 
             int totalPage = 0;
             int displayMaxPages = 6;
 
             // Tổng trang của số bản ghi / số lượng sp hiển thị 
-            totalPage = (int)Math.Ceiling((double)totalRecord / pageSize); // Math.Ceiling(double a) -> ham lam tron so len
+            totalPage = (int)Math.Ceiling((double)nTotalRecord / nPageSize); // Math.Ceiling(double a) -> ham lam tron so len
             ViewBag.TotalPage = totalPage;
             ViewBag.DisplayMaxPages = displayMaxPages;
-            ViewBag.Next = page + 1;
-            ViewBag.Prev = page - 1;
+            ViewBag.Next = nPage + 1;
+            ViewBag.Prev = nPage - 1;
 
             return View(model);
         }
 
-        public ActionResult ListProductsByCategory(int id)
+        /****************************************************************/
+        /* Function Name : ListProductsByCategory()                   
+        /* Function      : List of products by category               
+        /* Param         : nCategoryId(i) category id to return the product list                                
+        /* Return        : model ： return a product objet                 
+        /* Create        : T.Khai 2021/01/11                            
+        /* Update        :                                              
+        /* Comment       :  
+        /****************************************************************/
+        public ActionResult ListProductsByCategory(int nCategoryId)
         {
-            var model = new ProductADO().GetListProductsByCategoryId(id);
+            var model = new ProductADO().GetListProductsByCategoryId(nCategoryId);
             return View(model);
         }
 
-        public ActionResult ViewProductDetails(int id)
+        /****************************************************************/
+        /* Function Name : ViewProductDetails()                   
+        /* Function      : View product details               
+        /* Param         : nPrdId(i) Product id to return                                 
+        /* Return        : model ： return a record (1 hàng)                  
+        /* Create        : T.Khai 2020/12/23                            
+        /* Update        :                                              
+        /* Comment       :  
+        /****************************************************************/
+        public ActionResult ViewProductDetails(int nPrdId)
         {
-            var model = new ProductADO().GetProductId(id);
+            var model = new ProductADO().GetProductId(nPrdId);
             return View(model);
         }
 
+        /****************************************************************/
+        /* Function Name : _ListRelatedProductsPartial()                   
+        /* Function      : List of related products              
+        /* Param         : nPrdId(i) Product id                                
+        /* Return        : listRecords ： return list of records                  
+        /* Create        : T.Khai 2020/12/23                            
+        /* Update        :                                              
+        /* Comment       :  
+        /****************************************************************/
         [ChildActionOnly]
-        public ActionResult _ListRelatedProductsPartial(int id)
+        public ActionResult _ListRelatedProductsPartial(int nPrdId)
         {
-            var model = new ProductADO().GetListRelatedProducts(id);
-            return PartialView(model);
+            var listRecords = new ProductADO().GetListRelatedProducts(nPrdId);
+            return PartialView(listRecords);
         }
 
-        public JsonResult ListName(string q)
+        /****************************************************************/
+        /* Function Name   : ListProductName()                   
+        /* Function Content: List product name              
+        /* Param           : sKeyword(i) string key words                                 
+        /* Return          : Json ： return list product name in Json Jquery format                
+        /* Create          : T.Khai 2020/12/23                            
+        /* Update          :                                              
+        /* Comment         : Fife jquery: /Contents/js/JsFileController/search-autocomplete  
+        /****************************************************************/
+        public JsonResult ListProductName(string sKeyword)
         {
-            var productName = new ProductADO().GetProductName(q);
+            var productName = new ProductADO().GetProductName(sKeyword);
             return Json(new
             {
                 data = productName,
                 status = true
             }, JsonRequestBehavior.AllowGet);
         }
-        public ActionResult Search(string keyword, int nPage = 1, int pageSize = 1)// pageSize = productsPerPage
+
+        /****************************************************************/
+        /* Function Name   : Search()                   
+        /* Function Content:              
+        /* Param           : sKeyword(i), nPage(i), nPageSize(i)                                  
+        /* Return          : Model: list all product            
+        /* Create          : T.Khai 2021/01/11                            
+        /* Update          : T.Khai 2021/01/20
+         *                   Fix bug css
+        /* Comment         :
+        /****************************************************************/
+        public ActionResult Search(string sKeyword, int nPage = 1, int nPageSize = 1)// pageSize = productsPerPage
         {
-            int totalRecord = 0;
-            var model = new ProductADO().GetSearchList(keyword, ref totalRecord, page, pageSize);
-
-            ViewBag.TotalRecord = totalRecord;
-            ViewBag.StartIndex = page;
-            ViewBag.Keyword = keyword;
-
+            int nTotalRecord = 0;
             int totalPage = 0;
             int displayMaxPages = 6;
+            var model = new ProductADO().GetSearchList(sKeyword, ref nTotalRecord, nPage, nPageSize);
+            ViewBag.TotalRecord = nTotalRecord;
+            ViewBag.StartIndex = nPage;
+            ViewBag.Keyword = sKeyword;
 
             // Tổng trang của số bản ghi / số lượng sp hiển thị 
-            totalPage = (int)Math.Ceiling((double)totalRecord / pageSize); // Math.Ceiling(double a) -> ham lam tron so len
+            totalPage = (int)Math.Ceiling((double)nTotalRecord / nPageSize); // Math.Ceiling(double a) -> ham lam tron so len
             ViewBag.TotalPage = totalPage;
             ViewBag.DisplayMaxPages = displayMaxPages;
-            ViewBag.Next = page + 1;
-            ViewBag.Prev = page - 1;
+            ViewBag.Next = nPage + 1;
+            ViewBag.Prev = nPage - 1;
 
             return View(model);
         }

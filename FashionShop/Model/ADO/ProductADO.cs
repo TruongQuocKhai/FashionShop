@@ -53,14 +53,14 @@ namespace Model.ADO
             return entity.product_id;
         }
 
-        public List<product> GetListNewProducts(int quantity)
+        public List<product> GetListNewProducts(int nQuantity)
         {
-            return db.product.Where(x => x.discount == null && x.status == true).OrderByDescending(x => x.created_date).Take(quantity).ToList();
+            return db.product.Where(x => x.discount == null && x.status == true).OrderByDescending(x => x.created_date).Take(nQuantity).ToList();
         }
 
-        public List<product> GetListDiscountProducts(int quantity)
+        public List<product> GetListDiscountProducts(int nQuantity)
         {
-            return db.product.Where(x => x.discount != null && x.status == true).OrderByDescending(x => x.created_date).Take(quantity).ToList();
+            return db.product.Where(x => x.discount != null && x.status == true).OrderByDescending(x => x.created_date).Take(nQuantity).ToList();
         }
 
         // Pagination
@@ -83,14 +83,15 @@ namespace Model.ADO
             return db.product.Where(x => x.product_name == keyword && x.status == true).OrderByDescending(x => x.created_date).Skip((page - 1) * pageSize).Take(pageSize).ToList();
         }
 
-        public List<product> GetListProductsByCategoryId(int id)
+        public List<product> GetListProductsByCategoryId(int nCategoryId)
         {
-            return db.product.Where(x => x.prd_category_id == id && x.status == true).OrderByDescending(x => x.created_date).ToList();
+            return db.product.Where(x => x.prd_category_id == nCategoryId && x.status == true).OrderByDescending(x => x.created_date).ToList();
         }
 
-        public product GetProductId(int id)
+        // Input: product id
+        public product GetProductId(int nPrdId)
         {
-            return db.product.Find(id);
+            return db.product.Find(nPrdId);
         }
 
         public List<product> GetListRelatedProducts(int id)

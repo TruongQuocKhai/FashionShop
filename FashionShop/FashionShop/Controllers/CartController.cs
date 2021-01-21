@@ -44,6 +44,17 @@ namespace FashionShop.Controllers
             }
             return PartialView(listItems);
         }
+
+        /****************************************************************/
+        /* Function Name   : Search()                   
+        /* Function Content:              
+        /* Param           : sKeyword(i), nPage(i), nPageSize(i)                                  
+        /* Return          : Model: list all product            
+        /* Create          : T.Khai 2021/01/11                            
+        /* Update          : T.Khai 2021/01/20
+         *                   Fix bug css
+        /* Comment         :
+        /****************************************************************/
         [HttpPost]
         public ActionResult Order(string name, string email, string phone, string address, string province, string district)
         {
